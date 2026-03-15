@@ -30,7 +30,7 @@ export interface CalculatorInputs {
     bespokeKitchen: boolean;
     wfhZone: boolean;
     smartHome: boolean;
-    documentationLocker: boolean;
+    vastuReport: boolean;
     outdoor: boolean;
   };
   profession: Profession;                  // for WFH ROI calculation
@@ -58,7 +58,7 @@ export interface ROIResult {
     bespokeKitchen: number;
     wfhZone: number;
     smartHome: number;
-    documentationLocker: number;
+    vastuReport: number;
     outdoor: number;
     hybridBonus: number;
   };
@@ -154,7 +154,7 @@ export function calculateROI(inputs: CalculatorInputs): ROIResult {
   const acousticContrib        = acousticActive        ? I * 0.12 * noiseScale * quietPremiumMultiplier : 0;
   const bespokeKitchenContrib  = modules.bespokeKitchen ? I * 0.09 : 0;
   const smartHomeContrib       = modules.smartHome       ? I * 0.08 * AUTOMATION_BONUS[automationLevel] + I * 0.04 : 0;
-  const documentationContrib   = modules.documentationLocker ? I * 0.05 : 0;    // liquidity bonus
+  const vastuContrib           = modules.vastuReport     ? I * 0.05 : 0;    // harmony/liquidity bonus
   const outdoorContrib         = modules.outdoor         ? I * 0.04 : 0;
 
   // WFH zone — profession-weighted
@@ -166,7 +166,7 @@ export function calculateROI(inputs: CalculatorInputs): ROIResult {
 
   const totalContributions =
     acousticContrib + bespokeKitchenContrib + smartHomeContrib +
-    wfhContrib + documentationContrib + outdoorContrib + hybridBonus;
+    wfhContrib + vastuContrib + outdoorContrib + hybridBonus;
 
   // --- Core Formula ---
   // V_future = V_base + (I × Rf × Lf × Af × Mf) + module contributions
@@ -182,7 +182,7 @@ export function calculateROI(inputs: CalculatorInputs): ROIResult {
     (acousticActive ? noiseScale * 0.06 : 0) +
     wfhYieldBonus +
     (modules.smartHome ? 0.04 : 0) +
-    (modules.documentationLocker ? 0.02 : 0);
+    (modules.vastuReport ? 0.02 : 0);
 
   const rentalYield = baseRentalYield + rentalPremiumPercent;
   const rentalPremium = rentalPremiumPercent * 100;
@@ -195,10 +195,9 @@ export function calculateROI(inputs: CalculatorInputs): ROIResult {
   const hybridAdvantage = ((hybridValue5yr - modularValue5yr) / modularValue5yr) * 100;
   const bespokePenalty  = ((bespokeValue5yr - hybridValue5yr) / hybridValue5yr) * 100;
 
-  // --- Resale Speed ---
-  // Documented, acoustically-treated homes sell faster
+  // Vastu-balanced and acoustically-treated homes sell faster
   let daysFromMarket = 45;  // avg Bengaluru secondary market
-  if (modules.documentationLocker) daysFromMarket -= 10;
+  if (modules.vastuReport) daysFromMarket -= 10;
   if (acousticActive) daysFromMarket -= 8;
   if (modules.smartHome) daysFromMarket -= 5;
   const resaleSpeedDays = Math.max(7, daysFromMarket);
@@ -220,7 +219,7 @@ export function calculateROI(inputs: CalculatorInputs): ROIResult {
       bespokeKitchen:      bespokeKitchenContrib,
       wfhZone:             wfhContrib,
       smartHome:           smartHomeContrib,
-      documentationLocker: documentationContrib,
+      vastuReport:         vastuContrib,
       outdoor:             outdoorContrib,
       hybridBonus,
     },

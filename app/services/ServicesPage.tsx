@@ -70,6 +70,15 @@ export default function ServicesPage() {
       <Nav />
       
       <section className={styles.hero}>
+        <div className={styles.heroVideo}>
+          <iframe
+            src="https://www.youtube.com/embed/W0hRBUrH9KI?autoplay=1&mute=1&loop=1&playlist=W0hRBUrH9KI&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <div className={styles.heroVignette} />
         <div className="container">
           <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
             <div className="gold-line" />
@@ -182,9 +191,9 @@ export default function ServicesPage() {
               <p>Certified KNX/Control4 integration to boost capital appreciation in tech corridors.</p>
             </div>
             <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>📑</div>
-              <h4>Documentation Locker</h4>
-              <p>Professional Design Audit reports that make your property 22% more liquid.</p>
+              <div className={styles.moduleIcon}>🧭</div>
+              <h4>Vastu Audit Report</h4>
+              <p>Property-wide element balancing and optimal placement of all household objects for enhanced harmony.</p>
             </div>
           </div>
         </div>

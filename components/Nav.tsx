@@ -10,8 +10,8 @@ const NAV_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
-  { href: '/calculator', label: 'ROI Calculator' },
   { href: '/contact', label: 'Contact' },
+  { href: '/calculator', label: 'ROI Calculator' },
 ];
 
 export default function Nav() {

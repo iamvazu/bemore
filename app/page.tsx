@@ -131,11 +131,11 @@ export default function HomePage() {
       delay: 320,
     },
     {
-      icon: '⬜',
-      title: 'Design Documentation Locker',
+      icon: '🧭',
+      title: 'Vastu Audit Report',
       description:
-        'Our 2026 resale-ready service. A certified Design Audit Report + 10-Year Transferable Warranty that makes your home sell 22% faster on the secondary market.',
-      tag: 'Liquidity',
+        'A comprehensive Vastu audit for your home, including property-wide element balancing and optimal placement of all household objects to enhance energy flow and well-being.',
+      tag: 'Harmony',
       delay: 400,
     },
   ];
@@ -187,12 +187,13 @@ export default function HomePage() {
         <div className={styles.heroBg}>
           <div className={styles.heroVideo}>
             <iframe
-              src="https://www.youtube.com/embed/N3j9dDoiJ8I?autoplay=1&mute=1&loop=1&playlist=N3j9dDoiJ8I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+              src="https://www.youtube.com/embed/N3j9dDoiJ8I?autoplay=1&mute=1&loop=1&playlist=N3j9dDoiJ8I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
               frameBorder="0"
               allow="autoplay; encrypted-media"
               allowFullScreen
             ></iframe>
           </div>
+          <div className={styles.heroVignette} />
           <div className={styles.heroGlow} />
           <div className={styles.heroArch1} />
           <div className={styles.heroArch2} />
@@ -208,7 +209,7 @@ export default function HomePage() {
 
             <p className={styles.heroSub}>
               Innovative Architecture and Interior Design for Modern Living.
-              <br /><br />
+              <br />
               At beMore Design Studio, we don’t just build structures; we curate environments. Based in Bangalore, we are a multidisciplinary firm dedicated to creating smart, elegant, and highly functional spaces that resonate with your vision.
             </p>
 
@@ -311,27 +312,60 @@ export default function HomePage() {
       {/* ============ SOLUTIONS ============ */}
       <section className={styles.solutionsSection}>
         <div className="container">
+          <div className="gold-line gold-line--center" />
+          <h2 className={styles.solutionsTitle}>Core Services</h2>
           <div className={styles.solutionsGrid}>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>01.</span>
-              <h3>Architectural Design</h3>
-              <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity, spatial flow, and &quot;Tropical Modernism&quot; suited for the Indian climate.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>02.</span>
-              <h3>Interior Design & Styling</h3>
-              <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>03.</span>
-              <h3>Commercial & Retail Spaces</h3>
-              <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams can truly be more.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>04.</span>
-              <h3>Project Management & Consultation</h3>
-              <p>Design without the stress. We oversee the technical precision of every build, ensuring that the transition from concept to reality is seamless and timely.</p>
-            </div>
+            <Link href="/services#architectural" className={styles.solutionCard}>
+              <div className={styles.solutionBg}>
+                <img src="/portfolio-whitefield.jpg" alt="Architectural Design" />
+              </div>
+              <div className={styles.solutionOverlay} />
+              <div className={styles.solutionContent}>
+                <span className={styles.solutionNumber}>01.</span>
+                <h3>Architectural Design</h3>
+                <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity and spatial flow.</p>
+                <div className={styles.solutionCta}>Explore Service →</div>
+              </div>
+            </Link>
+
+            <Link href="/services#interior" className={styles.solutionCard}>
+              <div className={styles.solutionBg}>
+                <img src="/portfolio-indiranagar.jpg" alt="Interior Design" />
+              </div>
+              <div className={styles.solutionOverlay} />
+              <div className={styles.solutionContent}>
+                <span className={styles.solutionNumber}>02.</span>
+                <h3>Interior Design & Styling</h3>
+                <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts for contemporary lifestyles.</p>
+                <div className={styles.solutionCta}>Explore Service →</div>
+              </div>
+            </Link>
+
+            <Link href="/services#commercial" className={styles.solutionCard}>
+              <div className={styles.solutionBg}>
+                <img src="/portfolio-koramangala.jpg" alt="Commercial Spaces" />
+              </div>
+              <div className={styles.solutionOverlay} />
+              <div className={styles.solutionContent}>
+                <span className={styles.solutionNumber}>03.</span>
+                <h3>Commercial & Retail Spaces</h3>
+                <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams thrive.</p>
+                <div className={styles.solutionCta}>Explore Service →</div>
+              </div>
+            </Link>
+
+            <Link href="/services#management" className={styles.solutionCard}>
+              <div className={styles.solutionBg}>
+                <img src="/portfolio-bellandur.jpg" alt="Project Management" />
+              </div>
+              <div className={styles.solutionOverlay} />
+              <div className={styles.solutionContent}>
+                <span className={styles.solutionNumber}>04.</span>
+                <h3>Project Management</h3>
+                <p>Design without the stress. We oversee every build, ensuring that the transition from concept to reality is seamless and timely.</p>
+                <div className={styles.solutionCta}>Explore Service →</div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -360,6 +394,100 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/* ============ SPECIALIZED SERVICES ============ */}
+      <section className={styles.specializedSection}>
+        <div className={styles.specializedBg}>
+          <img src="/portfolio-indiranagar.jpg" alt="Luxury Background" />
+        </div>
+        <div className={styles.specializedOverlay} />
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <div className="gold-line" />
+            <h2 className={styles.sectionTitle}>
+              Expertise In Every <em className="text-gold">Internal Detail</em>
+            </h2>
+            <p className={styles.sectionSub}>
+              We specialize in high-end, custom interventions that elevate standard living into a tailored statement.
+            </p>
+          </div>
+          
+          <div className={styles.specializedGrid}>
+            {[
+              { icon: '🪞', title: 'Foyers', desc: 'Welcoming entryways that make a lasting first impression.' },
+              { icon: '🏗️', title: 'False Ceilings', desc: 'Stylish overhead designs that enhance your spatial volume.' },
+              { icon: '🛁', title: 'Bathroom Designs', desc: 'Spa-like retreats calibrated for your daily rejuvenation.' },
+              { icon: '📦', title: 'Storage Solutions', desc: 'Smart, custom storage to keep your home flawlessly organized.' },
+              { icon: '🪔', title: 'Pooja Units', desc: 'Beautiful sacred spaces meticulously designed for spiritual moments.' },
+              { icon: '🍳', title: 'Modular Kitchens', desc: 'Efficient, elite kitchens for high-performance culinary art.' },
+              { icon: '🪴', title: 'Balcony Designs', desc: 'Outdoor urban retreats perfect for relaxation and air.' },
+              { icon: '🛋️', title: 'Living Rooms', desc: 'Masterfully designed areas for living and hosting.' }
+            ].map((item, i) => (
+              <div key={i} className={styles.specializedItem}>
+                <div className={styles.specializedIcon}>{item.icon}</div>
+                <div className={styles.specializedText}>
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className={styles.workflowSection}>
+        <div className="container">
+          <div className={styles.sectionHead} style={{ textAlign: 'center' }}>
+            <span className="tag">The beMore Process</span>
+            <h2 className={styles.sectionTitle} style={{ margin: '0.5rem 0' }}>
+              Your Journey In <em className="text-gold">4 Simple Steps</em>
+            </h2>
+          </div>
+
+          <div className={styles.workflowSteps}>
+            {[
+              { 
+                num: '01', 
+                title: 'Discovery & Mapping', 
+                desc: 'We deeply understand your preferences, desires, and tactical requirements to create a personalized design foundation.',
+                img: '/portfolio-whitefield.jpg'
+              },
+              { 
+                num: '02', 
+                title: 'Design Intent', 
+                desc: 'Our design intent brings your vision to life, creating spaces tailored to your needs with high ROI focus.',
+                img: '/portfolio-indiranagar.jpg'
+              },
+              { 
+                num: '03', 
+                title: 'Precision Estimation', 
+                desc: 'We offer transparent, data-backed estimates, ensuring clarity and honesty throughout the project journey.',
+                img: '/portfolio-koramangala.jpg'
+              },
+              { 
+                num: '04', 
+                title: 'Masterful Execution', 
+                desc: 'Design transitions seamlessly into reality as we oversee every technical detail of the transformation.',
+                img: '/portfolio-bellandur.jpg'
+              }
+            ].map((step, i) => (
+              <div key={i} className={styles.workflowStep}>
+                <div className={styles.stepInfo}>
+                  <div className={styles.stepNumber}>{step.num}</div>
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                  <Link href="/contact" className="btn btn-ghost" style={{ marginTop: '1.5rem' }}>Book Free Consultation</Link>
+                </div>
+                <div className={styles.stepVisual}>
+                  <img src={step.img} alt={step.title} />
+                  <div className={styles.stepVisualGlow} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ FEATURED PORTFOLIO ============ */}
       <section className={`${styles.featured} section`}>
         <div className="container">
@@ -401,6 +529,10 @@ export default function HomePage() {
 
       {/* ============ ROI CALCULATOR TEASER ============ */}
       <section className={`${styles.roiTeaser} section`} ref={roiRef}>
+        <div className={styles.roiTeaserBg}>
+          <img src="/portfolio-indiranagar.jpg" alt="Luxury Interior" />
+        </div>
+        <div className={styles.roiTeaserOverlay} />
         <div className="container">
           <div className={`${styles.roiTeaserInner} ${roiInView ? styles.roiTeaserVisible : ''}`}>
             <div className={styles.roiTeaserText}>
@@ -422,7 +554,7 @@ export default function HomePage() {
                 <li><span className={styles.checkGold}>✓</span> 10 Bengaluru locality profiles</li>
                 <li><span className={styles.checkGold}>✓</span> Acoustic Quiet Premium calculator</li>
                 <li><span className={styles.checkGold}>✓</span> Hybrid vs Modular vs Bespoke comparison</li>
-                <li><span className={styles.checkGold}>✓</span> AI-powered investment insights (Gemini)</li>
+                <li><span className={styles.checkGold}>✓</span> AI-powered investment insights</li>
                 <li><span className={styles.checkGold}>✓</span> 5-year resale projection</li>
                 <li><span className={styles.checkGold}>✓</span> Rental yield premium breakdown</li>
               </ul>

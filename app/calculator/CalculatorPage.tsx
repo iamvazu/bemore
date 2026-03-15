@@ -321,13 +321,13 @@ export default function CalculatorPage() {
                         </div>
                       </div>
                       <div 
-                        className={`${styles.moduleToggle} ${inputs.modules.documentationLocker ? styles.toggled : ''}`}
-                        onClick={() => toggleModule('documentationLocker')}
+                        className={`${styles.moduleToggle} ${inputs.modules.vastuReport ? styles.toggled : ''}`}
+                        onClick={() => toggleModule('vastuReport')}
                       >
-                        <div className={styles.moduleIcon}>📑</div>
+                        <div className={styles.moduleIcon}>🧭</div>
                         <div>
-                          <strong>Design Audit</strong>
-                          <span>+Liquidity</span>
+                          <strong>Vastu Audit</strong>
+                          <span>Harmonious Living</span>
                         </div>
                       </div>
                     </div>
