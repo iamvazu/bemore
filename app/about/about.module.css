@@ -81,13 +81,37 @@
 .sectionHead { max-width: 600px; }
 .sectionTitle { font-size: clamp(1.8rem, 3.5vw, 3rem); margin-top: var(--space-md); }
 
+/* ── Why beMore? ── */
+.why { background: var(--bg); padding-top: var(--space-2xl); }
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+.whyItem h4 {
+  font-family: var(--font-brand);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+}
+.whyItem p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .whyGrid { grid-template-columns: 1fr; gap: var(--space-lg); }
+}
+
 /* ── Philosophy ── */
 .philosophy { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .philosophyGrid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: var(--space-4xl); align-items: center;
 }
-.philosophyText {}
 .philosophyText p { color: var(--text-secondary); line-height: 1.8; }
 .philosophyText strong { color: var(--text-primary); font-weight: 500; }
 .philosophyText em { color: var(--gold); font-style: normal; }

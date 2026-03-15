@@ -195,26 +195,22 @@ export default function HomePage() {
             <span className="tag">Bengaluru&apos;s #1 Design Investment Studio</span>
 
             <h1 className={styles.heroTitle}>
-              Your Home is
-              <br />
-              <em className={`text-gold ${styles.heroEmphasis}`}>Your Highest-Returning</em>
-              <br />
-              Asset.
+              Design Without Limits.
             </h1>
 
             <p className={styles.heroSub}>
-              We design homes that appreciate. Be More Design Studio blends architecture,
-              interiors, and data-driven investment logic to maximise your property value
-              in Bengaluru&apos;s most sought-after micro-markets.
+              Innovative Architecture and Interior Design for Modern Living.
+              <br /><br />
+              At beMore Design Studio, we don’t just build structures; we curate environments. Based in Bangalore, we are a multidisciplinary firm dedicated to creating smart, elegant, and highly functional spaces that resonate with your vision.
             </p>
 
             <div className={styles.heroCtas}>
-              <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
-                Calculate Your ROI
+              <Link href="/portfolio" className="btn btn-primary btn-lg" id="hero-cta-portfolio">
+                Explore Our Portfolio
                 <span>→</span>
               </Link>
-              <Link href="/portfolio" className="btn btn-ghost btn-lg" id="hero-cta-portfolio">
-                View Our Work
+              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-contact">
+                Start Your Project
               </Link>
             </div>
 
@@ -270,6 +266,21 @@ export default function HomePage() {
         <div className={styles.scrollHint}>
           <div className={styles.scrollLine} />
           <span>Scroll</span>
+        </div>
+      </section>
+
+      {/* ============ PHILOSOPHY ============ */}
+      <section className={`${styles.philosophy} section--sm`}>
+        <div className="container">
+          <div className={styles.philosophyInner}>
+            <div className="gold-line gold-line--center" />
+            <h2 className={styles.philosophyTitle}>
+              The beMore Philosophy
+            </h2>
+            <blockquote className={styles.philosophyQuote}>
+              &ldquo;We believe a space should do more than just exist—it should inspire. Our approach seamlessly integrates creativity with technical precision to elevate the way you live, work, and be more.&rdquo;
+            </blockquote>
+          </div>
         </div>
       </section>
 

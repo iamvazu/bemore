@@ -277,6 +277,37 @@
 }
 
 /* ============================================================
+   PHILOSOPHY
+   ============================================================ */
+.philosophy {
+  background: var(--bg);
+  text-align: center;
+}
+
+.philosophyInner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.philosophyTitle {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.philosophyQuote {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  padding: 0 var(--space-xl);
+}
+
+/* ============================================================
    STATS
    ============================================================ */
 .stats {

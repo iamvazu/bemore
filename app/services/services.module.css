@@ -34,6 +34,48 @@
   max-width: 600px;
 }
 
+/* Solutions List */
+.solutionsList {
+  padding-bottom: var(--space-4xl);
+}
+
+.solutionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+}
+
+.solutionItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.solutionNumber {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold-muted);
+  line-height: 1;
+}
+
+.solutionItem h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.solutionItem p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .solutionsGrid { grid-template-columns: 1fr; }
+}
+
 /* Packages */
 .packageSection {
   padding-bottom: var(--space-4xl);

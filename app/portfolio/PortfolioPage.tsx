@@ -9,47 +9,47 @@ import styles from './portfolio.module.css';
 const PROJECTS = [
   {
     id: 'whitefield-villa',
-    title: 'The Obsidian Villa',
+    title: 'The Minimalist Villa',
     location: 'Whitefield',
-    type: 'Luxury Villa',
+    type: 'Residential',
     image: '/portfolio-whitefield.jpg',
     roi: '+28%',
     rental: '+9.4%',
-    tag: 'Bespoke Hybrid',
-    description: 'A dark-luxury intervention for a tech founder. Features integrated KNX automation and fluted acoustic panels.',
+    tag: 'Architectural',
+    description: 'A clean, minimalist intervention focusing on light and spatial flow in Whitefield.',
   },
   {
-    id: 'indiranagar-bedroom',
-    title: 'The Heritage Master',
+    id: 'indiranagar-penthouse',
+    title: 'Penthouse Elevation',
     location: 'Indiranagar',
-    type: 'Premium Apartment',
+    type: 'Residential',
     image: '/portfolio-indiranagar.jpg',
     roi: '+35%',
     rental: '+12.6%',
-    tag: 'Luxury Heritage',
-    description: 'Combining colonial-era charm with modernist materials. Certified quiet premium through acoustic headboards.',
+    tag: 'Bespoke',
+    description: 'Modern elevation and interior styling for a flagship penthouse in Indiranagar.',
   },
   {
-    id: 'koramangala-kitchen',
-    title: 'Chef\'s Jewel',
-    location: 'Koramangala',
-    type: 'Penthouse',
+    id: 'collaborative-hub',
+    title: 'The Collaborative Hub',
+    location: 'Bengaluru',
+    type: 'Commercial',
     image: '/portfolio-koramangala.jpg',
     roi: '+24%',
-    rental: '+8.2%',
-    tag: 'Bespoke Joinery',
-    description: 'A precision-engineered modular kitchen with Italian marble surfaces. High-value procurement realized.',
+    rental: '+15.2%',
+    tag: 'Office',
+    description: 'A high-performance workspace designed to foster productivity and brand identity.',
   },
   {
-    id: 'bellandur-wfh',
-    title: 'The Zoom Studio',
-    location: 'Bellandur',
-    type: 'Tech Apartment',
+    id: 'retail-studio',
+    title: 'Modernist Retail Studio',
+    location: 'Bengaluru',
+    type: 'Commercial',
     image: '/portfolio-bellandur.jpg',
     roi: '+22%',
-    rental: '+14.5%',
-    tag: 'WFH Intensity',
-    description: 'A professional-grade home office with custom acoustic treatment and broadcast-ready lighting.',
+    rental: '+18.5%',
+    tag: 'Retail',
+    description: 'Sophisticated retail environment that reflects contemporary lifestyle and design excellence.',
   },
 ];
 
@@ -61,7 +61,7 @@ export default function PortfolioPage() {
     setMounted(true);
   }, []);
 
-  const categories = ['All', 'Luxury Villa', 'Premium Apartment', 'Penthouse', 'Tech Apartment'];
+  const categories = ['All', 'Residential', 'Commercial'];
 
   const filteredProjects = filter === 'All' 
     ? PROJECTS 
@@ -77,13 +77,12 @@ export default function PortfolioPage() {
             <div className="gold-line" />
             <span className="tag">Selection 2026</span>
             <h1 className={styles.title}>
-              Portfolio of
+              Our Narrative in
               <br />
-              <em className="text-gold">Investing in Design</em>
+              <em className="text-gold">Spaces.</em>
             </h1>
             <p className={styles.subtitle}>
-              Every project in our portfolio is a case study in property appreciation. 
-              We don&apos;t just build rooms; we create equity.
+              A showcase of residential and commercial excellence.
             </p>
           </div>
         </div>
@@ -146,6 +145,15 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      <div className={styles.projectBrief}>
+        <div className="container">
+          <div className="gold-line gold-line--center" />
+          <p className={styles.briefText}>
+            &quot;Every project in our portfolio represents a unique challenge met with an innovative solution. We prioritize light, ventilation, and smart functionality in every square foot.&quot;
+          </p>
+        </div>
+      </div>
 
       <section className={styles.ctaBanner}>
         <div className="container">

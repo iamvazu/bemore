@@ -88,16 +88,14 @@ export default function AboutPage() {
           <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
             <span className="tag">Our Story</span>
             <h1 className={styles.heroTitle}>
-              We don&apos;t just design
+              Purposeful Design.
               <br />
-              <em className="text-gold">beautiful spaces.</em>
-              <br />
-              We build assets.
+              <em className="text-gold">Technical Precision.</em>
             </h1>
             <p className={styles.heroSub}>
-              Be More Design Studio was founded on a single, contrarian belief — that interior design
-              in Bengaluru should be measured not just by how a home looks on day one, but by
-              how much it is worth on day 1,825 (five years later).
+              Established in 2024, beMore Design Studio was founded on the belief that great design is a balance of art and utility. We specialize in architecture and interior design that transcends simple aesthetics.
+              <br /><br />
+              Our practice is grounded in a thoughtful, tailored approach. Whether we are designing a private residence or a commercial hub, we dive deep into our clients' lifestyles to deliver spaces that are as functional as they are beautiful.
             </p>
           </div>
           {/* Floating stat card */}
@@ -115,6 +113,33 @@ export default function AboutPage() {
       </section>
 
       {/* ── Philosophy ── */}
+      </section>
+
+      {/* ── Why beMore? ── */}
+      <section className={`${styles.why} section--sm`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <div className="gold-line" />
+            <h2 className={styles.sectionTitle}>Why beMore?</h2>
+          </div>
+          <div className={styles.whyGrid}>
+            <div className={styles.whyItem}>
+              <h4>Multidisciplinary Expertise</h4>
+              <p>From the foundation to the finishing decor.</p>
+            </div>
+            <div className={styles.whyItem}>
+              <h4>Vision-Centric</h4>
+              <p>Your goals are our blueprint.</p>
+            </div>
+            <div className={styles.whyItem}>
+              <h4>The 2024 Edge</h4>
+              <p>We utilize the latest in smart-home integration and sustainable modern materials.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Strategy ── */}
       <section className={`${styles.philosophy} section`}>
         <div className="container">
           <div className={styles.philosophyGrid}>

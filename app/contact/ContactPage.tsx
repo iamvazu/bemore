@@ -49,13 +49,12 @@ export default function ContactPage() {
             <div className="gold-line" />
             <span className="tag">Get in Touch</span>
             <h1 className={styles.title}>
-              Start Your
+              Let&apos;s Build
               <br />
-              <em className="text-gold">Design Equity</em> Journey.
+              Something <em className="text-gold">Extraordinary.</em>
             </h1>
             <p className={styles.subtitle}>
-              Ready to redefine your home&apos;s value? Book a discovery call with our experts 
-              or visit our studio in the heart of Bengaluru.
+              Ready to push the limits of your next space? Whether you have a clear vision or need a creative spark, our Bangalore studio is ready to collaborate.
             </p>
           </div>
         </div>
@@ -66,19 +65,16 @@ export default function ContactPage() {
           <div className={styles.contactGrid}>
             <div className={styles.contactInfo}>
               <div className={styles.infoBlock}>
-                <h4>Studio Office</h4>
-                <p>12th Main Rd, Indiranagar,<br />Bengaluru, Karnataka 560038</p>
+                <h4>Visit Us</h4>
+                <p>2nd floor, 372/1, 8th A Main Rd, 3rd Stage,<br />Basaveshwar Nagar, Bengaluru, Karnataka 560079</p>
               </div>
               <div className={styles.infoBlock}>
-                <h4>Consultation Hours</h4>
-                <p>Mon — Sat: 10:00 AM — 07:00 PM<br />Sunday: By Appointment Only</p>
+                <h4>Call Us</h4>
+                <p><a href="tel:+919663424256">+91 96634 24256</a></p>
               </div>
               <div className={styles.infoBlock}>
-                <h4>Direct Contact</h4>
-                <p>
-                  <a href="tel:+918000000000">+91 80 0000 0000</a><br />
-                  <a href="mailto:hello@bemoredesign.in">hello@bemoredesign.in</a>
-                </p>
+                <h4>Email Us</h4>
+                <p><a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a></p>
               </div>
               <div className={styles.socialLinks}>
                 <a href="#" className={styles.socialIcon}>Instagram</a>
@@ -97,52 +93,45 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form className={styles.form} onSubmit={handleSubmit}>
-                  <h3>Book a Discovery Call</h3>
-                  <p>Tell us about your property and investment goals.</p>
+                  <h3>Inquiry Form</h3>
+                  <p>Tell us about your vision...</p>
                   
                   <div className={styles.formGrid}>
                     <div className={styles.inputGroup}>
-                      <label>Full Name</label>
-                      <input type="text" name="fullName" placeholder="John Doe" required />
+                      <label>Name</label>
+                      <input type="text" name="fullName" placeholder="Your Name" required />
                     </div>
                     <div className={styles.inputGroup}>
-                      <label>Phone Number</label>
+                      <label>Email</label>
+                      <input type="email" name="email" placeholder="hello@example.com" required />
+                    </div>
+                    <div className={styles.inputGroup}>
+                      <label>Phone</label>
                       <input type="tel" name="phone" placeholder="+91 98765 43210" required />
                     </div>
                     <div className={styles.inputGroup}>
-                      <label>Property Locality</label>
-                      <select name="locality" required>
-                        <option value="">Select Locality</option>
-                        <option value="whitefield">Whitefield</option>
-                        <option value="indiranagar">Indiranagar</option>
-                        <option value="sarjapur">Sarjapur Road</option>
-                        <option value="bellandur">Bellandur</option>
-                        <option value="hsr">HSR Layout</option>
-                        <option value="koramangala">Koramangala</option>
-                        <option value="other">Other (Bengaluru)</option>
+                      <label>Project Type</label>
+                      <select name="projectType" required>
+                        <option value="">Select Type</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Interior Only">Interior Only</option>
                       </select>
                     </div>
-                    <div className={styles.inputGroup}>
-                      <label>Investment Range</label>
-                      <select name="range" required>
-                        <option value="">Select Range</option>
-                        <option value="10-25">₹10L - ₹25L</option>
-                        <option value="25-50">₹25L - ₹50L</option>
-                        <option value="50-100">₹50L - ₹1Cr</option>
-                        <option value="100+">₹1Cr+</option>
-                      </select>
+                    <div className={styles.inputGroup} style={{ gridColumn: 'span 2' }}>
+                      <label>Location</label>
+                      <input type="text" name="location" placeholder="Property Location" required />
                     </div>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label>Brief Project Description</label>
-                    <textarea name="message" placeholder="Tell us about your home and what you envision..." rows={4}></textarea>
+                    <label>Tell us about your vision...</label>
+                    <textarea name="vision" placeholder="Your Message..." rows={4}></textarea>
                   </div>
                   
                   <button type="submit" className={`btn btn-primary ${styles.submitBtn}`} disabled={formState === 'submitting'}>
-                    {formState === 'submitting' ? 'Sending...' : 'Schedule Discovery Call →'}
+                    {formState === 'submitting' ? 'Sending...' : 'Send Message →'}
                   </button>
-                  <p className={styles.formNote}>*A dedicated design audit specialist will review your request.</p>
                 </form>
               )}
             </div>

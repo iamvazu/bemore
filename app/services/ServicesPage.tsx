@@ -75,14 +75,42 @@ export default function ServicesPage() {
             <div className="gold-line" />
             <span className="tag">Strategic Packages</span>
             <h1 className={styles.title}>
-              Three Tiers of
+              Comprehensive
               <br />
-              <em className="text-gold">Home Equity.</em>
+              <em className="text-gold">Design Solutions.</em>
             </h1>
             <p className={styles.subtitle}>
               We don&apos;t just sell furniture. We offer strategic design interventions 
               calibrated for the Bengaluru real estate market.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ SOLUTIONS LIST ============ */}
+      <section className={`${styles.solutionsList} section--sm`}>
+        <div className="container">
+          <div className={styles.solutionsGrid}>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>01.</span>
+              <h3>Architectural Design</h3>
+              <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity, spatial flow, and &quot;Tropical Modernism&quot; suited for the Indian climate.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>02.</span>
+              <h3>Interior Design & Styling</h3>
+              <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>03.</span>
+              <h3>Commercial & Retail Spaces</h3>
+              <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams can truly be more.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>04.</span>
+              <h3>Project Management & Consultation</h3>
+              <p>Design without the stress. We oversee the technical precision of every build, ensuring that the transition from concept to reality is seamless and timely.</p>
+            </div>
           </div>
         </div>
       </section>

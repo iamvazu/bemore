@@ -225,6 +225,26 @@
   color: var(--gold-light);
 }
 
+.projectBrief {
+  padding: var(--space-4xl) 0;
+  text-align: center;
+}
+
+.briefText {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: var(--space-xl) auto 0;
+}
+
+@media (max-width: 768px) {
+  .briefText { font-size: 1.4rem; }
+}
+
 /* CTA */
 .ctaBanner {
   background: var(--bg-surface);

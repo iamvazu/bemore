@@ -19,13 +19,13 @@ export default function Footer() {
             </div>
           </div>
           <p className={styles.tagline}>
-            Architecture & Interiors. Bengaluru.
+            Innovative Architecture and Interior Design for Modern Living.
             <br />
-            <span className={styles.taglineGold}>Design is your highest-returning asset.</span>
+            <span className={styles.taglineGold}>Design Without Limits.</span>
           </p>
           <div className={styles.contact}>
-            <a href="tel:+918000000000">+91 80 0000 0000</a>
-            <a href="mailto:hello@bemoredesign.in">hello@bemoredesign.in</a>
+            <a href="tel:+919663424256">+91 96634 24256</a>
+            <a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a>
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <p>© 2026 Be More Design Studio. All rights reserved.</p>
+        <p>© 2026 beMore Design Studio. Design Without Limits.</p>
         <p className={styles.legal}>
           <Link href="/privacy">Privacy Policy</Link>
           <span>·</span>
