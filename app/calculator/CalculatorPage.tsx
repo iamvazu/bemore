@@ -42,7 +42,12 @@ export default function CalculatorPage() {
   const [showLeadModal, setShowLeadModal] = useState(false);
   const [aiInsight, setAiInsight] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const localities = getLocalities();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle deep links (e.g., /calculator?locality=indiranagar)
   useEffect(() => {
@@ -139,7 +144,13 @@ export default function CalculatorPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className={styles.calculatorSection}>
+      {!mounted ? (
+        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0B0A09' }}>
+          <div className="loader" />
+        </div>
+      ) : (
+        <>
+          <section className={styles.calculatorSection}>
         <div className="container">
           <div className={styles.calcHeader}>
             <div className="gold-line" />
@@ -189,15 +200,15 @@ export default function CalculatorPage() {
                       <input 
                         type="range" 
                         min="50" 
-                        max="500" 
-                        step="5" 
+                        max="10000" 
+                        step="50" 
                         value={inputs.currentValue} 
                         onChange={(e) => setCurrentValue(parseInt(e.target.value))}
                       />
                       <div className={styles.sliderLabels}>
                         <span>₹50L</span>
-                        <span>₹2.5Cr</span>
-                        <span>₹5Cr</span>
+                        <span>₹50Cr</span>
+                        <span>₹100Cr</span>
                       </div>
                     </div>
 
@@ -212,15 +223,15 @@ export default function CalculatorPage() {
                       <input 
                         type="range" 
                         min="10" 
-                        max="500" 
-                        step="5" 
+                        max="10000" 
+                        step="10" 
                         value={inputs.investmentAmount} 
                         onChange={(e) => setInvestmentAmount(parseInt(e.target.value))}
                       />
                       <div className={styles.sliderLabels}>
                         <span>₹10L</span>
-                        <span>₹2.5Cr</span>
-                        <span>₹5Cr</span>
+                        <span>₹50Cr</span>
+                        <span>₹100Cr</span>
                       </div>
                     </div>
 
@@ -454,7 +465,9 @@ export default function CalculatorPage() {
         </div>
       )}
 
-      <Footer />
+          <Footer />
+        </>
+      )}
     </main>
   );
 }
