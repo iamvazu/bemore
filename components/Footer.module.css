@@ -15,32 +15,21 @@
 
 .brand { display: flex; flex-direction: column; }
 
-.logoRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.footerLogo {
+  display: inline-block;
   margin-bottom: var(--space-lg);
+  transition: opacity var(--duration-fast);
 }
 
-.logoMain {
-  display: block;
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  line-height: 1;
+.footerLogo:hover {
+  opacity: 0.9;
 }
 
-.logoSub {
+.footerLogoImage {
+  height: 64px;
+  width: auto;
   display: block;
-  font-family: var(--font-brand);
-  font-weight: 400;
-  font-size: 0.48rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 2px;
+  object-fit: contain;
 }
 
 .tagline {

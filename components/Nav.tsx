@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
+  { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
   { href: '/calculator', label: 'Budget Estimator' },
 ];
@@ -29,33 +30,33 @@ export default function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
+  const leftLinks = NAV_LINKS.slice(0, 3);
+  const rightLinks = NAV_LINKS.slice(3);
+
   return (
     <header className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
-        {/* Logo */}
-        <Link href="/" className={styles.logo} aria-label="Be More Design Studio Home">
-          <div className={styles.logoMark}>
-            {/* SVG mark derived from logo geometry */}
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Left tall pillar */}
-              <rect x="2" y="6" width="5" height="28" rx="1" stroke="#C4922A" strokeWidth="1.2" fill="none"/>
-              {/* Right arch */}
-              <path d="M12 34 V14 Q12 6 19 6 Q26 6 26 14 V34" stroke="#C4922A" strokeWidth="1.2" fill="none"/>
-              {/* Gold fill arch */}
-              <path d="M14.5 34 V15.5 Q14.5 8.5 19 8.5 Q23.5 8.5 23.5 15.5 V34 Z" fill="#C4922A" opacity="0.85"/>
-              {/* Semicircle base */}
-              <path d="M2 34 Q2 28 7 28 Q12 28 12 34" fill="#C4922A" opacity="0.6"/>
-            </svg>
-          </div>
-          <div className={styles.logoText}>
-            <span className={styles.logoMain}>beMore</span>
-            <span className={styles.logoSub}>DESIGN STUDIO</span>
-          </div>
+        {/* Desktop Left Nav */}
+        <nav className={`${styles.links} ${styles.linksLeft}`} aria-label="Main navigation left">
+          {leftLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.link} ${pathname === link.href ? styles.active : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Logo (Centered) */}
+        <Link href="/" className={styles.logo} aria-label="beMore Design Studio Home">
+          <img src="/logo-main.png" alt="beMore Design Studio" className={styles.logoImage} />
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className={styles.links} aria-label="Main navigation">
-          {NAV_LINKS.map((link) => (
+        {/* Desktop Right Nav */}
+        <nav className={`${styles.links} ${styles.linksRight}`} aria-label="Main navigation right">
+          {rightLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -67,7 +68,7 @@ export default function Nav() {
           ))}
         </nav>
 
-        {/* Hamburger */}
+        {/* Hamburger (Mobile only) */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}

@@ -26,52 +26,42 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-xl);
+  position: relative;
 }
 
-/* --- Logo --- */
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   flex-shrink: 0;
+  transition: transform var(--duration-base);
 }
 
-.logoMark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo:hover {
+  transform: scale(1.02);
 }
 
-.logoText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.logoMain {
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.logoSub {
-  font-family: var(--font-brand);
-  font-weight: 400;
-  font-size: 0.5rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 2px;
+.logoImage {
+  height: 54px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* --- Desktop Links --- */
 .links {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.linksLeft {
+  justify-content: flex-start;
+}
+
+.linksRight {
+  justify-content: flex-end;
 }
 
 .link {
@@ -222,7 +212,17 @@
 }
 
 /* --- Responsive --- */
+@media (max-width: 1024px) {
+  .logoImage {
+    height: 48px;
+  }
+}
+
 @media (max-width: 900px) {
   .links { display: none; }
   .hamburger { display: flex; }
+  
+  .inner {
+    justify-content: space-between;
+  }
 }
