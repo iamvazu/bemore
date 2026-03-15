@@ -112,9 +112,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Philosophy ── */}
-      </section>
-
       {/* ── Why beMore? ── */}
       <section className={`${styles.why} section--sm`}>
         <div className="container">
