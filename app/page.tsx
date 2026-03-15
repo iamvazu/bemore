@@ -183,11 +183,19 @@ export default function HomePage() {
 
       {/* ============ HERO ============ */}
       <section className={styles.hero}>
-        {/* Background geometric decorations */}
+        {/* Background elements */}
         <div className={styles.heroBg}>
+          <div className={styles.heroVideo}>
+            <iframe
+              src="https://www.youtube.com/embed/N3j9dDoiJ8I?autoplay=1&mute=1&loop=1&playlist=N3j9dDoiJ8I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className={styles.heroGlow} />
           <div className={styles.heroArch1} />
           <div className={styles.heroArch2} />
-          <div className={styles.heroGlow} />
         </div>
 
         <div className={`container ${styles.heroInner}`}>
@@ -300,6 +308,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ============ SOLUTIONS ============ */}
+      <section className={styles.solutionsSection}>
+        <div className="container">
+          <div className={styles.solutionsGrid}>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>01.</span>
+              <h3>Architectural Design</h3>
+              <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity, spatial flow, and &quot;Tropical Modernism&quot; suited for the Indian climate.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>02.</span>
+              <h3>Interior Design & Styling</h3>
+              <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>03.</span>
+              <h3>Commercial & Retail Spaces</h3>
+              <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams can truly be more.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>04.</span>
+              <h3>Project Management & Consultation</h3>
+              <p>Design without the stress. We oversee the technical precision of every build, ensuring that the transition from concept to reality is seamless and timely.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ SERVICES ============ */}
       <section className={`${styles.services} section`} ref={servicesRef}>
         <div className="container">
@@ -358,45 +394,6 @@ export default function HomePage() {
           </div>
 
           <div className={styles.centerAction} style={{ marginTop: '3rem' }}>
-            <Link href="/portfolio" className="btn btn-ghost">View Full Portfolio</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FEATURED PORTFOLIO ============ */}
-      <section className={`${styles.featured} section`}>
-        <div className="container">
-          <div className={styles.sectionHead} style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div className="gold-line" style={{ margin: '0 auto' }} />
-            <span className="tag">Portfolio</span>
-            <h2 className={styles.sectionTitle}>
-              Featured <em className="text-gold">Design Assets</em>
-            </h2>
-          </div>
-          
-          <div className={styles.featuredGrid}>
-            {FEATURED_PROJECTS.map((project, idx) => (
-              <Link 
-                href={`/portfolio/${project.id}`} 
-                key={project.id} 
-                className={styles.featuredCard}
-                style={{ animationDelay: `${idx * 150}ms` }}
-              >
-                <div className={styles.featuredImageWrapper}>
-                  <img src={project.image} alt={project.title} className={styles.featuredImage} />
-                  <div className={styles.featuredOverlay}>
-                    <div className={styles.featuredRoi}>ROI: {project.roi}</div>
-                  </div>
-                </div>
-                <div className={styles.featuredInfo}>
-                  <span className={styles.featuredLoc}>{project.location}</span>
-                  <h3 className={styles.featuredName}>{project.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className={styles.centerAction} style={{ marginTop: '3rem', textAlign: 'center' }}>
             <Link href="/portfolio" className="btn btn-ghost">View Full Portfolio</Link>
           </div>
         </div>

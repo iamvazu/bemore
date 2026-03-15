@@ -15,6 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding-top: var(--nav-height);
+  background: #000;
 }
 
 /* Background elements */
@@ -26,13 +27,31 @@
 
 .heroGlow {
   position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 500px;
-  background: radial-gradient(ellipse at center, rgba(196, 146, 42, 0.08) 0%, transparent 70%);
+  inset: 0;
+  background: radial-gradient(circle at 40% 40%, rgba(196, 146, 42, 0.15) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 2;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.heroVideo iframe {
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .heroArch1 {
@@ -62,8 +81,10 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4xl);
   align-items: center;
-  padding-top: var(--space-4xl);
-  padding-bottom: var(--space-4xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  position: relative;
+  z-index: 3;
 }
 
 /* Hero text — animate in */
@@ -359,6 +380,52 @@
    SERVICES
    ============================================================ */
 .services { padding-top: var(--space-4xl); padding-bottom: var(--space-4xl); }
+
+/* Home Solutions List */
+.solutionsSection {
+  padding: var(--space-4xl) 0;
+  background: var(--bg);
+}
+
+.solutionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3xl) var(--space-4xl);
+  margin-top: var(--space-2xl);
+}
+
+.solutionItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.solutionNumber {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold-muted);
+  line-height: 1;
+}
+
+.solutionItem h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.solutionItem p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+@media (max-width: 768px) {
+  .solutionsGrid { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
 
 .sectionHead {
   max-width: 640px;

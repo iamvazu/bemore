@@ -72,6 +72,14 @@ export default function PortfolioPage() {
       <Nav />
       
       <section className={styles.hero}>
+        <div className={styles.heroVideo}>
+          <iframe
+            src="https://www.youtube.com/embed/N6JhwwlK2Ls?autoplay=1&mute=1&loop=1&playlist=N6JhwwlK2Ls&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
+        </div>
         <div className="container">
           <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
             <div className="gold-line" />
