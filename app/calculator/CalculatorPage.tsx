@@ -185,7 +185,7 @@ export default function CalculatorPage() {
                     </div>
 
                     <div className={styles.inputGroup}>
-                      <label>Current Market Value: {formatLakhs(inputs.currentValue)}</label>
+                      <label>Current Property Market Value: {formatLakhs(inputs.currentValue)}</label>
                       <input 
                         type="range" 
                         min="50" 
@@ -208,19 +208,19 @@ export default function CalculatorPage() {
                 {step === 2 && (
                   <div className={styles.stepContent}>
                     <div className={styles.inputGroup}>
-                      <label>Investment Amount: {formatLakhs(inputs.investmentAmount)}</label>
+                      <label>Design Investment: {formatLakhs(inputs.investmentAmount)}</label>
                       <input 
                         type="range" 
                         min="10" 
-                        max="100" 
-                        step="1" 
+                        max="500" 
+                        step="5" 
                         value={inputs.investmentAmount} 
                         onChange={(e) => setInvestmentAmount(parseInt(e.target.value))}
                       />
                       <div className={styles.sliderLabels}>
                         <span>₹10L</span>
-                        <span>₹50L</span>
-                        <span>₹1Cr (Cap)</span>
+                        <span>₹2.5Cr</span>
+                        <span>₹5Cr</span>
                       </div>
                     </div>
 
