@@ -1,0 +1,451 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+}
+
+.calculatorSection {
+  padding-top: calc(var(--nav-height) + var(--space-4xl));
+  padding-bottom: var(--space-4xl);
+}
+
+.calcHeader {
+  margin-bottom: var(--space-3xl);
+}
+
+.title {
+  font-size: 3rem;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+.calcGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: flex-start;
+}
+
+/* --- Input Panel --- */
+.inputPanel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.stepper {
+  display: flex;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+.step {
+  flex: 1;
+  padding: 18px;
+  text-align: center;
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--duration-base);
+  border-right: 1px solid var(--border);
+}
+
+.step:last-child { border-right: none; }
+
+.step.active {
+  background: var(--bg-card);
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+}
+
+.inputContent {
+  padding: var(--space-2xl);
+}
+
+.stepContent {
+  animation: fadeInUp 0.4s var(--ease-out);
+}
+
+.inputGroup {
+  margin-bottom: var(--space-xl);
+}
+
+.inputGroup label {
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.inputGroup select {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.fieldNote {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.toggleGroup {
+  display: flex;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+
+.toggleGroup button {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-brand);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast);
+}
+
+.toggleGroup button.toggleActive {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.cardSelectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.selectCard {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--duration-base);
+  position: relative;
+}
+
+.selectCard strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.selectCard span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.selectCard.selected {
+  border-color: var(--gold);
+  background: rgba(196, 146, 42, 0.1);
+}
+
+.selectBadge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.moduleToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-base);
+}
+
+.moduleToggle.toggled {
+  border-color: var(--gold);
+  background: rgba(196, 146, 42, 0.1);
+}
+
+.moduleIcon { font-size: 1.5rem; }
+
+.moduleToggle strong { display: block; font-size: 0.9rem; }
+.moduleToggle span { font-size: 0.7rem; color: var(--text-muted); }
+
+.nextBtn, .backBtn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-brand);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  margin-top: var(--space-md);
+}
+
+.nextBtn { background: var(--gold); color: var(--bg); font-weight: 600; }
+.backBtn { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+
+/* --- Results Panel --- */
+.resultsPanel {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-md));
+}
+
+.resultDisplay {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  position: relative;
+  min-height: 500px;
+}
+
+.mainMetrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricLabel {
+  font-family: var(--font-brand);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.metricChange {
+  font-size: 0.8rem;
+  color: #4ade80;
+  margin-top: 4px;
+}
+
+.chartWrapper {
+  margin-bottom: var(--space-2xl);
+}
+
+.chartActions {
+  margin-bottom: var(--space-xl);
+}
+
+.shareBtn {
+  width: 100%;
+  background: #25D366; /* WhatsApp Green */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-brand);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.shareBtn:hover {
+  background: #128C7E;
+  transform: scale(1.02);
+}
+
+.aiInsightsMock {
+  background: rgba(196, 146, 42, 0.05);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.aiHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-brand);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.aiSparkle { animation: glowPulse 2s infinite; }
+.aiSparkle.spinning { animation: rotate 1s linear infinite; }
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.aiText {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: opacity 0.3s;
+}
+
+.aiText.loadingText {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.gateOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 9, 1, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  z-index: 20;
+}
+
+.gateContent h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.gateContent p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* --- Modal --- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 500px;
+  padding: var(--space-2xl);
+  position: relative;
+  animation: fadeInUp 0.5s var(--ease-out);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin: 15px 0 10px;
+}
+
+.modal p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.formNote {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media (max-width: 1024px) {
+  .calcGrid {
+    grid-template-columns: 1fr;
+  }
+  .resultsPanel {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .cardSelectGrid {
+    grid-template-columns: 1fr;
+  }
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
+  .mainMetrics {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}

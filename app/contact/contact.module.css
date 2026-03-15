@@ -1,0 +1,234 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+}
+
+.hero {
+  padding-top: calc(var(--nav-height) + var(--space-4xl));
+  padding-bottom: var(--space-3xl);
+}
+
+.heroContent {
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.heroContent.animate {
+  animation: fadeInUp 0.8s var(--ease-out) forwards;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* Contact Grid */
+.contactSection {
+  padding-bottom: var(--space-4xl);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-4xl);
+  align-items: flex-start;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.infoBlock h4 {
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+}
+
+.infoBlock p {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.infoBlock a {
+  color: var(--text-primary);
+  transition: color var(--duration-fast);
+}
+
+.infoBlock a:hover {
+  color: var(--gold);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.socialIcon {
+  font-family: var(--font-brand);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color var(--duration-fast);
+}
+
+.socialIcon:hover {
+  color: var(--gold);
+}
+
+/* Form */
+.formWrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.formWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at top right, rgba(196, 146, 42, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.form h3 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.form p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: var(--space-md);
+}
+
+.inputGroup label {
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: var(--space-md);
+}
+
+.formNote {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Success Message */
+.successMessage {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  animation: fadeInUp 0.5s var(--ease-out);
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background: var(--gold);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 auto var(--space-xl);
+}
+
+.successMessage h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.successMessage p {
+  margin-bottom: var(--space-2xl);
+}
+
+@media (max-width: 1024px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .formWrapper {
+    padding: var(--space-xl);
+  }
+}
