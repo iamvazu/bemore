@@ -1,152 +1,92 @@
 import { create } from 'zustand';
 import { 
-  CalculatorInputs, 
-  ROIResult, 
-  calculateROI, 
-  DesignTier, 
-  AutomationLevel, 
-  FinishGrade, 
-  MaintenanceTier, 
-  Profession 
-} from './roi-engine';
-import { getLocalityById, LocalityData } from './localities';
+  EstimatorInputs, 
+  EstimatorResult, 
+  calculateBudget, 
+  MaterialTier, 
+  PropertyType,
+  BOQItem,
+  getAdjustedItems
+} from './budget-engine';
 
-interface CalculatorState {
+interface EstimatorState {
   // Inputs
-  inputs: CalculatorInputs;
-  selectedLocality: LocalityData;
+  inputs: EstimatorInputs;
 
   // Actions
-  setLocality: (id: string) => void;
-  setPropertyType: (type: 'apartment' | 'villa') => void;
-  setCurrentValue: (value: number) => void;
-  setInvestmentAmount: (amount: number) => void;
-  setDesignTier: (tier: DesignTier) => void;
-  setAutomationLevel: (level: AutomationLevel) => void;
-  setFinishGrade: (grade: FinishGrade) => void;
-  setMaintenanceTier: (tier: MaintenanceTier) => void;
-  setProfession: (prof: Profession) => void;
-  toggleModule: (module: keyof CalculatorInputs['modules']) => void;
+  setCity: (city: EstimatorInputs['city']) => void;
+  setPropertyType: (type: PropertyType) => void;
+  setTier: (tier: MaterialTier) => void;
+  setCarpetArea: (area: number) => void;
+  setIncludeCivil: (include: boolean) => void;
+  setDesignerFee: (percent: number) => void;
+  updateItemQuantity: (id: string, quantity: number) => void;
+  resetToDefaults: () => void;
 
   // Dynamic Results
-  results: ROIResult;
+  results: EstimatorResult;
 }
 
-const defaultLocality = getLocalityById('whitefield')!;
+const DEFAULT_CARPET_AREA = 1200;
+const DEFAULT_BHK: PropertyType = '3bhk';
 
-export const useCalculatorStore = create<CalculatorState>((set, get) => ({
-  inputs: {
-    localityId: defaultLocality.id,
-    localityFactor: defaultLocality.localityFactor,
-    noisePollutionScore: defaultLocality.noisePollutionScore,
-    quietPremiumMultiplier: defaultLocality.quietPremiumMultiplier,
-    propertyType: 'apartment',
-    currentValue: 150, // 1.5 Cr
-    investmentAmount: 40, // 40L
-    designTier: 'hybrid',
-    automationLevel: 'basic',
-    finishGrade: 'premium',
-    maintenanceTier: 'low',
-    profession: 'none',
-    modules: {
-      acoustic: false,
-      bespokeKitchen: true,
-      wfhZone: false,
-      smartHome: true,
-      vastuReport: true,
-      outdoor: false,
-    },
-  },
-  selectedLocality: defaultLocality,
+const initialInputs: EstimatorInputs = {
+  propertyType: DEFAULT_BHK,
+  city: 'Bangalore',
+  tier: 'premium',
+  carpetArea: DEFAULT_CARPET_AREA,
+  items: getAdjustedItems(DEFAULT_BHK, DEFAULT_CARPET_AREA),
+  includeCivil: true,
+  designerFeePercent: 10,
+};
 
-  results: calculateROI({
-    localityId: defaultLocality.id,
-    localityFactor: defaultLocality.localityFactor,
-    noisePollutionScore: defaultLocality.noisePollutionScore,
-    quietPremiumMultiplier: defaultLocality.quietPremiumMultiplier,
-    propertyType: 'apartment',
-    currentValue: 150,
-    investmentAmount: 40,
-    designTier: 'hybrid',
-    automationLevel: 'basic',
-    finishGrade: 'premium',
-    maintenanceTier: 'low',
-    profession: 'none',
-    modules: {
-      acoustic: false,
-      bespokeKitchen: true,
-      wfhZone: false,
-      smartHome: true,
-      vastuReport: true,
-      outdoor: false,
-    },
-  }),
+export const useCalculatorStore = create<EstimatorState>((set, get) => ({
+  inputs: initialInputs,
+  results: calculateBudget(initialInputs),
 
-  setLocality: (id) => {
-    const loc = getLocalityById(id);
-    if (!loc) return;
-    const newInputs = { 
-      ...get().inputs, 
-      localityId: id,
-      localityFactor: loc.localityFactor,
-      noisePollutionScore: loc.noisePollutionScore,
-      quietPremiumMultiplier: loc.quietPremiumMultiplier
-    };
-    set({ 
-      selectedLocality: loc,
-      inputs: newInputs,
-      results: calculateROI(newInputs)
-    });
+  setCity: (city) => {
+    const newInputs = { ...get().inputs, city };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
   setPropertyType: (type) => {
-    const newInputs = { ...get().inputs, propertyType: type };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+    // When property type changes, we re-baseline the items
+    const adjustedItems = getAdjustedItems(type, get().inputs.carpetArea);
+    const newInputs = { ...get().inputs, propertyType: type, items: adjustedItems };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setCurrentValue: (value) => {
-    const newInputs = { ...get().inputs, currentValue: value };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+  setTier: (tier) => {
+    const newInputs = { ...get().inputs, tier };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setInvestmentAmount: (amount) => {
-    const newInputs = { ...get().inputs, investmentAmount: amount };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+  setCarpetArea: (area) => {
+    // When area changes, we re-baseline items that depend on area (ceiling, flooring, walls)
+    const adjustedItems = getAdjustedItems(get().inputs.propertyType, area);
+    const newInputs = { ...get().inputs, carpetArea: area, items: adjustedItems };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setDesignTier: (tier) => {
-    const newInputs = { ...get().inputs, designTier: tier };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+  setIncludeCivil: (include) => {
+    const newInputs = { ...get().inputs, includeCivil: include };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setAutomationLevel: (level) => {
-    const newInputs = { ...get().inputs, automationLevel: level };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+  setDesignerFee: (percent) => {
+    const newInputs = { ...get().inputs, designerFeePercent: percent };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setFinishGrade: (grade) => {
-    const newInputs = { ...get().inputs, finishGrade: grade };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
+  updateItemQuantity: (id, quantity) => {
+    const newItems = get().inputs.items.map(item => 
+      item.id === id ? { ...item, quantity } : item
+    );
+    const newInputs = { ...get().inputs, items: newItems };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 
-  setMaintenanceTier: (tier) => {
-    const newInputs = { ...get().inputs, maintenanceTier: tier };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
-  },
-
-  setProfession: (prof) => {
-    const newInputs = { ...get().inputs, profession: prof };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
-  },
-
-  toggleModule: (module) => {
-    const newInputs = { 
-      ...get().inputs, 
-      modules: { 
-        ...get().inputs.modules, 
-        [module]: !get().inputs.modules[module] 
-      } 
-    };
-    set({ inputs: newInputs, results: calculateROI(newInputs) });
-  },
+  resetToDefaults: () => {
+    set({ inputs: initialInputs, results: calculateBudget(initialInputs) });
+  }
 }));

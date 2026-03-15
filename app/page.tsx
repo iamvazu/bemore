@@ -69,12 +69,12 @@ function ServiceCard({
 }
 
 // Locality pill
-function LocalityPill({ name, lf, delay, slug }: { name: string; lf: number; delay: number; slug: string }) {
+function LocalityPill({ name, mf, delay }: { name: string; mf: number; delay: number }) {
   return (
-    <Link href={`/roi/interior-design-${slug}`} className={styles.localityPill} style={{ animationDelay: `${delay}ms` }}>
+    <Link href={`/calculator`} className={styles.localityPill} style={{ animationDelay: `${delay}ms` }}>
       <span className={styles.localityDot} />
       <span className={styles.localityName}>{name}</span>
-      <span className={styles.localityLf}>{lf}x ROI</span>
+      <span className={styles.localityLf}>{mf}x Factor</span>
     </Link>
   );
 }
@@ -141,16 +141,16 @@ export default function HomePage() {
   ];
 
   const LOCALITIES = [
-    { name: 'Indiranagar', lf: 1.35, delay: 0, slug: 'indiranagar' },
-    { name: 'Koramangala', lf: 1.32, delay: 60, slug: 'koramangala' },
-    { name: 'HSR Layout', lf: 1.28, delay: 120, slug: 'hsr' },
-    { name: 'Whitefield', lf: 1.25, delay: 180, slug: 'whitefield' },
-    { name: 'Bellandur', lf: 1.22, delay: 240, slug: 'bellandur' },
-    { name: 'Sarjapur Road', lf: 1.20, delay: 300, slug: 'sarjapur' },
-    { name: 'JP Nagar', lf: 1.20, delay: 360, slug: 'jp-nagar' },
-    { name: 'Hebbal', lf: 1.18, delay: 420, slug: 'hebbal' },
-    { name: 'North Bangalore', lf: 1.15, delay: 480, slug: 'north-bangalore' },
-    { name: 'Electronic City', lf: 1.10, delay: 540, slug: 'electronic-city' },
+    { name: 'Indiranagar', mf: 1.15, delay: 0 },
+    { name: 'Koramangala', mf: 1.12, delay: 60 },
+    { name: 'HSR Layout', mf: 1.08, delay: 120 },
+    { name: 'Whitefield', mf: 1.05, delay: 180 },
+    { name: 'Bellandur', mf: 1.02, delay: 240 },
+    { name: 'Sarjapur Road', mf: 1.00, delay: 300 },
+    { name: 'JP Nagar', mf: 1.00, delay: 360 },
+    { name: 'Hebbal', mf: 0.98, delay: 420 },
+    { name: 'North Bangalore', mf: 0.95, delay: 480 },
+    { name: 'Electronic City', mf: 0.90, delay: 540 },
   ];
 
   const FEATURED_PROJECTS = [
@@ -232,41 +232,41 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero ROI teaser card */}
+          {/* Hero Budget teaser card */}
           <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`}>
             <div className={styles.heroCardTop}>
-              <span className="tag">Quick Estimate</span>
-              <span className={styles.heroCardLive}>● LIVE</span>
+              <span className="tag">Budget Baseline</span>
+              <span className={styles.heroCardLive}>● 2026 RATES</span>
             </div>
-            <div className={styles.heroCardLocality}>Whitefield, Bengaluru</div>
+            <div className={styles.heroCardLocality}>Premium 3BHK, Bangalore</div>
             <div className={styles.heroCardData}>
               <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>+28%</span>
-                <span className={styles.heroMetricLabel}>Resale Premium</span>
+                <span className={styles.heroMetricValue}>₹28L</span>
+                <span className={styles.heroMetricLabel}>Essential</span>
               </div>
               <div className={styles.heroMetricDivider} />
               <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>+9.4%</span>
-                <span className={styles.heroMetricLabel}>Rental Yield</span>
+                <span className={styles.heroMetricValue}>₹45L</span>
+                <span className={styles.heroMetricLabel}>Premium</span>
               </div>
               <div className={styles.heroMetricDivider} />
               <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>14 days</span>
-                <span className={styles.heroMetricLabel}>Faster to Sell</span>
+                <span className={styles.heroMetricValue}>₹75L</span>
+                <span className={styles.heroMetricLabel}>Luxury</span>
               </div>
             </div>
             <div className={styles.heroCardBar}>
-              <div className={styles.heroCardBarLabel}>Hybrid vs Pure Modular</div>
+              <div className={styles.heroCardBarLabel}>Transparency Index</div>
               <div className={styles.heroCardBarTrack}>
-                <div className={styles.heroCardBarFill} style={{ width: '68%' }} />
+                <div className={styles.heroCardBarFill} style={{ width: '95%' }} />
               </div>
               <div className={styles.heroCardBarLegend}>
-                <span>Modular</span>
-                <span className={styles.goldText}>Hybrid +22%</span>
+                <span>Market Avg</span>
+                <span className={styles.goldText}>beMore Precision +100%</span>
               </div>
             </div>
             <Link href="/calculator" className={styles.heroCardBtn}>
-              Personalise for your property →
+              Get your precise quote →
             </Link>
           </div>
         </div>
@@ -299,10 +299,10 @@ export default function HomePage() {
           <div className={styles.statsGrid}>
             {statsInView && (
               <>
-                <StatCard value={22} suffix="%" label="Faster Resale with Certified Design" delay={0} />
-                <StatCard value={15} suffix="%" label="Quiet Premium in High-Noise Areas" delay={100} />
-                <StatCard value={12} suffix="%" label="Rental Yield Uplift — WFH Zones" delay={200} />
-                <StatCard value={180} suffix="Cr+" label="Worth of Designed Properties" delay={300} />
+                <StatCard value={100} suffix="%" label="Transparency in Material Specs" delay={0} />
+                <StatCard value={0} suffix="%" label="Hidden Costs or Variances" delay={100} />
+                <StatCard value={20} suffix="%" label="More Efficient Design ROI" delay={200} />
+                <StatCard value={180} suffix="Cr+" label="Worth of Accurately Quoted Projects" delay={300} />
               </>
             )}
           </div>
@@ -527,7 +527,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ ROI CALCULATOR TEASER ============ */}
+      {/* ============ BUDGET ESTIMATOR TEASER ============ */}
       <section className={`${styles.roiTeaser} section`} ref={roiRef}>
         <div className={styles.roiTeaserBg}>
           <img src="/portfolio-indiranagar.jpg" alt="Luxury Interior" />
@@ -537,45 +537,45 @@ export default function HomePage() {
           <div className={`${styles.roiTeaserInner} ${roiInView ? styles.roiTeaserVisible : ''}`}>
             <div className={styles.roiTeaserText}>
               <div className="gold-line" />
-              <span className="tag">Be More Design Equity™</span>
+              <span className="tag">Budget Estimator™</span>
               <h2 className={styles.roiTeaserTitle}>
-                The Bengaluru
+                Surgical
                 <br />
-                <em className="text-gold">Home Equity</em>
+                <em className="text-gold">Cost Transparency</em>
                 <br />
-                Calculator
+                Engine
               </h2>
               <p>
-                The only ROI tool in India built specifically for Bengaluru&apos;s micro-markets.
-                Input your property, toggle your design investment modules, and see — in real-time —
-                how your home appreciates.
+                The only estimator in India built on actual 2026 market benchmarks. 
+                Move beyond guesswork. Calculate precise Bill of Quantities (BOQ) 
+                based on your specific property area, city multipliers, and material tiers.
               </p>
               <ul className={styles.roiFeatures}>
-                <li><span className={styles.checkGold}>✓</span> 10 Bengaluru locality profiles</li>
-                <li><span className={styles.checkGold}>✓</span> Acoustic Quiet Premium calculator</li>
-                <li><span className={styles.checkGold}>✓</span> Hybrid vs Modular vs Bespoke comparison</li>
-                <li><span className={styles.checkGold}>✓</span> AI-powered investment insights</li>
-                <li><span className={styles.checkGold}>✓</span> 5-year resale projection</li>
-                <li><span className={styles.checkGold}>✓</span> Rental yield premium breakdown</li>
+                <li><span className={styles.checkGold}>✓</span> Itemized BOQ (Wardrobes, Kitchen, Electrical)</li>
+                <li><span className={styles.checkGold}>✓</span> City Multipliers (Bangalore, Mumbai, Jaipur)</li>
+                <li><span className={styles.checkGold}>✓</span> Material Tiers: Essential, Premium, Luxury</li>
+                <li><span className={styles.checkGold}>✓</span> Live calculation including GST & Fees</li>
+                <li><span className={styles.checkGold}>✓</span> Detailed Specs for every tier selection</li>
+                <li><span className={styles.checkGold}>✓</span> Comparison views for optimal budgeting</li>
               </ul>
               <Link href="/calculator" className="btn btn-primary btn-lg" id="roi-teaser-cta">
-                Open the Calculator →
+                Estimate Your Project →
               </Link>
             </div>
             <div className={styles.roiTeaserVisual}>
               {/* Formula display card */}
               <div className={styles.formulaCard}>
-                <div className={styles.formulaTitle}>The ROI Formula</div>
+                <div className={styles.formulaTitle}>The Cost Formula</div>
                 <div className={styles.formulaEq}>
-                  V<sub>future</sub> = V<sub>base</sub> + (I × R<sub>f</sub> × L<sub>f</sub> × A<sub>f</sub> × M<sub>f</sub>)
+                  Total = ∑(Rate<sub>city</sub> × Tier<sub>m</sub> × Qty) + Fee + GST
                 </div>
                 <div className={styles.formulaVars}>
                   {[
-                    { sym: 'I', label: 'Investment Amount' },
-                    { sym: 'Rf', label: 'Design Tier Factor' },
-                    { sym: 'Lf', label: 'Locality Multiplier' },
-                    { sym: 'Af', label: 'Acoustic Premium' },
-                    { sym: 'Mf', label: 'Maintenance Factor' },
+                    { sym: 'Rate', label: 'Base City Benchmark' },
+                    { sym: 'Tier', label: 'Material Quality Multiplier' },
+                    { sym: 'Qty', label: 'Precise Area/Unit Measurements' },
+                    { sym: 'Fee', label: 'Architectural Designer Fee' },
+                    { sym: 'GST', label: 'Standard 18% Statutory Tax' },
                   ].map((v) => (
                     <div key={v.sym} className={styles.formulaVar}>
                       <span className={styles.formulaSym}>{v.sym}</span>
@@ -584,7 +584,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <div className={styles.formulaNote}>
-                  + Hybrid Bonus + Module Contributions
+                  Generated with Surgical Precision by beMore Design Studio
                 </div>
               </div>
             </div>
@@ -623,7 +623,7 @@ export default function HomePage() {
             </div>
             <div className={styles.ctaBtns}>
               <Link href="/calculator" className="btn btn-primary btn-lg" id="cta-band-calc">
-                Calculate ROI First →
+                Estimate Your Budget First →
               </Link>
               <Link href="/contact" className="btn btn-ghost btn-lg" id="cta-band-contact">
                 Book Discovery Call

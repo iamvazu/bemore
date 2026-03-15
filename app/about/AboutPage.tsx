@@ -53,7 +53,7 @@ const MILESTONES = [
   { year: '2020', title: 'Smart Home Division', desc: 'Launched dedicated KNX/Control4 integration team as Bengaluru\'s tech corridor demanded it.' },
   { year: '2022', title: 'Acoustic Design Offering', desc: 'Responded to ORR noise pollution crisis with India\'s first residential acoustic ROI framework.' },
   { year: '2024', title: '₹100Cr Portfolio', desc: 'Crossed ₹100Cr in designed real estate across 150+ homes in 8 Bengaluru micro-markets.' },
-  { year: '2026', title: 'Design Equity™ Calculator', desc: 'Launched India\'s first data-driven interior design ROI calculator — the tool you\'re on right now.' },
+  { year: '2026', title: 'Budget Estimator™', desc: 'Launched India\'s first data-backed interior budget tool — the engine you\'re on right now.' },
 ];
 
 const VALUES = [
@@ -164,21 +164,21 @@ export default function AboutPage() {
                   <div className={styles.hybridBar}>
                     <div className={styles.hybridFill} style={{ width: '45%', background: 'rgba(255,255,255,0.15)' }} />
                   </div>
-                  <div className={styles.hybridValue}>0.85× ROI factor</div>
+                  <div className={styles.hybridValue}>0.85× Efficiency</div>
                 </div>
                 <div className={`${styles.hybridCol} ${styles.hybridColActive}`}>
                   <div className={styles.hybridLabel}>Be More Hybrid™ ✦</div>
                   <div className={styles.hybridBar}>
                     <div className={styles.hybridFill} style={{ width: '85%' }} />
                   </div>
-                  <div className={styles.hybridValue}>1.20× ROI factor</div>
+                  <div className={styles.hybridValue}>1.20× Value/Cost</div>
                 </div>
                 <div className={styles.hybridCol}>
                   <div className={styles.hybridLabel}>Pure Bespoke</div>
                   <div className={styles.hybridBar}>
                     <div className={styles.hybridFill} style={{ width: '62%', background: 'rgba(196,146,42,0.35)' }} />
                   </div>
-                  <div className={styles.hybridValue}>1.10× ROI (−maint.)</div>
+                  <div className={styles.hybridValue}>1.10× Premium</div>
                 </div>
               </div>
             </div>
@@ -283,11 +283,11 @@ export default function AboutPage() {
                 <em className="text-gold"> highest-returning</em> home?
               </h2>
               <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-                Start with a free ROI estimate for your Bengaluru property.
+                Start with a precise budget estimate for your Indian residential property.
               </p>
             </div>
             <div className={styles.ctaBtns}>
-              <Link href="/calculator" className="btn btn-primary btn-lg">Calculate ROI →</Link>
+              <Link href="/calculator" className="btn btn-primary btn-lg">Estimate Budget →</Link>
               <Link href="/contact" className="btn btn-ghost btn-lg">Book a Call</Link>
             </div>
           </div>

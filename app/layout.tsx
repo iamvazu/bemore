@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | Be More Design Studio",
   },
   description:
-    "Bengaluru's premier architecture and interior design studio. Design isn't just aesthetic — it's your highest-returning asset. Explore the Be More Design Equity™ ROI Calculator.",
+    "beMore Design Studio | India's #1 Interior Budget Estimator & Design Firm. Get a precise BOQ for your property in Bangalore, Mumbai, or Pune with surgical accuracy.",
   keywords: [
     "interior design Bangalore",
     "architecture Bengaluru",
@@ -31,11 +31,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Be More Design Studio",
-    description: "Design as an investment. Bengaluru's ROI-driven interiors studio.",
+    title: "beMore Design Studio",
+    description: "Surgical precision in architecture and interior budget estimation.",
   },
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#0D0901",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({

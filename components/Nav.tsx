@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
   { href: '/contact', label: 'Contact' },
-  { href: '/calculator', label: 'ROI Calculator' },
+  { href: '/calculator', label: 'Budget Estimator' },
 ];
 
 export default function Nav() {
@@ -95,7 +95,7 @@ export default function Nav() {
         </nav>
         <div className={styles.mobileCta}>
           <Link href="/calculator" className="btn btn-primary">
-            Calculate Your ROI →
+            Estimate Your Budget →
           </Link>
         </div>
       </div>
