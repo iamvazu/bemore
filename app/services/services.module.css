@@ -39,7 +39,7 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.7) 100%);
+  background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.7) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -147,7 +147,7 @@
 .packageCard.popular {
   border-width: 2px;
   border-color: var(--gold);
-  background: linear-gradient(180deg, rgba(34, 28, 16, 1) 0%, rgba(19, 16, 8, 1) 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-surface) 100%);
 }
 
 .popularBadge {
@@ -206,7 +206,7 @@
 }
 
 .roiMetric {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(196, 146, 42, 0.05);
   padding: var(--space-md);
   border-radius: var(--radius-md);
   text-align: center;

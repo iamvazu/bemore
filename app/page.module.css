@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding-top: var(--nav-height);
-  background: #000;
+  background: var(--bg-surface);
 }
 
 /* Background elements */
@@ -36,7 +36,7 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+  background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.4) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -458,7 +458,7 @@
 .solutionOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13, 10, 9, 0.95) 0%, rgba(13, 10, 9, 0.4) 100%);
+  background: linear-gradient(to top, rgba(26, 23, 18, 0.95) 0%, rgba(26, 23, 18, 0.2) 100%);
   z-index: 2;
 }
 
@@ -624,7 +624,7 @@
 .specializedSection {
   padding: var(--space-4xl) 0;
   position: relative;
-  background: #0d0a09;
+  background: var(--bg-surface);
   overflow: hidden;
 }
 
@@ -645,7 +645,7 @@
 .specializedOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #0d0a09 100%);
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-surface) 100%);
   z-index: 2;
 }
 
@@ -789,14 +789,14 @@
 .stepVisualGlow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13, 10, 9, 0.6), transparent);
+  background: linear-gradient(to top, rgba(26, 23, 18, 0.4), transparent);
   z-index: 2;
 }
 
 .roiTeaser {
   position: relative;
   overflow: hidden;
-  background-color: #0d0a09;
+  background-color: var(--bg-surface);
 }
 
 .roiTeaserBg {

@@ -14,27 +14,27 @@
   --gold-glow:      rgba(196, 146, 42, 0.25);
   --gold-border:    rgba(196, 146, 42, 0.35);
 
-  /* Dark Surfaces */
-  --bg:             #0D0901;
-  --bg-surface:     #131008;
-  --bg-elevated:    #1C1710;
-  --bg-card:        #221C10;
-  --bg-glass:       rgba(28, 23, 16, 0.72);
+  /* Light Surfaces */
+  --bg:             #FFFFFF;
+  --bg-surface:     #FBF9F4;
+  --bg-elevated:    #F5F2EA;
+  --bg-card:        #FFFFFF;
+  --bg-glass:       rgba(255, 255, 255, 0.75);
 
   /* Brown/Outline (from logo linework) */
   --brown:          #2C1A0A;
-  --brown-light:    #3D2B18;
+  --brown-light:    #5C4B38;
 
-  /* Text */
-  --text-primary:   #F5EFE0;
-  --text-secondary: #C0B49A;
-  --text-muted:     #7A6E5E;
+  /* Text — shifted to high-contrast darks */
+  --text-primary:   #1A1712;
+  --text-secondary: #5C5446;
+  --text-muted:     #8A8274;
   --text-gold:      #C4922A;
 
   /* Borders */
-  --border:         rgba(196, 146, 42, 0.18);
-  --border-hover:   rgba(196, 146, 42, 0.45);
-  --border-subtle:  rgba(245, 239, 224, 0.08);
+  --border:         rgba(196, 146, 42, 0.12);
+  --border-hover:   rgba(196, 146, 42, 0.35);
+  --border-subtle:  rgba(26, 23, 18, 0.08);
 
   /* Typography Scale */
   --font-display:   'Cormorant Garamond', Georgia, serif;
@@ -65,12 +65,12 @@
   --duration-base:   320ms;
   --duration-slow:   600ms;
 
-  /* Shadows */
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.4);
-  --shadow-md:   0 8px 32px rgba(0,0,0,0.5);
-  --shadow-lg:   0 24px 80px rgba(0,0,0,0.6);
-  --shadow-gold: 0 0 40px rgba(196, 146, 42, 0.2);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+  /* Shadows — softened for light mode */
+  --shadow-sm:   0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:   0 8px 32px rgba(28, 23, 16, 0.08);
+  --shadow-lg:   0 24px 80px rgba(28, 23, 16, 0.12);
+  --shadow-gold: 0 0 40px rgba(196, 146, 42, 0.1);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.04), 0 0 0 1px var(--border);
 
   /* Layout */
   --max-width:   1280px;
@@ -107,7 +107,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.4;
+  opacity: 0.15;
 }
 
 /* --- Typography --- */
