@@ -70,7 +70,8 @@ const PROJECTS_DATA: Record<string, any> = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = PROJECTS_DATA[params.id];
+  const { id } = await params;
+  const project = PROJECTS_DATA[id];
   if (!project) return { title: 'Project Not Found' };
   return {
     title: `${project.title} | Portfolio | Be More Studio`,
@@ -82,8 +83,9 @@ export async function generateStaticParams() {
   return Object.keys(PROJECTS_DATA).map((id) => ({ id }));
 }
 
-export default function Page({ params }: Props) {
-  const project = PROJECTS_DATA[params.id];
+export default async function Page({ params }: Props) {
+  const { id } = await params;
+  const project = PROJECTS_DATA[id];
   if (!project) notFound();
   return <PortfolioDetail project={project} />;
 }

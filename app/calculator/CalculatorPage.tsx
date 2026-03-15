@@ -42,6 +42,7 @@ export default function CalculatorPage() {
   const [showLeadModal, setShowLeadModal] = useState(false);
   const [aiInsight, setAiInsight] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
+  const localities = getLocalities();
 
   // Handle deep links (e.g., /calculator?locality=indiranagar)
   useEffect(() => {
@@ -90,7 +91,6 @@ export default function CalculatorPage() {
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
-  const localities = getLocalities();
 
   const comparisonData = [
     { name: 'Modular', value: results.modularValue5yr, color: 'rgba(255,255,255,0.1)' },

@@ -8,7 +8,8 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const locality = getLocalityBySlug(params.slug);
+  const { slug } = await params;
+  const locality = getLocalityBySlug(slug);
   
   if (!locality) return { title: 'Not Found' };
 
@@ -26,8 +27,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: Props) {
-  const locality = getLocalityBySlug(params.slug);
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
+  const locality = getLocalityBySlug(slug);
   
   if (!locality) {
     notFound();
