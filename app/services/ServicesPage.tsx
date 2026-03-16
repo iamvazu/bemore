@@ -204,6 +204,18 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className={styles.designerCta}>
+        <div className="container">
+          <div className={styles.designerCtaInner}>
+            <h2 className={styles.designerCtaTitle}>Confused Between Styles, Layouts, and Costs?</h2>
+            <p className={styles.designerCtaSubtitle}>Meet a designer who&apos;ll bring it all together—free.</p>
+            <Link href="/contact" className={styles.designerBtn}>
+              Meet a Designer
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );
