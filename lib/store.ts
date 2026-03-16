@@ -19,6 +19,7 @@ interface EstimatorState {
   setProjectType: (type: EstimatorInputs['projectType']) => void;
   setFloorPlan: (file: File | string | null) => void;
   setPropertyType: (type: PropertyType) => void;
+  setPurpose: (purpose: EstimatorInputs['purpose']) => void;
   setTier: (tier: MaterialTier) => void;
   setCarpetArea: (area: number) => void;
   setIncludeCivil: (include: boolean) => void;
@@ -45,6 +46,7 @@ const initialInputs: EstimatorInputs = {
   city: 'Bangalore',
   locality: '',
   tier: 'premium',
+  purpose: 'move-in',
   carpetArea: DEFAULT_CARPET_AREA,
   items: getAdjustedItems(DEFAULT_BHK, DEFAULT_CARPET_AREA),
   includeCivil: true,
@@ -95,6 +97,11 @@ export const useCalculatorStore = create<EstimatorState>((set, get) => ({
 
   setTier: (tier) => {
     const newInputs = { ...get().inputs, tier };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+
+  setPurpose: (purpose) => {
+    const newInputs = { ...get().inputs, purpose };
     set({ inputs: newInputs, results: calculateBudget(newInputs) });
   },
 

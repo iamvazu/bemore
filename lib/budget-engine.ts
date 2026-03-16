@@ -36,6 +36,7 @@ export interface EstimatorInputs {
   city: 'Bangalore' | 'Mumbai' | 'Jaipur' | 'Delhi' | 'Pune';
   locality?: string;
   tier: MaterialTier;
+  purpose: 'move-in' | 'rent-out' | 'renovate';
   carpetArea: number; // in sq ft
   items: BOQItem[];
   includeCivil: boolean;
