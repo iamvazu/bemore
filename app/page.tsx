@@ -257,18 +257,19 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '140px' }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <div style={{ marginBottom: '1.5rem' }}>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '700px' }}>
+              <div style={{ marginBottom: '0.75rem' }}>
                 <motion.div 
                   layout
                   className="tag" 
                   style={{ 
                     border: '1px solid var(--gold)', 
                     background: 'var(--bg-surface)', 
-                    padding: '8px 24px',
-                    gap: '0' /* Override global gap */
+                    padding: '6px 20px',
+                    gap: '0',
+                    fontSize: '0.75rem'
                   }}
                 >
                   <span style={{ whiteSpace: 'nowrap' }}>Best&nbsp;</span>
@@ -290,30 +291,30 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              <h1 className="display-h1" style={{ marginBottom: '1.5rem', lineHeight: '1.1' }}>
+              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1', fontSize: 'clamp(2.5rem, 7vw, 4.5rem)' }}>
                 Design Without 
                 <br />
                 <em>Limits.</em>
               </h1>
 
-              <div className={styles.heroTrust} style={{ marginBottom: '2.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', letterSpacing: '0.01em', opacity: 0.7 }}>
+              <div className={styles.heroTrust} style={{ marginBottom: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', letterSpacing: '0.01em', opacity: 0.7 }}>
                   <span>Trusted by</span>
                   <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
                   <span style={{ opacity: 0.2 }}>|</span>
                   <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
-                  <span>in real estate assets</span>
+                  <span>in real estate</span>
                 </div>
               </div>
 
-              <p className="hero-subtext">
-                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+              <p className="hero-subtext" style={{ marginBottom: '1.25rem', fontSize: '1rem', lineHeight: '1.5' }}>
+                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                   Innovative Architecture and Interior Design for Modern Living.
                 </strong>
                 Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
               </p>
 
-              <div className={styles.heroCtas}>
+              <div className={styles.heroCtas} style={{ marginBottom: '0' }}>
                 <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
                   Budget Estimator
                   <span>→</span>
