@@ -42,6 +42,8 @@ export const viewport = {
   themeColor: "#FFFFFF",
 };
 
+import FloatingContact from "@/components/FloatingContact";
+
 export default function RootLayout({
   children,
 }: {
@@ -49,7 +51,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <FloatingContact />
+      </body>
     </html>
   );
 }

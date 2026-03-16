@@ -6,8 +6,41 @@
 }
 
 .hero {
+  position: relative;
   padding-top: calc(var(--nav-height) + var(--space-4xl));
-  padding-bottom: var(--space-3xl);
+  padding-bottom: var(--space-4xl);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #0d0901;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: brightness(0.7) contrast(1.1);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(13, 9, 1, 0.9) 0%, rgba(13, 9, 1, 0.4) 100%);
+  z-index: 2;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
 }
 
 .heroContent {
@@ -25,11 +58,12 @@
   margin-top: var(--space-md);
   margin-bottom: var(--space-lg);
   line-height: 1.1;
+  color: #FFFFFF;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
   max-width: 600px;
 }

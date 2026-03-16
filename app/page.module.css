@@ -94,14 +94,20 @@
   grid-template-columns: 1.4fr 0.6fr;
   gap: var(--space-xl);
   align-items: center;
-  padding: 220px 0 40px; /* Lowered content to clear nav, reduced bottom gap for trust visibility */
+  padding: 460px 0 20px; /* Super-low position to guarantee no nav overlap */
   position: relative;
   z-index: 5;
 }
+@media (max-width: 1400px) {
+  .heroInner {
+    padding-top: 360px;
+  }
+}
+
 @media (max-width: 1280px) {
   .heroInner {
     grid-template-columns: 1.2fr 0.8fr;
-    padding: 100px 0 40px;
+    padding: 320px 0 40px;
   }
 }
 @media (max-width: 1100px) {
@@ -128,10 +134,10 @@
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem); /* Reduced slightly to save vertical space */
+  font-size: clamp(3rem, 6vw, 4.5rem); /* Scaled down slightly to save vertical vertical space */
   line-height: 1.1;
-  margin-top: var(--space-sm);
-  margin-bottom: var(--space-md);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
   letter-spacing: -0.01em;
   color: #FFFFFF;
   text-shadow: 0 4px 40px rgba(0,0,0,0.5);
@@ -146,11 +152,11 @@
 }
 
 .heroSub {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1rem; /* Compact body for fold optimization */
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 540px;
-  margin-bottom: var(--space-lg); /* Reduced margin for vertical efficiency */
+  max-width: 500px;
+  margin-bottom: var(--space-md);
   font-weight: 300;
 }
 @media (max-width: 1100px) {
@@ -161,10 +167,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   position: relative;
   z-index: 20; 
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
 }
 
 .heroCtas :global(.btn) {
@@ -190,9 +196,9 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: var(--space-xl);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: var(--space-xs); /* Pull into view */
 }
 
 .heroTrust strong {
@@ -220,7 +226,7 @@
 
 .heroCard.heroCardVisible {
   opacity: 1;
-  transform: translateY(-20px) scale(1) translateX(-30px); /* Moved top-left and away from edge */
+  transform: translateY(-160px) scale(1) translateX(-30px); /* Lifted to sync with low hero content */
 }
 
 .heroCardTop {

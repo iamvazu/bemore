@@ -1,0 +1,252 @@
+.wrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.trigger {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.trigger:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.triggerActive {
+  background: #333;
+}
+
+.triggerInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triggerInner svg {
+  width: 28px;
+  height: 28px;
+}
+
+.onlineStatus {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: #25D366;
+  border: 2.5px solid var(--text-primary);
+  border-radius: 50%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(26, 23, 18, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.25rem;
+  border-radius: 100px;
+  border: 1px solid rgba(196, 146, 42, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s var(--ease-out);
+}
+
+.menuItem:hover {
+  background: var(--text-primary);
+  transform: translateX(-5px);
+  border-color: var(--gold);
+}
+
+.menuLabel {
+  color: #fff;
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.menuIcon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsappIcon {
+  color: #25D366;
+  width: 24px;
+  height: 24px;
+}
+
+/* WhatsApp Box */
+.whatsappBox {
+  width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  margin-bottom: 0.5rem;
+}
+
+.waHeader {
+  background: #0D0901;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  color: #fff;
+  position: relative;
+}
+
+.waHeaderIcon {
+  width: 40px;
+  height: 40px;
+  color: #25D366;
+  flex-shrink: 0;
+}
+
+.waHeaderText h3 {
+  font-family: var(--font-brand);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.waHeaderText p {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+
+.waHeaderText strong {
+  color: #25D366;
+  font-weight: 700;
+}
+
+.waClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.waClose:hover { color: #fff; }
+
+.waBody {
+  padding: 1.25rem;
+  background: #F8F9F9;
+}
+
+.waNote {
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 1rem;
+  font-family: var(--font-brand);
+}
+
+.waMember {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 3px solid #25D366;
+}
+
+.waMember:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border-color: #25D366;
+}
+
+.memberAvatar {
+  width: 44px;
+  height: 44px;
+  background: #e6f7ef;
+  color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+}
+
+.memberAvatar svg {
+  width: 100%;
+}
+
+.memberAvatar .onlineDot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background: #25D366;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.memberName {
+  font-family: var(--font-brand);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.waIconSmall {
+  color: #25D366;
+  width: 20px;
+}
+
+.waFooter {
+  padding: 0.75rem;
+  text-align: center;
+  background: #fff;
+  color: #ddd;
+}
+
+@media (max-width: 600px) {
+  .whatsappBox {
+    width: 280px;
+  }
+}
