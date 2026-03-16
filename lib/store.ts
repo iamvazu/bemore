@@ -28,7 +28,7 @@ interface EstimatorState {
   resetToDefaults: () => void;
 
   setScope: (scope: EstimatorInputs['scope']) => void;
-  setKitchenConfig: (config: Partial<Pick<EstimatorInputs, 'kitchenLayout' | 'kitchenCountertop' | 'kitchenShutter' | 'kitchenHardware' | 'kitchenAppliances'>>) => void;
+  setKitchenConfig: (config: Partial<Pick<EstimatorInputs, 'kitchenLayout' | 'kitchenCountertop' | 'kitchenShutter' | 'kitchenHardware' | 'kitchenAppliances' | 'kitchenWallAFeet' | 'kitchenWallAInches' | 'kitchenWallBFeet' | 'kitchenWallBInches' | 'kitchenAccessories'>>) => void;
   setBathConfig: (config: Partial<Pick<EstimatorInputs, 'bathTiling' | 'bathFixtures' | 'bathVanity' | 'bathPartition'>>) => void;
 
   // Dynamic Results
