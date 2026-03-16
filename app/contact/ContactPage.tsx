@@ -43,25 +43,23 @@ export default function ContactPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
+      <section className="hero-layout">
+        <div className="hero-media-wrapper">
           <img src="/images/contact-hero.jpg" alt="beMore Studio" />
+          <div className="hero-scrim" />
         </div>
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroContainer}>
-          <div className="container">
-            <div className={`${styles.heroContent} ${visible ? styles.animate : ''}`}>
-              <div className="gold-line" />
-              <span className="tag">Get in Touch</span>
-              <h1 className={styles.title}>
-                Let&apos;s Build
-                <br />
-                Something <em className="text-gold">Extraordinary.</em>
-              </h1>
-              <p className={styles.subtitle}>
-                Ready to push the limits of your next space? Whether you have a clear vision or need a creative spark, our Bangalore studio is ready to collaborate.
-              </p>
-            </div>
+        
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className={styles.heroContent}>
+            <span className="tag" style={{ marginBottom: '1.5rem' }}>Get in Touch</span>
+            <h1 className="display-h1">
+              Let&apos;s Build
+              <br />
+              Something <em>Extraordinary.</em>
+            </h1>
+            <p className="hero-subtext">
+              Ready to push the limits of your next space? Whether you have a clear vision or need a creative spark, our Bangalore studio is ready to collaborate.
+            </p>
           </div>
         </div>
       </section>

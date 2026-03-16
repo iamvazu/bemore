@@ -5,16 +5,7 @@
   background-color: var(--bg);
 }
 
-.hero {
-  position: relative;
-  padding-top: calc(var(--nav-height) + var(--space-4xl));
-  padding-bottom: var(--space-4xl);
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background-color: #0D0901; /* Rich dark base for depth */
-}
+/* Using global .hero-layout */
 
 .heroBg {
   position: absolute;
@@ -30,12 +21,7 @@
   filter: none;
 }
 
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(13, 9, 1, 0.75) 0%, transparent 60%);
-  z-index: 2;
-}
+/* Removed old overlays */
 
 .heroContainer {
   position: relative;
@@ -53,21 +39,7 @@
   animation: fadeInUp 0.8s var(--ease-out) forwards;
 }
 
-.title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-lg);
-  line-height: 1.1;
-  color: #FFFFFF;
-  text-shadow: 0 4px 30px rgba(0,0,0,0.3);
-}
-
-.subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.7;
-  max-width: 600px;
-}
+/* Using global .display-h1 and .hero-subtext */
 
 /* Contact Grid */
 .contactSection {

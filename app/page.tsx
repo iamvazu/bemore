@@ -243,9 +243,9 @@ export default function HomePage() {
       <Nav />
 
       {/* ============ HERO ============ */}
-      <section className={styles.hero}>
-        {/* Background elements */}
-        <div className={styles.heroBg}>
+      <section className="hero-layout">
+        {/* Protected Background */}
+        <div className="hero-media-wrapper">
           <div className={styles.heroVideo}>
             <iframe
               src="https://www.youtube.com/embed/N3j9dDoiJ8I?autoplay=1&mute=1&loop=1&playlist=N3j9dDoiJ8I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
@@ -254,107 +254,101 @@ export default function HomePage() {
               allowFullScreen
             ></iframe>
           </div>
-          <div className={styles.heroVignette} />
-          <div className={styles.heroGlow} />
-          <div className={styles.heroArch1} />
-          <div className={styles.heroArch2} />
+          <div className="hero-scrim" />
         </div>
 
-        <div className={`container ${styles.heroInner}`}>
-          <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-            <span className="tag" style={{ minWidth: '240px', display: 'inline-flex', justifyContent: 'center' }}>
-              {taglines[taglineIndex]}
-            </span>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className={styles.heroInner}>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <span className="tag" style={{ marginBottom: '1.5rem' }}>
+                {taglines[taglineIndex]}
+              </span>
 
-            <h1 className={styles.heroTitle}>
-              Design Without Limits.
-            </h1>
+              <h1 className="display-h1">
+                Design Without 
+                <br />
+                <em>Limits.</em>
+              </h1>
 
-            <p className={styles.heroSub}>
-              Innovative Architecture and Interior Design for Modern Living.
-              <br />
-              At beMore Design Studio, we don’t just build structures; we curate environments. Based in Bangalore, we are a multidisciplinary firm dedicated to creating smart, elegant, and highly functional spaces that resonate with your vision.
-            </p>
+              <p className="hero-subtext">
+                Innovative Architecture and Interior Design for Modern Living.
+                Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
+              </p>
 
-            <div className={styles.heroCtas}>
-              <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
-                Budget Estimator
-                <span>→</span>
-              </Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation">
-                Book Free Consultation
-              </Link>
+              <div className={styles.heroCtas}>
+                <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
+                  Budget Estimator
+                  <span>→</span>
+                </Link>
+                <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation">
+                  Book Free Consultation
+                </Link>
+              </div>
+
+              <div className={styles.heroTrust}>
+                <span>Trusted by</span>
+                <strong>240+ homeowners</strong>
+                <span>·</span>
+                <strong>₹180Cr+</strong>
+                <span>in real estate</span>
+              </div>
             </div>
 
-            <div className={styles.heroTrust}>
-              <span>Trusted by</span>
-              <strong>240+ Bengaluru homeowners</strong>
-              <span>·</span>
-              <strong>₹180Cr+</strong>
-              <span>in designed real estate</span>
-            </div>
-          </div>
+            {/* Estimator Teaser Card */}
+            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`}>
+              <div className={styles.heroCardTop}>
+                <span className="tag">Budget Baseline</span>
+                <span className={styles.heroCardLive}>● 2026 RATES</span>
+              </div>
 
-          {/* Hero Budget teaser card */}
-          <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`}>
-            <div className={styles.heroCardTop}>
-              <span className="tag">Budget Baseline</span>
-              <span className={styles.heroCardLive}>● 2026 RATES</span>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div 
-                key={bhkIndex}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className={styles.heroCardLocality}>Premium {bhkTypes[bhkIndex].type}, {locality}</div>
-                <div className={styles.heroCardData}>
-                  <div className={styles.heroMetric}>
-                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].essential}</span>
-                    <span className={styles.heroMetricLabel}>Essential</span>
-                  </div>
-                  <div className={styles.heroMetricDivider} />
-                  <div className={styles.heroMetric}>
-                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].premium}</span>
-                    <span className={styles.heroMetricLabel}>Premium</span>
-                  </div>
-                  <div className={styles.heroMetricDivider} />
-                  <div className={styles.heroMetric}>
-                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].luxury}</span>
-                    <span className={styles.heroMetricLabel}>Luxury</span>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className={styles.heroCardBar}>
-              <div className={styles.heroCardBarLabel}>Transparency Index</div>
-              <div className={styles.heroCardBarTrack}>
+              <AnimatePresence mode="wait">
                 <motion.div 
-                  className={styles.heroCardBarFill} 
-                  initial={{ width: 0 }}
-                  animate={{ width: bhkTypes[bhkIndex].progress }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                />
-              </div>
-              <div className={styles.heroCardBarLegend}>
-                <span>Market Avg</span>
-                <span className={styles.goldText}>beMore Precision +100%</span>
-              </div>
-            </div>
-            <Link href="/calculator" className={styles.heroCardBtn}>
-              Get your precise quote →
-            </Link>
-          </div>
-        </div>
+                  key={bhkIndex}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className={styles.heroCardLocality}>Premium {bhkTypes[bhkIndex].type}, {locality}</div>
+                  <div className={styles.heroCardData}>
+                    <div className={styles.heroMetric}>
+                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].essential}</span>
+                      <span className={styles.heroMetricLabel}>Essential</span>
+                    </div>
+                    <div className={styles.heroMetricDivider} />
+                    <div className={styles.heroMetric}>
+                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].premium}</span>
+                      <span className={styles.heroMetricLabel}>Premium</span>
+                    </div>
+                    <div className={styles.heroMetricDivider} />
+                    <div className={styles.heroMetric}>
+                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].luxury}</span>
+                      <span className={styles.heroMetricLabel}>Luxury</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-        {/* Scroll indicator */}
-        <div className={styles.scrollHint}>
-          <div className={styles.scrollLine} />
-          <span>Scroll</span>
+              <div className={styles.heroCardBar}>
+                <div className={styles.heroCardBarLabel}>Transparency Index</div>
+                <div className={styles.heroCardBarTrack}>
+                  <motion.div 
+                    className={styles.heroCardBarFill} 
+                    initial={{ width: 0 }}
+                    animate={{ width: bhkTypes[bhkIndex].progress }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  />
+                </div>
+                <div className={styles.heroCardBarLegend}>
+                  <span>Market Avg</span>
+                  <span className={styles.goldText}>beMore Precision +100%</span>
+                </div>
+              </div>
+              <Link href="/calculator" className={styles.heroCardLink}>
+                Get your precise quote →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

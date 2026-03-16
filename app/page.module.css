@@ -7,22 +7,7 @@
 /* ============================================================
    HERO - Mobile First
    ============================================================ */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  padding: var(--space-4xl) 0 var(--space-2xl);
-  background: #FFFFFF;
-}
-
-@media (min-width: 1024px) {
-  .hero {
-    padding: 0;
-  }
-}
+/* Old .hero removed - using global .hero-layout */
 
 .heroBg {
   position: absolute;
@@ -92,9 +77,9 @@
 @media (min-width: 1100px) {
   .heroInner {
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.4fr 0.6fr;
     align-items: center;
-    padding-top: 100px;
+    gap: var(--space-4xl);
   }
 }
 
@@ -102,13 +87,11 @@
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
-  text-align: center;
 }
 
 @media (min-width: 1100px) {
   .heroContent {
-    text-align: left;
-    padding-left: 5%;
+    padding-right: 5%;
   }
 }
 
@@ -124,34 +107,13 @@
   text-shadow: 0 4px 30px rgba(255,255,255,0.4);
 }
 
-.heroSub {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 540px;
-  margin: 0 auto var(--space-xl);
-}
-
-@media (min-width: 1100px) {
-  .heroSub { margin: 0 0 var(--space-xl); }
-}
+/* Using global .hero-subtext */
 
 .heroCtas {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--space-md);
   margin-bottom: var(--space-2xl);
-}
-
-@media (min-width: 600px) {
-  .heroCtas {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1100px) {
-  .heroCtas { justify-content: flex-start; }
 }
 
 .heroCtas :global(.btn) {

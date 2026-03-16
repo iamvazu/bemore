@@ -78,39 +78,43 @@ export default function AboutPage() {
       <Nav />
 
       {/* ── Hero ── */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
+      <section className="hero-layout">
+        <div className="hero-media-wrapper">
           <img src="/images/about-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Team" />
-          <div className={styles.heroOverlay} />
+          <div className="hero-scrim" />
         </div>
-        <div className={`container ${styles.heroInner}`}>
-          <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
-            <span className="tag">The Collective</span>
-            <h1 className={styles.heroTitle}>
-              Architecture is 
-              <br />
-              <em className="text-gold">Technical Soul.</em>
-            </h1>
-            <p className={styles.heroSub}>
-              beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
-              We don't just design buildings; we engineer high-performance environments that appreciate over time.
-              <br /><br />
-              Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge to solve the complex challenges of modern Indian urbanism.
-            </p>
-            <div style={{ marginTop: '2rem' }}>
-               <Link href="/contact" className="btn btn-primary">Partner With Us →</Link>
+        
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className={styles.heroInner}>
+            <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
+              <span className="tag" style={{ marginBottom: '1.5rem' }}>The Collective</span>
+              <h1 className="display-h1">
+                Architecture is 
+                <br />
+                <em>Technical Soul.</em>
+              </h1>
+              <p className="hero-subtext">
+                beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
+                We engineer high-performance environments that appreciate over time.
+                <br /><br />
+                Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge to solve the complex challenges of modern Indian urbanism.
+              </p>
+              <div>
+                 <Link href="/contact" className="btn btn-primary">Partner With Us →</Link>
+              </div>
             </div>
-          </div>
-          {/* Floating stat card */}
-          <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`}>
-            <div className={styles.heroStatNumber}>10+</div>
-            <div className={styles.heroStatLabel}>Years designing Bengaluru</div>
-            <div className={styles.heroStatDivider} />
-            <div className={styles.heroStatNumber}>240+</div>
-            <div className={styles.heroStatLabel}>Homes designed</div>
-            <div className={styles.heroStatDivider} />
-            <div className={styles.heroStatNumber}>₹180Cr</div>
-            <div className={styles.heroStatLabel}>In designed real estate</div>
+
+            {/* Floating stat card */}
+            <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`}>
+              <div className={styles.heroStatNumber}>10+</div>
+              <div className={styles.heroStatLabel}>Years designing Bengaluru</div>
+              <div className={styles.heroStatDivider} />
+              <div className={styles.heroStatNumber}>240+</div>
+              <div className={styles.heroStatLabel}>Homes designed</div>
+              <div className={styles.heroStatDivider} />
+              <div className={styles.heroStatNumber}>₹180Cr</div>
+              <div className={styles.heroStatLabel}>In designed real estate</div>
+            </div>
           </div>
         </div>
       </section>

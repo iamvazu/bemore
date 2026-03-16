@@ -7,17 +7,20 @@ export default function CareersPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
+      <section className="hero-layout">
+        <div className="hero-media-wrapper">
           <img src="/images/careers-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Office" />
-          <div className={styles.heroOverlay} />
+          <div className="hero-scrim" />
         </div>
-        <div className={`container ${styles.heroInner}`}>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div className={styles.heroContent}>
-            <div className="gold-line" />
-            <span className="tag">Join the Studio</span>
-            <h1 className={styles.title}>Build the Future of <em className="text-gold">Architecture</em></h1>
-            <p className={styles.subtitle}>
+            <span className="tag" style={{ marginBottom: '1.5rem' }}>Join the Studio</span>
+            <h1 className="display-h1">
+              Build the Future of 
+              <br />
+              <em>Architecture.</em>
+            </h1>
+            <p className="hero-subtext">
               We are looking for bold thinkers who believe design is an asset, not an expense. 
               Join a data-driven studio redefining the Indian luxury landscape.
             </p>
