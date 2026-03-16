@@ -26,19 +26,29 @@ export default function Footer() {
             <Link href="/about">About Us</Link>
             <Link href="/portfolio">Portfolio</Link>
             <Link href="/services">Services</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/careers">Careers</Link>
             <Link href="/contact">Contact</Link>
           </div>
           <div className={styles.col}>
             <h4>Tools</h4>
             <Link href="/calculator">Budget Estimator</Link>
-            <Link href="/services">Our Services</Link>
-            <Link href="/portfolio">Portfolio</Link>
+            <Link href="/guides/design">Design Guides</Link>
+            <Link href="/guides/buying">Buying Guides</Link>
+            <Link href="/blog">Blogs</Link>
           </div>
           <div className={styles.col}>
-            <h4>Company</h4>
-            <Link href="/about">About Us</Link>
-            <Link href="/careers">Careers</Link>
-            <Link href="/contact">Contact</Link>
+            <h4>Locations Served</h4>
+            <span className={styles.locItem}>Indiranagar</span>
+            <span className={styles.locItem}>Koramangala</span>
+            <span className={styles.locItem}>HSR Layout</span>
+            <span className={styles.locItem}>Whitefield</span>
+            <span className={styles.locItem}>Bellandur</span>
+            <span className={styles.locItem}>Sarjapur Road</span>
+            <span className={styles.locItem}>JP Nagar</span>
+            <span className={styles.locItem}>Hebbal</span>
+            <span className={styles.locItem}>North Bangalore</span>
+            <span className={styles.locItem}>Electronic City</span>
           </div>
         </div>
       </div>

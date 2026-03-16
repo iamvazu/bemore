@@ -28,7 +28,7 @@
 }
 
 .footerLogoImage {
-  height: clamp(60px, 12vw, 100px);
+  height: clamp(80px, 15vw, 140px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -91,6 +91,14 @@
 }
 
 .col a:hover { color: var(--gold); }
+
+.locItem {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
 
 .bottom {
   max-width: var(--max-width);
