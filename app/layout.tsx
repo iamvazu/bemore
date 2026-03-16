@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     default: "Be More Design Studio | Architecture & Interiors, Bengaluru",
     template: "%s | Be More Design Studio",
   },
+  metadataBase: new URL("https://bemoredesignstudio.in"),
   description:
     "beMore Design Studio | India's #1 Interior Budget Estimator & Design Firm. Get a precise BOQ for your property in Bangalore, Mumbai, or Pune with surgical accuracy.",
   keywords: [
