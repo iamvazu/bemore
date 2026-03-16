@@ -35,8 +35,8 @@ interface EstimatorState {
   results: EstimatorResult;
 }
 
-const DEFAULT_CARPET_AREA = 1200;
-const DEFAULT_BHK: PropertyType = '3bhk';
+const DEFAULT_CARPET_AREA = 0;
+const DEFAULT_BHK: PropertyType = '1bhk';
 
 const initialInputs: EstimatorInputs = {
   scope: 'full',
@@ -58,6 +58,11 @@ const initialInputs: EstimatorInputs = {
   kitchenShutter: 'laminate',
   kitchenHardware: 'soft-close',
   kitchenAppliances: 'freestanding',
+  kitchenWallAFeet: 12,
+  kitchenWallAInches: 0,
+  kitchenWallBFeet: 5,
+  kitchenWallBInches: 0,
+  kitchenAccessories: {},
   
   bathTiling: 'full-height',
   bathFixtures: 'standard',

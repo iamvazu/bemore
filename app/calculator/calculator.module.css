@@ -479,3 +479,167 @@
   border-radius: 100px;
   cursor: pointer;
 }
+.btnBack:hover {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* --- Kitchen Micro-Calculator Styles --- */
+.kitchenShapeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.shapeCard {
+  background: #FFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.shapeIcon {
+  width: 100%;
+  max-width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.shapeSelected .shapeIcon {
+  color: var(--gold);
+}
+
+.shapeIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.shapeSelected {
+  border-color: var(--gold);
+  background: var(--bg-surface);
+  box-shadow: 0 5px 15px rgba(196, 146, 42, 0.1);
+}
+
+.shapeSelected img { opacity: 1; }
+
+.shapeRadio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-brand);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.radioDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: #FFF;
+}
+
+.shapeSelected .radioDot {
+  border-color: var(--gold);
+  background: radial-gradient(circle, var(--gold) 50%, #FFF 50%);
+}
+
+.dimensionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+.dimInputs {
+  display: flex;
+  gap: 10px;
+}
+
+.dimInputs select {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  background: #FFF;
+}
+
+.accessoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.accCard {
+  background: #FFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.accCard img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: #F9FAFB;
+}
+
+.accCard p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  height: 2.1rem;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.accCounter {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.accCounter button {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--gold);
+  transition: background 0.2s;
+}
+
+.accCounter button:hover {
+  background: var(--bg-surface);
+}
+
+.accCounter span {
+  padding: 6px 12px;
+  background: var(--gold);
+  color: #FFF;
+  min-width: 32px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}

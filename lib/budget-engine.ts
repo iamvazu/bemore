@@ -48,6 +48,11 @@ export interface EstimatorInputs {
   kitchenShutter?: 'laminate' | 'acrylic' | 'glass-ceramic';
   kitchenHardware?: 'basic' | 'soft-close' | 'premium-blum';
   kitchenAppliances?: 'freestanding' | 'built-in';
+  kitchenWallAFeet?: number;
+  kitchenWallAInches?: number;
+  kitchenWallBFeet?: number;
+  kitchenWallBInches?: number;
+  kitchenAccessories?: Record<string, number>;
 
   // Bathroom Micro-Calculator Fields
   bathTiling?: 'dado' | 'full-height';
@@ -105,7 +110,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Living',
     name: 'Entertainment Unit (Floating)',
     unit: 'sq ft',
-    quantity: 35,
+    quantity: 0,
     rates: { essential: 950, premium: 1600, luxury: 2800 },
     specs: {
       essential: "Commercial Ply + Standard Finish",
@@ -119,7 +124,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Living',
     name: 'Foyer Shoe Console',
     unit: 'sq ft',
-    quantity: 12,
+    quantity: 0,
     rates: { essential: 850, premium: 1400, luxury: 2200 },
     specs: {
       essential: "Pre-lam Particle Board",
@@ -133,7 +138,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Kitchen',
     name: 'Modular Base & Wall Cabinets',
     unit: 'running ft',
-    quantity: 15,
+    quantity: 0,
     rates: { essential: 1800, premium: 3200, luxury: 5800 },
     specs: {
       essential: "BWR Ply + Manual Hardware",
@@ -147,7 +152,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Bedroom 1',
     name: 'Floor-to-Ceiling Wardrobe',
     unit: 'sq ft',
-    quantity: 45,
+    quantity: 0,
     rates: { essential: 1200, premium: 1850, luxury: 3800 },
     specs: {
       essential: "Standard BWR + Basic Handles",
@@ -161,7 +166,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Bedroom 1',
     name: 'Queen Bed with Hydraulic Storage',
     unit: 'unit',
-    quantity: 1,
+    quantity: 0,
     rates: { essential: 35000, premium: 65000, luxury: 145000 },
     specs: {
       essential: "Plywood + Standard Fabric",
@@ -175,7 +180,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Toilets',
     name: 'Floating Vanity with Mirror Cabinet',
     unit: 'unit',
-    quantity: 2,
+    quantity: 0,
     rates: { essential: 12000, premium: 28000, luxury: 65000 },
     specs: {
       essential: "Wall-mount Basic",
@@ -189,7 +194,7 @@ export const DEFAULT_ITEMS: BOQItem[] = [
     room: 'Living',
     name: 'Full False Ceiling (Saint-Gobain)',
     unit: 'sq ft',
-    quantity: 1000,
+    quantity: 0,
     rates: { essential: 100, premium: 185, luxury: 450 },
     specs: {
       essential: "Basic Perimeter Grid",
@@ -259,24 +264,51 @@ export function calculateBudget(inputs: EstimatorInputs): EstimatorResult {
       roomTotals[item.room] = (roomTotals[item.room] || 0) + cost;
     });
   } else if (scope === 'kitchen') {
-    // Specialized Kitchen logic
+    // Specialized Kitchen logic with dimensions and accessories
     const layoutMultipliers: Record<KitchenLayout, number> = {
-      'straight': 1.0, 'l-shape': 1.2, 'parallel': 1.5, 'u-shape': 1.8, 'island': 2.2
+      'straight': 1.0, 'l-shape': 1.15, 'parallel': 1.4, 'u-shape': 1.7, 'island': 2.1
     };
     
     const materialRates = {
-      countertop: { 'granite': 800, 'quartz': 2200, 'nano-white': 4500 },
-      shutter: { 'laminate': 900, 'acrylic': 1800, 'glass-ceramic': 3500 },
-      hardware: { 'basic': 15000, 'soft-close': 45000, 'premium-blum': 95000 }
+      countertop: { 'granite': 850, 'quartz': 2400, 'nano-white': 4800 },
+      shutter: { 'laminate': 1100, 'acrylic': 1950, 'glass-ceramic': 3800 },
+      hardware: { 'basic': 12000, 'soft-close': 38000, 'premium-blum': 85000 }
     };
+
+    // Calculate total running length in feet
+    const wallAFt = (inputs.kitchenWallAFeet || 0) + (inputs.kitchenWallAInches || 0) / 12;
+    const wallBFt = (inputs.kitchenWallBFeet || 0) + (inputs.kitchenWallBInches || 0) / 12;
+    const totalRunningFt = wallAFt + wallBFt;
 
     const multiplier = layoutMultipliers[inputs.kitchenLayout || 'straight'];
     const hardwareCost = materialRates.hardware[inputs.kitchenHardware || 'basic'];
-    const structureCost = (inputs.kitchenCountertop ? materialRates.countertop[inputs.kitchenCountertop] : 1000) * 45 * multiplier;
-    const shutterCost = (inputs.kitchenShutter ? materialRates.shutter[inputs.kitchenShutter] : 1000) * 60;
-    const applianceExtra = inputs.kitchenAppliances === 'built-in' ? 45000 : 0;
+    
+    // Structure cost (Carcass + Countertop)
+    const countertopRate = inputs.kitchenCountertop ? materialRates.countertop[inputs.kitchenCountertop] : 1000;
+    const structureCost = (countertopRate + 2500) * totalRunningFt * multiplier; 
+    
+    // Shutter cost
+    const shutterRate = inputs.kitchenShutter ? materialRates.shutter[inputs.kitchenShutter] : 1000;
+    const shutterCost = shutterRate * totalRunningFt * 2.5; // Roughly 2.5ft height
+    
+    const applianceExtra = inputs.kitchenAppliances === 'built-in' ? 55000 : 0;
 
-    baseTotal = (structureCost + shutterCost + hardwareCost + applianceExtra) * cityMultiplier;
+    // Accessories cost
+    let accessoriesCost = 0;
+    const accessoryRates: Record<string, number> = {
+      'detergent_holder': 2500,
+      'detergent_350': 1800,
+      'cutlery_tray': 4500,
+      'bottle_pullout': 3800
+    };
+
+    if (inputs.kitchenAccessories) {
+      Object.entries(inputs.kitchenAccessories).forEach(([id, qty]) => {
+        accessoriesCost += (accessoryRates[id] || 0) * qty;
+      });
+    }
+
+    baseTotal = (structureCost + shutterCost + hardwareCost + applianceExtra + accessoriesCost) * cityMultiplier;
     categoryTotals['Kitchen'] = baseTotal;
     roomTotals['Kitchen'] = baseTotal;
   } else if (scope === 'bathroom') {
