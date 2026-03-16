@@ -262,10 +262,10 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '110px' }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '700px' }}>
-              <div style={{ marginBottom: '0.75rem' }}>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '850px' }}>
+              <div style={{ marginBottom: '0.5rem' }}>
                 <motion.div 
                   layout
                   className="tag" 
@@ -296,7 +296,7 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              <h1 className="display-h1" style={{ marginBottom: '1rem', lineHeight: '1', fontSize: 'clamp(3.5rem, 9vw, 5.5rem)', minHeight: '2.2em' }}>
+              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1', fontSize: 'clamp(3rem, 8vw, 5rem)', minHeight: '2.1em' }}>
                 <div style={{ position: 'relative', height: '1.2em', overflow: 'hidden' }}>
                   <AnimatePresence mode="wait">
                     <motion.span
@@ -314,18 +314,18 @@ export default function HomePage() {
                 Without <em>Limits.</em>
               </h1>
 
-              <div className={styles.heroTrust} style={{ marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.01em', opacity: 0.75 }}>
-                  <span>Trusted by</span>
+              <div className={styles.heroTrust} style={{ marginBottom: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', letterSpacing: '0.01em', opacity: 0.75 }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
                   <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
                   <span style={{ opacity: 0.2 }}>|</span>
                   <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
-                  <span>in real estate</span>
+                  <span style={{ color: 'var(--text-muted)' }}>in real estate</span>
                 </div>
               </div>
 
-              <p className="hero-subtext" style={{ marginBottom: '1.5rem', fontSize: '1.15rem', lineHeight: '1.6' }}>
-                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: '1.35rem' }}>
+              <p className="hero-subtext" style={{ marginBottom: '1.25rem', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.4rem', fontSize: '1.25rem', whiteSpace: 'nowrap' }}>
                   Innovative Architecture and Interior Design for Modern Living.
                 </strong>
                 Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
