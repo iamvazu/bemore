@@ -207,8 +207,13 @@ export default function ServicesPage() {
       <section className={styles.designerCta}>
         <div className="container">
           <div className={styles.designerCtaInner}>
-            <h2 className={styles.designerCtaTitle}>Confused Between Styles, Layouts, and Costs?</h2>
-            <p className={styles.designerCtaSubtitle}>Meet a designer who&apos;ll bring it all together—free.</p>
+            <div className="gold-line gold-line--center" style={{ marginBottom: '2rem' }} />
+            <h2 className={styles.designerCtaTitle}>
+              Confused Between Styles, Layouts, and <em>Costs?</em>
+            </h2>
+            <p className={styles.designerCtaSubtitle}>
+              Meet a designer who&apos;ll bring it all together—free. Our consultation sessions are strategic sessions aimed at maximizing your property&apos;s potential.
+            </p>
             <Link href="/contact" className={styles.designerBtn}>
               Meet a Designer
             </Link>

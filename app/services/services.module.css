@@ -253,12 +253,14 @@
   margin-bottom: var(--space-md);
 }
 
-/* Designer CTA Section */
+/* Designer CTA Section - Redesigned to match theme */
 .designerCta {
-  padding: clamp(4rem, 10vw, 7rem) 0;
-  background-color: #F9FAFB;
+  padding: clamp(5rem, 12vw, 8rem) 0;
+  background-color: #FDF9F0; /* Ivory Tint */
   text-align: center;
   border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
 }
 
 .designerCtaInner {
@@ -267,40 +269,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .designerCtaTitle {
-  font-family: var(--font-brand);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: #1F2937;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.designerCtaTitle em {
+  font-style: italic;
+  color: var(--gold);
 }
 
 .designerCtaSubtitle {
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: #4B5563;
-  margin-bottom: 2.5rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
   font-weight: 400;
+  max-width: 600px;
 }
 
 .designerBtn {
-  background-color: #E11D48; /* Premium Red */
+  background-color: var(--gold);
   color: #FFFFFF !important;
-  padding: 1rem 2.8rem;
+  padding: 1.2rem 3.5rem;
   font-family: var(--font-brand);
   font-weight: 600;
-  border-radius: 8px;
-  font-size: 1.15rem;
-  transition: all 0.3s var(--ease-out);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s var(--ease-out);
   border: none;
-  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 10px 30px rgba(196, 146, 42, 0.2);
 }
 
 .designerBtn:hover {
-  background-color: #BE123C;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.35);
+  background-color: var(--gold-muted);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(196, 146, 42, 0.3);
 }
