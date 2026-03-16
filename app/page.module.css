@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding: var(--space-4xl) 0 var(--space-2xl);
-  background: var(--bg-surface);
+  background: var(--bg); /* Pure white background for max contrast */
 }
 
 @media (min-width: 1024px) {
@@ -41,15 +41,15 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 100%);
+  background: radial-gradient(circle at center, transparent 0%, rgba(255,255,255,0.8) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
 @media (min-width: 1024px) {
   .heroVignette {
-    background: linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.8) 100%),
-                linear-gradient(to top, rgba(255,255,255,0.5) 0%, transparent 30%);
+    background: linear-gradient(to right, rgba(255,255,255,0.6) 0%, transparent 50%, rgba(255,255,255,0.6) 100%),
+                linear-gradient(to top, rgba(255,255,255,0.4) 0%, transparent 30%);
   }
 }
 
@@ -60,8 +60,8 @@
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.7;
-  filter: brightness(0.8) contrast(1.1);
+  opacity: 0.5; /* Lowered to let light bg breathe through more cleanly */
+  filter: brightness(1.2) contrast(0.9); /* Brightened for light theme */
   overflow: hidden;
 }
 
@@ -276,7 +276,8 @@
 }
 
 .heroCardBar {
-  background: var(--bg-surface);
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--space-md);
 }
@@ -309,14 +310,14 @@
   color: var(--text-muted);
 }
 
-.heroCardBtn {
-  text-align: center;
-  font-family: var(--font-brand);
-  font-size: 0.8rem;
-  color: var(--gold);
-  font-weight: 600;
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border-subtle);
+.heroCtas .btn-ghost {
+  color: var(--text-primary) !important;
+  border-color: var(--border-hover) !important;
+}
+
+.heroCtas .btn-ghost:hover {
+  background: var(--bg-surface);
+  color: var(--gold) !important;
 }
 
 /* Scroll hint */
@@ -635,26 +636,44 @@
 .specializedOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #0d0a09 100%);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, var(--bg-surface) 90%);
 }
 
 .specializedSection .sectionTitle { color: var(--text-primary); }
 .specializedSection .sectionSub { color: var(--text-secondary); }
 
-.specializedGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-  position: relative;
-  z-index: 3;
+.specializedItem {
+  display: flex;
+  gap: var(--space-md);
+  background: #FFFFFF;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s;
 }
 
-@media (min-width: 600px) {
-  .specializedGrid { grid-template-columns: repeat(2, 1fr); }
+.specializedItem:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-sm);
 }
 
-@media (min-width: 1100px) {
-  .specializedGrid { grid-template-columns: repeat(4, 1fr); }
+.specializedIcon {
+  font-size: 2rem;
+  background: var(--bg-surface);
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.specializedText h4 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+  color: var(--text-primary);
 }
 
 .specializedText p {
@@ -738,6 +757,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(1.05);
 }
 
 /* ============================================================
@@ -755,7 +775,7 @@
 .roiTeaserBg {
   position: absolute;
   inset: 0;
-  opacity: 0.15;
+  opacity: 0.1;
 }
 
 .roiTeaserBg img {
@@ -767,7 +787,7 @@
 .roiTeaserOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 50%, transparent 0%, #0d0a09 100%);
+  background: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.3) 0%, var(--bg-surface) 100%);
 }
 
 .roiTeaserInner {
@@ -794,10 +814,10 @@
   transform: translateY(0);
 }
 
-.roiTeaserTitle { color: #FFF; margin: var(--space-md) 0; }
+.roiTeaserTitle { color: var(--text-primary); margin: var(--space-md) 0; }
 
 .roiTeaserText p {
-  color: rgba(255,255,255,0.8) !important;
+  color: var(--text-secondary);
   font-size: 1.1rem;
   margin-bottom: var(--space-xl);
 }
@@ -820,6 +840,7 @@
   gap: 10px;
   font-family: var(--font-brand);
   font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .checkGold { color: var(--gold); font-weight: 700; }

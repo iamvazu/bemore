@@ -281,7 +281,7 @@ export default function HomePage() {
                 Budget Estimator
                 <span>→</span>
               </Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)' }}>
+              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation">
                 Book Free Consultation
               </Link>
             </div>
