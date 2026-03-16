@@ -11,9 +11,21 @@
   padding-bottom: var(--space-4xl);
 }
 
-/* Solutions List */
-.solutionsList {
-  padding-bottom: var(--space-4xl);
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroContent {
+  max-width: 800px;
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.heroContent.animate {
+  animation: fadeInUp 0.8s var(--ease-out) forwards;
 }
 
 .solutionsGrid {

@@ -29,6 +29,11 @@
   width: 100%;
 }
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .heroContent {
   max-width: 800px;
   opacity: 0;
@@ -162,14 +167,15 @@
 .inputGroup input,
 .inputGroup select,
 .inputGroup textarea {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 14px 18px;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 1rem;
   transition: all var(--duration-base) var(--ease-out);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .inputGroup input:focus,
@@ -177,7 +183,20 @@
 .inputGroup textarea:focus {
   outline: none;
   border-color: var(--gold);
-  background: rgba(255, 255, 255, 0.06);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--gold-glow);
+}
+
+.fileInput {
+  font-size: 0.85rem !important;
+  cursor: pointer;
+  padding: 10px 16px !important;
+}
+
+.inputNote {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 4px;
 }
 
 .submitBtn {

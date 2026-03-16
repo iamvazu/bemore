@@ -257,9 +257,14 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '40px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <div style={{ display: 'flex', gap: '8px', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                <div className="tag">Best Architect, Bangalore</div>
+                <div className="tag">Best Interior Designer, Bangalore</div>
+              </div>
+
               <h1 className="display-h1">
                 Design Without 
                 <br />
@@ -267,7 +272,9 @@ export default function HomePage() {
               </h1>
 
               <p className="hero-subtext">
-                Innovative Architecture and Interior Design for Modern Living.
+                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                  Innovative Architecture and Interior Design for Modern Living.
+                </strong>
                 Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
               </p>
 
@@ -282,14 +289,13 @@ export default function HomePage() {
               </div>
 
               <div className={styles.heroTrust}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span>Trusted by</span>
                   <strong>240+ homeowners</strong>
                   <span>·</span>
                   <strong>₹180Cr+</strong>
                   <span>in real estate</span>
                 </div>
-                <div className="tag">Best Architect, Bangalore</div>
               </div>
             </div>
 

@@ -135,7 +135,7 @@ h4 { font-family: var(--font-brand); font-size: 1rem; font-weight: 600; text-tra
   font-family: var(--font-display);
   font-weight: 300;
   line-height: 1;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: var(--space-lg);
 }
 

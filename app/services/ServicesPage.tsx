@@ -82,8 +82,8 @@ export default function ServicesPage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-          <div className={styles.heroContent}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
+          <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
             <span className="tag" style={{ marginBottom: '1.5rem' }}>Strategic Packages</span>
             <h1 className="display-h1">
               Comprehensive
@@ -91,6 +91,9 @@ export default function ServicesPage() {
               <em>Design Solutions.</em>
             </h1>
             <p className="hero-subtext">
+              <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                Tactical architecture and interiors calibrated for market appreciation.
+              </strong>
               We don&apos;t just sell furniture. We offer strategic design interventions 
               calibrated for the Bengaluru real estate market.
             </p>

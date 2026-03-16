@@ -49,8 +49,8 @@ export default function ContactPage() {
           <div className="hero-scrim" />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '50px' }}>
-          <div className={styles.heroContent}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
+          <div className={`${styles.heroContent} ${visible ? styles.animate : ''}`}>
             <span className="tag" style={{ marginBottom: '1.5rem' }}>Secure Your Consultation</span>
             <h1 className="display-h1">
               Invest in Your
@@ -58,8 +58,11 @@ export default function ContactPage() {
               <em>Strategic Space.</em>
             </h1>
             <p className="hero-subtext">
+              <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                Engineering high-performance environments with technical precision.
+              </strong>
               Book a session with Bengaluru&apos;s most transparent design studio. 
-              We calibrate every project for maximum architectural ROI and technical precision.
+              We calibrate every project for maximum architectural ROI.
             </p>
           </div>
         </div>
@@ -119,19 +122,26 @@ export default function ContactPage() {
                       <select name="projectType" required>
                         <option value="">Select Type</option>
                         <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Interior Only">Interior Only</option>
+                        <option value="Architectural Design">Architectural Design</option>
+                        <option value="Interior Design & Styling">Interior Design & Styling</option>
+                        <option value="Commercial & Retail Spaces">Commercial & Retail Spaces</option>
+                        <option value="Project Management">Project Management</option>
                       </select>
                     </div>
                     <div className={styles.inputGroup} style={{ gridColumn: 'span 2' }}>
                       <label>Location</label>
-                      <input type="text" name="location" placeholder="Property Location" required />
+                      <input type="text" name="location" placeholder="Property Location (e.g. Indiranagar, Whitefield)" required />
+                    </div>
+                    <div className={styles.inputGroup} style={{ gridColumn: 'span 2' }}>
+                      <label>Upload Plans or Photos (Optional)</label>
+                      <input type="file" name="attachments" multiple className={styles.fileInput} />
+                      <span className={styles.inputNote}>PDF, JPG, PNG up to 10MB</span>
                     </div>
                   </div>
                   
                   <div className={styles.inputGroup}>
                     <label>Tell us about your vision...</label>
-                    <textarea name="vision" placeholder="Your Message..." rows={4}></textarea>
+                    <textarea name="vision" placeholder="Project details, timeline, or specific requirements..." rows={4}></textarea>
                   </div>
                   
                   <button type="submit" className={`btn btn-primary ${styles.submitBtn}`} disabled={formState === 'submitting'}>
