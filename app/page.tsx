@@ -260,7 +260,7 @@ export default function HomePage() {
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
                 <motion.div 
                   layout
                   className="tag" 
@@ -268,12 +268,10 @@ export default function HomePage() {
                     border: '1px solid var(--gold)', 
                     background: 'var(--bg-surface)', 
                     padding: '8px 24px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px'
+                    gap: '0' /* Override global gap */
                   }}
                 >
-                  <span style={{ whiteSpace: 'nowrap' }}>Best</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>Best&nbsp;</span>
                   <div style={{ position: 'relative', height: '1.2em', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
                     <AnimatePresence mode="wait">
                       <motion.span
@@ -288,23 +286,23 @@ export default function HomePage() {
                       </motion.span>
                     </AnimatePresence>
                   </div>
-                  <span style={{ whiteSpace: 'nowrap' }}>, Bangalore</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>,&nbsp;Bangalore</span>
                 </motion.div>
               </div>
 
-              <h1 className="display-h1" style={{ marginBottom: '1.5rem' }}>
+              <h1 className="display-h1" style={{ marginBottom: '1.5rem', lineHeight: '1.1' }}>
                 Design Without 
                 <br />
                 <em>Limits.</em>
               </h1>
 
-              <div className={styles.heroTrust} style={{ marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.02em', opacity: 0.85 }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
+              <div className={styles.heroTrust} style={{ marginBottom: '2.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', letterSpacing: '0.01em', opacity: 0.7 }}>
+                  <span>Trusted by</span>
                   <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
                   <span style={{ opacity: 0.2 }}>|</span>
                   <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
-                  <span style={{ color: 'var(--text-muted)' }}>in real estate assets</span>
+                  <span>in real estate assets</span>
                 </div>
               </div>
 
