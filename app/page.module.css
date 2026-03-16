@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding-top: 0; 
-  background: #000;
+  background: var(--bg); /* Bright white base */
 }
 
 /* Background elements */
@@ -36,8 +36,7 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.7) 100%),
-              radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, transparent 20%, transparent 70%, rgba(255,255,255,0.8) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -49,8 +48,8 @@
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.6;
-  filter: brightness(0.8) contrast(1.1);
+  opacity: 0.9; /* More visible video */
+  filter: brightness(1.1) contrast(1);
   overflow: hidden;
 }
 
@@ -134,13 +133,13 @@
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 4.5rem); /* Scaled down slightly to save vertical vertical space */
+  font-size: clamp(3rem, 6vw, 4.5rem);
   line-height: 1.1;
   margin-top: var(--space-xs);
   margin-bottom: var(--space-sm);
   letter-spacing: -0.01em;
-  color: #FFFFFF;
-  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  color: var(--text-primary); /* Dark text for light mode */
+  text-shadow: 0 2px 20px rgba(255,255,255,0.8);
   max-width: 90%;
 }
 @media (max-width: 1100px) {
@@ -152,9 +151,9 @@
 }
 
 .heroSub {
-  font-size: 1rem; /* Compact body for fold optimization */
+  font-size: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
   max-width: 500px;
   margin-bottom: var(--space-md);
   font-weight: 300;
@@ -181,8 +180,8 @@
 }
 
 .heroCtas :global(.btn-ghost) {
-  color: #FFFFFF !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--border) !important;
   backdrop-filter: blur(10px);
 }
 
@@ -197,12 +196,12 @@
   align-items: center;
   gap: 12px;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--space-xs); /* Pull into view */
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
 }
 
 .heroTrust strong {
-  color: #FFFFFF;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
