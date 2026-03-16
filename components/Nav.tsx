@@ -83,7 +83,7 @@ export default function Nav() {
 
       {/* Mobile Menu */}
       <div className={`${styles.mobile} ${menuOpen ? styles.mobileOpen : ''}`} aria-hidden={!menuOpen}>
-        <nav>
+        <nav className={styles.mobileNav}>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -94,10 +94,17 @@ export default function Nav() {
             </Link>
           ))}
         </nav>
+        
         <div className={styles.mobileCta}>
-          <Link href="/calculator" className="btn btn-primary">
-            Estimate Your Budget →
+          <Link href="/calculator" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+            Budget Estimator →
           </Link>
+        </div>
+
+        <div className={styles.mobileContact}>
+          <span className={styles.mobileContactTitle}>Get in touch</span>
+          <a href="tel:+919663424256" className={styles.mobileContactInfo}>+91 96634 24256</a>
+          <a href="mailto:hello@bemoredeisgnstudio.com" className={styles.mobileContactInfo}>hello@bemoredeisgnstudio.com</a>
         </div>
       </div>
     </header>
