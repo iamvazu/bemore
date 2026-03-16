@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { 
   PieChart, 
   Pie, 
@@ -13,7 +13,7 @@ import { useSearchParams } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { useCalculatorStore } from '@/lib/store';
-import { formatINR, CITY_MULTIPLIERS, DEFAULT_ITEMS } from '@/lib/budget-engine';
+import { formatINR, CITY_MULTIPLIERS, MaterialTier } from '@/lib/budget-engine';
 import styles from './calculator.module.css';
 
 const TIER_SPECS = {
@@ -40,6 +40,15 @@ const TIER_SPECS = {
   ]
 };
 
+const EXCLUSIONS = [
+  "Loose Furniture & Decor",
+  "White Goods & Kitchen Appliances",
+  "Chimney & Hob Installation",
+  "Deep Cleaning Services",
+  "Structural Changes / Demolition",
+  "Society Deposits & Permissions"
+];
+
 export default function BudgetEstimatorPage() {
   const { 
     inputs, 
@@ -49,12 +58,15 @@ export default function BudgetEstimatorPage() {
     setTier,
     setCarpetArea,
     setIncludeCivil,
-    setDesignerFee,
     updateItemQuantity,
-    resetToDefaults
+    setScope,
+    setKitchenConfig,
+    setBathConfig,
+    setLocality,
+    setProjectType,
+    setFloorPlan
   } = useCalculatorStore();
 
-  const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [isGated, setIsGated] = useState(true);
   const [showLeadModal, setShowLeadModal] = useState(false);
@@ -64,19 +76,40 @@ export default function BudgetEstimatorPage() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
 
-  // Fetch AI Insights tailored for Budget Estimation
+    // Initial Location Detection
+    const fastDetect = async () => {
+      try {
+        const ipRes = await fetch('https://ipapi.co/json/');
+        const ipData = await ipRes.json();
+        if (ipData.city) setCity(ipData.city === 'Bengaluru' ? 'Bangalore' : ipData.city);
+      } catch (e) {}
+    };
+    fastDetect();
+  }, [setCity]);
+
+  const detectHighPrecision = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=14`);
+        const data = await res.json();
+        if (data.address) {
+          const area = data.address.suburb || data.address.neighbourhood || data.address.residential || data.address.locality || '';
+          const city = data.address.city || data.address.town || 'Bangalore';
+          setCity(city === 'Bengaluru' ? 'Bangalore' : city);
+          setLocality(area);
+        }
+      }, (err) => console.log("GPS denied"), { timeout: 5000 });
+    }
+  };
+
+  // AI Insight Fetching
   useEffect(() => {
     if (!mounted) return;
     const fetchInsight = async () => {
       setIsAiLoading(true);
       try {
-        // The user's instruction seems to be for the server-side API, but is provided as a client-side change.
-        // To make the client-side code syntactically correct and functional,
-        // we will assume the /api/ai-insights endpoint has been updated on the server
-        // to include the model retry and fallback logic.
-        // The client-side fetch call remains the same, as it interacts with the API.
         const response = await fetch('/api/ai-insights', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -85,66 +118,45 @@ export default function BudgetEstimatorPage() {
         const data = await response.json();
         setAiInsight(data.insight);
       } catch (err) {
-        console.error('AI Insight Error:', err);
-        // Fallback for client-side if API call itself fails
-        setAiInsight(`For a ${inputs?.propertyType?.toUpperCase() || '3BHK'} in ${inputs?.city || 'Bangalore'}, the ${inputs?.tier || 'selected'} budget profile is highly efficient for the 2026 market. We recommend prioritizing ${inputs?.tier === 'luxury' ? 'Italian finishes' : 'high-durability hardware'} to maximize long-term asset value.`);
+        setAiInsight(`For a ${inputs.propertyType.toUpperCase()} in ${inputs.city}, the ${results.tierAesthetic.label} profile is highly efficient. We recommend prioritizing ${inputs.tier === 'luxury' ? 'exotic veneers' : 'modular hardware'} to maximize resale equity.`);
       } finally {
         setIsAiLoading(false);
       }
     };
 
-    const timer = setTimeout(() => {
-      fetchInsight();
-    }, 1500);
-
+    const timer = setTimeout(fetchInsight, 1500);
     return () => clearTimeout(timer);
-  }, [inputs.city, inputs.tier, inputs.propertyType, inputs.carpetArea, mounted]);
+  }, [inputs.city, inputs.tier, inputs.propertyType, mounted]);
 
-  const handleWhatsAppShare = () => {
-    const text = `I just estimated my home interior budget with beMore Design Studio! 🏠✨%0A%0AProperty: ${inputs.propertyType.toUpperCase()} in ${inputs.city}%0ATier: ${inputs.tier.toUpperCase()}%0AEstimate: ${formatINR(results.grandTotal)}%0A%0AGet your BOQ here: ${window.location.origin}/calculator`;
-    window.open(`https://wa.me/?text=${text}`, '_blank');
-  };
-
-  const chartData = Object.entries(results.categoryTotals).map(([name, value]) => ({
-    name,
-    value
-  }));
+  const chartData = useMemo(() => 
+    Object.entries(results.roomTotals).map(([name, value]) => ({ name, value })),
+    [results.roomTotals]
+  );
 
   const COLORS = ['#C4922A', '#1A1712', '#5C4B38', '#8A8274', '#D4AF37', '#2C1A0A'];
 
-  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    
-    const leadData = {
-      ...data,
-      city: inputs.city,
-      bhk: inputs.propertyType,
-      budget: results.grandTotal,
-      source: 'Budget Estimator Gated Report'
-    };
-
-    try {
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(leadData),
-      });
-      setIsGated(false);
-      setShowLeadModal(false);
-    } catch (err) {
-      setIsGated(false);
-      setShowLeadModal(false);
-    }
+  const handleWhatsAppShare = () => {
+    const text = `I just estimated my home interior budget with beMore! 🏠✨%0A%0AProperty: ${inputs.propertyType.toUpperCase()} in ${inputs.city}%0ATier: ${inputs.tier.toUpperCase()}%0AEstimate: ${formatINR(results.grandTotal)}%0A%0AGet your BOQ here: ${window.location.origin}/calculator`;
+    window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
+  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsGated(false);
+    setShowLeadModal(false);
+  };
+
+  const dynamicStyles = {
+    '--dynamic-bg': results.tierAesthetic.bgColor,
+    '--dynamic-accent': results.tierAesthetic.accentColor,
+  } as React.CSSProperties;
+
   return (
-    <main className={styles.page}>
+    <main className={styles.page} style={dynamicStyles}>
       <Nav />
       
       {!mounted ? (
-        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' }}>
+        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="loader" />
         </div>
       ) : (
@@ -153,7 +165,7 @@ export default function BudgetEstimatorPage() {
             <div className="container">
               <div className={styles.calcHeader}>
                 <div className="gold-line" />
-                <span className="tag">2026 Market Benchmark</span>
+                <span className="tag">2026 ARCHITECTURAL BENCHMARK</span>
                 <h1 className={styles.title}>Budget Estimator™</h1>
                 <p className={styles.subtitle}>Calculate the actual cost to build your vision with surgical precision.</p>
               </div>
@@ -162,116 +174,156 @@ export default function BudgetEstimatorPage() {
                 {/* --- INPUT PANEL --- */}
                 <div className={styles.inputPanel}>
                   <div className={styles.stepper}>
-                    <div className={`${styles.step} ${step === 1 ? styles.active : ''}`} onClick={() => setStep(1)}>1. CONTEXT</div>
-                    <div className={`${styles.step} ${step === 2 ? styles.active : ''}`} onClick={() => setStep(2)}>2. MATERIAL TIER</div>
-                    <div className={`${styles.step} ${step === 3 ? styles.active : ''}`} onClick={() => setStep(3)}>3. ITEMIZATION</div>
+                    <div className={`${styles.step} ${step === 1 ? styles.active : ''}`} onClick={() => setStep(1)}>1. Context</div>
+                    <div className={`${styles.step} ${step === 2 ? styles.active : ''}`} onClick={() => setStep(2)}>2. Floor Plan</div>
+                    <div className={`${styles.step} ${step === 3 ? styles.active : ''}`} onClick={() => setStep(3)}>3. Materials</div>
+                    <div className={`${styles.step} ${step === 4 ? styles.active : ''}`} onClick={() => setStep(4)}>4. Summary</div>
                   </div>
 
                   <div className={styles.inputContent}>
                     {step === 1 && (
                       <div className={styles.stepContent}>
                         <div className={styles.inputGroup}>
-                          <label>Consultation City</label>
-                          <select value={inputs.city} onChange={(e) => setCity(e.target.value as any)}>
-                            {Object.keys(CITY_MULTIPLIERS).map(c => (
-                              <option key={c} value={c}>{c}</option>
-                            ))}
-                          </select>
-                          <p className={styles.fieldNote}>Market coefficient for {inputs.city}: {CITY_MULTIPLIERS[inputs.city]}x</p>
+                          <label>City & Area</label>
+                          <div className={styles.splitInput}>
+                            <select value={inputs.city} onChange={(e) => setCity(e.target.value as any)}>
+                              {Object.keys(CITY_MULTIPLIERS).map(c => (
+                                <option key={c} value={c}>{c}</option>
+                              ))}
+                            </select>
+                            <div className={styles.localityWrapper}>
+                              <input 
+                                type="text" 
+                                placeholder="Area Name (e.g. Indiranagar)" 
+                                value={inputs.locality || ''}
+                                onChange={(e) => setLocality(e.target.value)}
+                              />
+                              <button 
+                                className={styles.locateBtn} 
+                                onClick={detectHighPrecision}
+                                title="Use Current Location"
+                              >
+                                📍
+                              </button>
+                            </div>
+                          </div>
+                          <p className={styles.fieldNote}>Location Multiplier: {CITY_MULTIPLIERS[inputs.city]}x</p>
                         </div>
 
                         <div className={styles.inputGroup}>
-                          <label>Property Configuration</label>
-                          <div className={styles.cardSelectGrid}>
-                            {['1bhk', '2bhk', '3bhk', '4bhk', 'villa'].map(type => (
+                          <label>Property Architecture</label>
+                          <div className={styles.cardSelectGrid} style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+                            {[
+                              { id: 'apartment', label: 'Apartment' },
+                              { id: 'independent-home', label: 'Independent Home' },
+                              { id: 'commercial', label: 'Commercial' },
+                              { id: 'hospitality', label: 'Hospitality' }
+                            ].map(p => (
                               <div 
-                                key={type}
-                                className={`${styles.selectCard} ${inputs.propertyType === type ? styles.selected : ''}`}
-                                onClick={() => setPropertyType(type as any)}
+                                key={p.id}
+                                className={`${styles.selectCard} ${inputs.projectType === p.id ? styles.selected : ''}`}
+                                onClick={() => setProjectType(p.id as any)}
                               >
-                                <strong>{type.toUpperCase()}</strong>
+                                <strong>{p.label}</strong>
                               </div>
                             ))}
                           </div>
                         </div>
 
                         <div className={styles.inputGroup}>
-                          <label>Carpet Area (sq ft): {inputs.carpetArea}</label>
-                          <input 
-                            type="range" 
-                            min="400" 
-                            max="6000" 
-                            step="50" 
-                            value={inputs.carpetArea} 
-                            onChange={(e) => setCarpetArea(parseInt(e.target.value))}
-                          />
-                          <div className={styles.sliderLabels}>
-                            <span>400 sq ft</span>
-                            <span>6000 sq ft</span>
+                          <label>Project Scope</label>
+                          <div className={styles.cardSelectGrid} style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                            {[
+                              { id: 'full', label: 'Full Home' },
+                              { id: 'kitchen', label: 'Kitchen Only' },
+                              { id: 'bathroom', label: 'Bathroom Only' }
+                            ].map(s => (
+                              <div 
+                                key={s.id}
+                                className={`${styles.selectCard} ${inputs.scope === s.id ? styles.selected : ''}`}
+                                onClick={() => setScope(s.id as any)}
+                              >
+                                <strong>{s.label}</strong>
+                              </div>
+                            ))}
                           </div>
                         </div>
 
-                        <button className={styles.nextBtn} onClick={() => setStep(2)}>Next: Select Quality Tier →</button>
-                      </div>
-                    )}
-
-                    {step === 2 && (
-                      <div className={styles.stepContent}>
-                        <div className={styles.tierSelection}>
-                          <div 
-                            className={`${styles.tierCard} ${inputs.tier === 'essential' ? styles.tierSelected : ''}`}
-                            onClick={() => setTier('essential')}
-                          >
-                            <div className={styles.tierHeader}>
-                              <h3>Essential</h3>
-                              <span>Efficient & Durable</span>
+                        {inputs.scope === 'full' && (
+                          <div className={styles.inputGroup}>
+                            <label>No. of Rooms (Configuration)</label>
+                            <div className={styles.cardSelectGrid}>
+                              {['1bhk', '2bhk', '3bhk', '4bhk', '5bhk', 'villa'].map(type => (
+                                <div 
+                                  key={type}
+                                  className={`${styles.selectCard} ${inputs.propertyType === type ? styles.selected : ''}`}
+                                  onClick={() => setPropertyType(type as any)}
+                                >
+                                  <strong>{type === 'villa' ? 'VILLA' : type.toUpperCase()}</strong>
+                                </div>
+                              ))}
                             </div>
-                            <ul className={styles.tierList}>
-                              {TIER_SPECS.essential.map((s, i) => <li key={i}>{s}</li>)}
-                            </ul>
                           </div>
+                        )}
 
-                          <div 
-                            className={`${styles.tierCard} ${inputs.tier === 'premium' ? styles.tierSelected : ''}`}
-                            onClick={() => setTier('premium')}
-                          >
-                            <div className={styles.mostPopular}>Most Recommended</div>
-                            <div className={styles.tierHeader}>
-                              <h3>Premium</h3>
-                              <span>Luxury Performance</span>
-                            </div>
-                            <ul className={styles.tierList}>
-                              {TIER_SPECS.premium.map((s, i) => <li key={i}>{s}</li>)}
-                            </ul>
+                        <div className={styles.inputGroup}>
+                          <label>Upload 2D Floor Plan (Optional)</label>
+                          <div className={styles.uploadBox}>
+                            <input 
+                              type="file" 
+                              accept="image/*,.pdf" 
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  const url = URL.createObjectURL(file);
+                                  setFloorPlan(url);
+                                }
+                              }} 
+                              id="floorPlanUpload"
+                              className={styles.fileInput}
+                            />
+                            <label htmlFor="floorPlanUpload" className={styles.uploadLabel}>
+                              {inputs.floorPlan ? '✓ Plan Uploaded' : 'Drag or click to upload 2D Drawing'}
+                            </label>
                           </div>
-
-                          <div 
-                            className={`${styles.tierCard} ${inputs.tier === 'luxury' ? styles.tierSelected : ''}`}
-                            onClick={() => setTier('luxury')}
-                          >
-                            <div className={styles.tierHeader}>
-                              <h3>Luxury</h3>
-                              <span>Uncompromising Artistry</span>
-                            </div>
-                            <ul className={styles.tierList}>
-                              {TIER_SPECS.luxury.map((s, i) => <li key={i}>{s}</li>)}
-                            </ul>
-                          </div>
+                          <p className={styles.fieldNote}>Upload your builder's drawing for a surgical breakdown.</p>
                         </div>
 
-                        <button className={styles.nextBtn} onClick={() => setStep(3)}>Next: Refine Quantities →</button>
-                        <button className={styles.backBtn} onClick={() => setStep(1)}>← Back</button>
+                        {inputs.scope === 'full' && (
+                          <div className={styles.inputGroup}>
+                            <label>Approx. Carpet Area: {inputs.carpetArea} sq ft</label>
+                            <input 
+                              type="range" min="400" max="8000" step="100" 
+                              value={inputs.carpetArea} 
+                              onChange={(e) => setCarpetArea(parseInt(e.target.value))}
+                            />
+                          </div>
+                        )}
+
+                        <button className={styles.nextBtn} onClick={() => setStep(2)}>
+                          {inputs.scope === 'full' ? 'Next: Configure Floor Plan →' : 'Next: Configure Space →'}
+                        </button>
                       </div>
                     )}
 
-                    {step === 3 && (
+                    {step === 2 && inputs.scope === 'full' && (
                       <div className={styles.stepContent}>
+                        <h4 className={styles.sectionTitle}>Precision Floor Plan Mapping</h4>
+                        {inputs.floorPlan && (
+                          <div className={styles.planPreview}>
+                            <img src={inputs.floorPlan as string} alt="Floor Plan" />
+                            <div className={styles.planOverlay}>
+                              <span className={styles.aiTag}>✦ AI MAPPING ACTIVE</span>
+                            </div>
+                          </div>
+                        )}
                         <div className={styles.itemizedList}>
                           {inputs.items.map(item => (
                             <div key={item.id} className={styles.itemRow}>
                               <div className={styles.itemInfo}>
                                 <strong>{item.name}</strong>
-                                <span>{item.category} • {formatINR(item.rates[inputs.tier])}/{item.unit}</span>
+                                <span>{item.room} • {item.unit}</span>
+                                <div className={styles.specBadge}>{item.specs[inputs.tier]}</div>
                               </div>
                               <div className={styles.itemControl}>
                                 <input 
@@ -290,15 +342,206 @@ export default function BudgetEstimatorPage() {
                             className={`${styles.moduleToggle} ${inputs.includeCivil ? styles.toggled : ''}`}
                             onClick={() => setIncludeCivil(!inputs.includeCivil)}
                           >
-                            <div className={styles.moduleIcon}>🏗️</div>
+                            <span style={{ fontSize: '1.5rem' }}>🏗️</span>
                             <div>
                               <strong>Include Civil Work</strong>
-                              <span>Plumbing, Tiling, Electrical shifts</span>
+                              <span>Plumbing, tiling & electrical shifts.</span>
                             </div>
                           </div>
                         </div>
 
+                        <button className={styles.nextBtn} onClick={() => setStep(3)}>Next: Select Material Tier →</button>
+                        <button className={styles.backBtn} onClick={() => setStep(1)}>← Back</button>
+                      </div>
+                    )}
+
+                    {step === 2 && inputs.scope === 'kitchen' && (
+                      <div className={styles.stepContent}>
+                        <h4 className={styles.sectionTitle}>Kitchen Specialized Config</h4>
+                        
+                        <div className={styles.inputGroup}>
+                          <label>Layout Type</label>
+                          <div className={styles.cardSelectGrid} style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                            {['straight', 'l-shape', 'u-shape', 'parallel', 'island'].map(l => (
+                              <div 
+                                key={l}
+                                className={`${styles.selectCard} ${inputs.kitchenLayout === l ? styles.selected : ''}`}
+                                onClick={() => setKitchenConfig({ kitchenLayout: l as any })}
+                              >
+                                <strong>{l.toUpperCase()}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                          <label>Countertop</label>
+                          <select 
+                            value={inputs.kitchenCountertop} 
+                            onChange={(e) => setKitchenConfig({ kitchenCountertop: e.target.value as any })}
+                          >
+                            <option value="granite">Granite (Standard)</option>
+                            <option value="quartz">Quartz (Premium)</option>
+                            <option value="nano-white">Nano-White (Luxury)</option>
+                          </select>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                          <label>Hardware</label>
+                          <div className={styles.cardSelectGrid} style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                            {[
+                              { id: 'basic', label: 'Manual' },
+                              { id: 'soft-close', label: 'Soft-Close' },
+                              { id: 'premium-blum', label: 'Blum Elite' }
+                            ].map(h => (
+                              <div 
+                                key={h.id}
+                                className={`${styles.selectCard} ${inputs.kitchenHardware === h.id ? styles.selected : ''}`}
+                                onClick={() => setKitchenConfig({ kitchenHardware: h.id as any })}
+                              >
+                                <strong>{h.label}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                          <div 
+                            className={`${styles.moduleToggle} ${inputs.kitchenAppliances === 'built-in' ? styles.toggled : ''}`}
+                            onClick={() => setKitchenConfig({ kitchenAppliances: inputs.kitchenAppliances === 'built-in' ? 'freestanding' : 'built-in' })}
+                          >
+                            <span style={{ fontSize: '1.5rem' }}>🍳</span>
+                            <div>
+                              <strong>Built-in Appliances</strong>
+                              <span>Integrated Hob & Chimney provision.</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button className={styles.nextBtn} onClick={() => setStep(3)}>Next: Select Material Tier →</button>
+                        <button className={styles.backBtn} onClick={() => setStep(1)}>← Back</button>
+                      </div>
+                    )}
+
+                    {step === 2 && inputs.scope === 'bathroom' && (
+                      <div className={styles.stepContent}>
+                        <h4 className={styles.sectionTitle}>Bathroom Specialized Config</h4>
+                        
+                        <div className={styles.inputGroup}>
+                          <label>Tiling & Civil</label>
+                          <div className={styles.cardSelectGrid}>
+                            {[
+                              { id: 'dado', label: 'Dado Height' },
+                              { id: 'full-height', label: 'Full Height' }
+                            ].map(t => (
+                              <div 
+                                key={t.id}
+                                className={`${styles.selectCard} ${inputs.bathTiling === t.id ? styles.selected : ''}`}
+                                onClick={() => setBathConfig({ bathTiling: t.id as any })}
+                              >
+                                <strong>{t.label}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                          <label>Fixtures (CP & Sanitary)</label>
+                          <select 
+                            value={inputs.bathFixtures} 
+                            onChange={(e) => setBathConfig({ bathFixtures: e.target.value as any })}
+                          >
+                            <option value="standard">Standard (Jaquar/Hindware)</option>
+                            <option value="premium">Premium (Grohe/TOTO)</option>
+                            <option value="luxury-kohler">Luxury (Kohler/Artize)</option>
+                          </select>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                          <label>Glass Partition</label>
+                          <div className={styles.cardSelectGrid}>
+                             {[
+                              { id: 'none', label: 'None' },
+                              { id: 'fixed', label: 'Fixed Panel' },
+                              { id: 'sliding', label: 'Sliding Door' }
+                            ].map(p => (
+                              <div 
+                                key={p.id}
+                                className={`${styles.selectCard} ${inputs.bathPartition === p.id ? styles.selected : ''}`}
+                                onClick={() => setBathConfig({ bathPartition: p.id as any })}
+                              >
+                                <strong>{p.label}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <button className={styles.nextBtn} onClick={() => setStep(3)}>Next: Select Material Tier →</button>
+                        <button className={styles.backBtn} onClick={() => setStep(1)}>← Back</button>
+                      </div>
+                    )}
+
+                    {step === 3 && (
+                      <div className={styles.stepContent}>
+                        <h4 className={styles.sectionTitle}>Select Quality Philosophy</h4>
+                        <div className={styles.tierSelection}>
+                          {(['essential', 'premium', 'luxury'] as MaterialTier[]).map(t => (
+                            <div 
+                              key={t}
+                              className={`${styles.tierCard} ${inputs.tier === t ? styles.tierSelected : ''}`}
+                              onClick={() => setTier(t)}
+                            >
+                              {t === 'premium' && <div className={styles.mostPopular}>Recommended</div>}
+                              <div className={styles.tierHeader}>
+                                <h3>{t.charAt(0).toUpperCase() + t.slice(1)}</h3>
+                              </div>
+                              <ul className={styles.tierList}>
+                                {TIER_SPECS[t].map((s, i) => <li key={i}>{s}</li>)}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className={styles.compareWrapper}>
+                           <table className={styles.compareTable}>
+                             <thead>
+                               <tr><th>Category</th><th>Essential</th><th>Premium</th><th>Luxury</th></tr>
+                             </thead>
+                             <tbody>
+                               <tr><td>Woodwork</td><td>BWR Ply</td><td>BWP Marine</td><td>Full BWP + PU</td></tr>
+                               <tr><td>Hardware</td><td>Ozone</td><td>Hettich</td><td>Blum Elite</td></tr>
+                               <tr><td>Finishes</td><td>Laminate</td><td>Acrylic/Matte</td><td>Veneer/Leather</td></tr>
+                             </tbody>
+                           </table>
+                        </div>
+
+                        <button className={styles.nextBtn} onClick={() => setStep(4)}>Review Final Estimate →</button>
                         <button className={styles.backBtn} onClick={() => setStep(2)}>← Back</button>
+                      </div>
+                    )}
+
+                    {step === 4 && (
+                      <div className={styles.stepContent}>
+                        <div className={styles.summaryWrap}>
+                          <h4 className={styles.sectionTitle}>Project Exclusions</h4>
+                          <div className={styles.exclusions}>
+                            <h5>Not included in this estimate:</h5>
+                            <ul>
+                              {EXCLUSIONS.map((e, i) => <li key={i}>{e}</li>)}
+                            </ul>
+                          </div>
+                          
+                          <div style={{ marginTop: '2rem' }}>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                              This estimate is based on 2026 market benchmarks for <strong>{inputs.locality ? `${inputs.locality}, ` : ''}{inputs.city}</strong>. 
+                              The actual BOQ may vary by +/- 10% based on site conditions.
+                            </p>
+                            <button className={styles.nextBtn} onClick={() => setShowLeadModal(true)}>
+                              Unlock Itemized BOQ PDF →
+                            </button>
+                          </div>
+                        </div>
+                        <button className={styles.backBtn} onClick={() => setStep(3)}>← Back to Materials</button>
                       </div>
                     )}
                   </div>
@@ -310,26 +553,16 @@ export default function BudgetEstimatorPage() {
                     <div className={styles.totalDisplay}>
                       <span className={styles.totalLabel}>Projected Investment</span>
                       <h2 className={styles.totalValue}>{formatINR(results.grandTotal)}</h2>
-                      <p className={styles.gstNote}>Includes GST (18%) and Designer Fee ({inputs.designerFeePercent}%)</p>
+                      <p className={styles.gstNote}>Includes {inputs.designerFeePercent}% fee & 18% GST</p>
                     </div>
 
                     <div className={styles.chartWrapper}>
-                      <h4 className={styles.sectionTitle}>Budget Distribution</h4>
+                      <h4 className={styles.sectionTitle}>Budget by Space</h4>
                       <div className={styles.chartContainer}>
-                        <ResponsiveContainer width="99%" height={260}>
-                          <PieChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }} width={300} height={260}>
-                            <Pie
-                              data={chartData}
-                              cx="50%"
-                              cy="50%"
-                              innerRadius={60}
-                              outerRadius={80}
-                              paddingAngle={5}
-                              dataKey="value"
-                            >
-                              {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                              ))}
+                        <ResponsiveContainer width="100%" height={260}>
+                          <PieChart>
+                            <Pie data={chartData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
+                              {chartData.map((_, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)}
                             </Pie>
                             <RechartsTooltip formatter={(val) => formatINR(val as number)} />
                             <Legend verticalAlign="bottom" height={36}/>
@@ -344,29 +577,22 @@ export default function BudgetEstimatorPage() {
                         Expert Design Strategy
                       </div>
                       <div className={`${styles.aiText} ${isAiLoading ? styles.loadingText : ''}`}>
-                        {isAiLoading ? (
-                          "Calculating market fluctuations and labor cost variances..."
-                        ) : aiInsight ? (
-                          aiInsight
-                        ) : (
-                          `For a ${inputs.propertyType.toUpperCase()} in ${inputs.city}, opting for the ${inputs.tier} 
-                          specification ensures high longevity. We recommend allocating 40% to woodwork for maximum utility.`
-                        )}
+                        {isAiLoading ? "Syncing with supply chain benchmarks..." : aiInsight}
                       </div>
                     </div>
 
                     <div className={styles.chartActions}>
                       <button className={styles.shareBtn} onClick={handleWhatsAppShare}>
-                        <span>📲</span> Get Detailed BOQ on WhatsApp
+                        Get Full BOQ on WhatsApp
                       </button>
                     </div>
 
                     {isGated && (
                       <div className={styles.gateOverlay}>
                         <div className={styles.gateContent}>
-                          <h3>Unlock Itemized BOQ</h3>
-                          <p>Get a precise material list and brand specifications.</p>
-                          <button className="btn btn-primary" onClick={() => setShowLeadModal(true)}>Get Full Estimate →</button>
+                          <h3>Unlock the BOQ</h3>
+                          <p>Get the precise material brand names and quantities.</p>
+                          <button className="btn btn-primary" onClick={() => setShowLeadModal(true)}>Reveal Detail →</button>
                         </div>
                       </div>
                     )}
@@ -376,31 +602,20 @@ export default function BudgetEstimatorPage() {
             </div>
           </section>
 
-          {/* --- LEAD MODAL --- */}
           {showLeadModal && (
             <div className={styles.modalOverlay}>
               <div className={styles.modal}>
                 <button className={styles.closeBtn} onClick={() => setShowLeadModal(false)}>✕</button>
                 <div className="gold-line" />
-                <h2>Expert Estimate Ready</h2>
-                <p>Receive your detailed bill of quantities (BOQ) with brand recommendations for {inputs.city}.</p>
+                <h2>Expert Quote Ready</h2>
+                <p>Register to receive your detailed Bill of Quantities (BOQ) with brand recommendations for {inputs.city}.</p>
                 <form onSubmit={handleLeadSubmit}>
-                  <div className={styles.inputGroup}>
-                    <label>Full Name</label>
-                    <input type="text" name="fullName" required placeholder="John Doe" />
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <label>WhatsApp Number</label>
-                    <input type="tel" name="phone" required placeholder="+91 90000 00000" />
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <label>Email Address</label>
-                    <input type="email" name="email" required placeholder="john@example.com" />
-                  </div>
+                  <div className={styles.inputGroup}><label>Full Name</label><input type="text" required placeholder="John Doe" /></div>
+                  <div className={styles.inputGroup}><label>WhatsApp Number</label><input type="tel" required placeholder="+91 90000 00000" /></div>
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
                     Reveal Detailed Breakdown →
                   </button>
-                  <p className={styles.formNote}>*Your privacy is paramount. No spam, only architectural precision.</p>
+                  <p className={styles.formNote}>*Your privacy is paramount. No spam.</p>
                 </form>
               </div>
             </div>
@@ -412,3 +627,4 @@ export default function BudgetEstimatorPage() {
     </main>
   );
 }
+

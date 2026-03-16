@@ -4,11 +4,14 @@
 // ============================================================
 
 export type MaterialTier = 'essential' | 'premium' | 'luxury';
-export type PropertyType = '1bhk' | '2bhk' | '3bhk' | '4bhk' | 'villa';
+export type PropertyType = '1bhk' | '2bhk' | '3bhk' | '4bhk' | '5bhk' | 'villa' | 'independent-home' | 'apartment' | 'commercial' | 'hospitality';
+export type ProjectScope = 'full' | 'kitchen' | 'bathroom';
+export type KitchenLayout = 'straight' | 'l-shape' | 'u-shape' | 'parallel' | 'island';
 
 export interface BOQItem {
   id: string;
   category: 'Woodwork' | 'Kitchen' | 'Ceiling' | 'Walls' | 'Electrical' | 'Civil' | 'Other';
+  room: 'Living' | 'Kitchen' | 'Bedroom 1' | 'Bedroom 2' | 'Bedroom 3' | 'Toilets' | 'Dining' | 'Balcony';
   name: string;
   unit: 'sq ft' | 'running ft' | 'per pt' | 'unit' | 'total';
   quantity: number;
@@ -17,27 +20,51 @@ export interface BOQItem {
     premium: number;
     luxury: number;
   };
+  specs: {
+    essential: string;
+    premium: string;
+    luxury: string;
+  };
   description?: string;
 }
 
 export interface EstimatorInputs {
+  scope: ProjectScope;
+  projectType: 'independent-home' | 'apartment' | 'commercial' | 'hospitality';
   propertyType: PropertyType;
+  floorPlan?: File | string | null;
   city: 'Bangalore' | 'Mumbai' | 'Jaipur' | 'Delhi' | 'Pune';
+  locality?: string;
   tier: MaterialTier;
   carpetArea: number; // in sq ft
   items: BOQItem[];
   includeCivil: boolean;
   designerFeePercent: number;
+  
+  // Kitchen Micro-Calculator Fields
+  kitchenLayout?: KitchenLayout;
+  kitchenCountertop?: 'granite' | 'quartz' | 'nano-white';
+  kitchenShutter?: 'laminate' | 'acrylic' | 'glass-ceramic';
+  kitchenHardware?: 'basic' | 'soft-close' | 'premium-blum';
+  kitchenAppliances?: 'freestanding' | 'built-in';
+
+  // Bathroom Micro-Calculator Fields
+  bathTiling?: 'dado' | 'full-height';
+  bathFixtures?: 'standard' | 'premium' | 'luxury-kohler';
+  bathVanity?: 'minimal' | 'hdhmr-storage';
+  bathPartition?: 'none' | 'fixed' | 'sliding';
 }
 
 export interface EstimatorResult {
   baseTotal: number;
   categoryTotals: Record<string, number>;
+  roomTotals: Record<string, number>;
   designerFee: number;
   gst: number;
   grandTotal: number;
   tierAesthetic: {
     accentColor: string;
+    bgColor: string;
     label: string;
   };
   cityMultiplier: number;
@@ -53,111 +80,221 @@ export const CITY_MULTIPLIERS: Record<string, number> = {
   Pune: 0.95,
 };
 
+export const ARCH_MULTIPLIERS: Record<string, number> = {
+  'apartment': 1.0,
+  'independent-home': 1.15,
+  'commercial': 1.4,
+  'hospitality': 1.8,
+};
+
 export const WASTE_MARGIN = 0.05; // 5% standard waste
 
-const TIER_AESTHETICS: Record<MaterialTier, { accentColor: string; label: string }> = {
-  essential: { accentColor: '#2C7A7B', label: 'Efficient & Functional' },
-  premium: { accentColor: '#C4922A', label: 'Superior Craftsmanship' },
-  luxury: { accentColor: '#1A1712', label: 'Elite Bespoke Statement' },
+const TIER_AESTHETICS: Record<MaterialTier, { accentColor: string; bgColor: string; label: string }> = {
+  essential: { accentColor: '#2C7A7B', bgColor: '#F8F9F9', label: 'Efficient & Functional' },
+  premium: { accentColor: '#C4922A', bgColor: '#FCFAF6', label: 'Superior Craftsmanship' },
+  luxury: { accentColor: '#D4AF37', bgColor: '#1A1712', label: 'Elite Bespoke Statement' },
 };
 
 // --- Default BOQ Items Template ---
 
 export const DEFAULT_ITEMS: BOQItem[] = [
   {
-    id: 'wardrobe',
+    id: 'tv-unit',
     category: 'Woodwork',
-    name: 'Wardrobe (Full Height)',
+    room: 'Living',
+    name: 'Entertainment Unit (Floating)',
     unit: 'sq ft',
-    quantity: 100, // Default for 3BHK
-    rates: { essential: 1200, premium: 1800, luxury: 3500 },
-    description: 'BWR/BWP Ply with choice of Laminate, Acrylic or Veneer finishes.'
+    quantity: 35,
+    rates: { essential: 950, premium: 1600, luxury: 2800 },
+    specs: {
+      essential: "Commercial Ply + Standard Finish",
+      premium: "Greenply BWP + Matte Acrylic",
+      luxury: "Marine Ply + Exotic Veneer + PU"
+    }
   },
   {
-    id: 'kitchen',
+    id: 'shoe-rack',
+    category: 'Woodwork',
+    room: 'Living',
+    name: 'Foyer Shoe Console',
+    unit: 'sq ft',
+    quantity: 12,
+    rates: { essential: 850, premium: 1400, luxury: 2200 },
+    specs: {
+      essential: "Pre-lam Particle Board",
+      premium: "HDHMR + Glossy Laminate",
+      luxury: "BWP Ply + Charcoal Louvers"
+    }
+  },
+  {
+    id: 'kitchen-main',
     category: 'Kitchen',
-    name: 'Modular Kitchen Cabinets',
+    room: 'Kitchen',
+    name: 'Modular Base & Wall Cabinets',
     unit: 'running ft',
     quantity: 15,
-    rates: { essential: 1500, premium: 2500, luxury: 4500 },
-    description: 'Marine ply cabinets with soft-close hardware and tailored organizers.'
+    rates: { essential: 1800, premium: 3200, luxury: 5800 },
+    specs: {
+      essential: "BWR Ply + Manual Hardware",
+      premium: "BWP Ply + Hettich Soft-close",
+      luxury: "Anti-fingerprint Matte + Blum Aventos"
+    }
   },
   {
-    id: 'ceiling',
-    category: 'Ceiling',
-    name: 'False Ceiling (Designer)',
+    id: 'wardrobe-1',
+    category: 'Woodwork',
+    room: 'Bedroom 1',
+    name: 'Floor-to-Ceiling Wardrobe',
     unit: 'sq ft',
-    quantity: 1200,
-    rates: { essential: 90, premium: 160, luxury: 350 },
-    description: 'Saint-Gobain Gypsum with strategic LED cove lighting.'
+    quantity: 45,
+    rates: { essential: 1200, premium: 1850, luxury: 3800 },
+    specs: {
+      essential: "Standard BWR + Basic Handles",
+      premium: "BWP Marine + Profile Handles",
+      luxury: "BWP + Leather/Mirror Panels + Internal Auto-lights"
+    }
   },
   {
-    id: 'walls',
-    category: 'Walls',
-    name: 'Premium Wall Finishes',
-    unit: 'sq ft',
-    quantity: 3500,
-    rates: { essential: 25, premium: 55, luxury: 120 },
-    description: 'Multi-coat Emulsion, Royal or Venetian Luster finishes.'
+    id: 'bed-1',
+    category: 'Woodwork',
+    room: 'Bedroom 1',
+    name: 'Queen Bed with Hydraulic Storage',
+    unit: 'unit',
+    quantity: 1,
+    rates: { essential: 35000, premium: 65000, luxury: 145000 },
+    specs: {
+      essential: "Plywood + Standard Fabric",
+      premium: "Teak Wood + Premium Velvet Headboard",
+      luxury: "Fully Customized Italian Design + Suede Wrap"
+    }
   },
   {
-    id: 'electrical',
-    category: 'Electrical',
-    name: 'Electrical Refitting',
-    unit: 'per pt',
-    quantity: 40,
-    rates: { essential: 600, premium: 1200, luxury: 2500 },
-    description: 'Modular switch plates and customized circuit mapping.'
-  },
-  {
-    id: 'flooring',
+    id: 'bath-vanity',
     category: 'Civil',
-    name: 'Tiling / Flooring Refresh',
+    room: 'Toilets',
+    name: 'Floating Vanity with Mirror Cabinet',
+    unit: 'unit',
+    quantity: 2,
+    rates: { essential: 12000, premium: 28000, luxury: 65000 },
+    specs: {
+      essential: "Wall-mount Basic",
+      premium: "BWP Ply + Quartz Countertop",
+      luxury: "Stone Slab Pedestal + LED Defogger Mirror"
+    }
+  },
+  {
+    id: 'ceiling-global',
+    category: 'Ceiling',
+    room: 'Living',
+    name: 'Full False Ceiling (Saint-Gobain)',
     unit: 'sq ft',
-    quantity: 1200,
-    rates: { essential: 45, premium: 85, luxury: 180 },
-    description: 'Italian marble or large-format vitrified tiling labor and materials.'
+    quantity: 1000,
+    rates: { essential: 100, premium: 185, luxury: 450 },
+    specs: {
+      essential: "Basic Perimeter Grid",
+      premium: "Cove Lighting + Shadow Gaps",
+      luxury: "Multi-layered Acoustic + Magnetic Tracks"
+    }
   }
 ];
 
 // --- Auto-populate Quantities based on BHK ---
 
 export function getAdjustedItems(bhk: PropertyType, carpetArea: number): BOQItem[] {
-  const multiplier = {
-    '1bhk': 0.4,
-    '2bhk': 0.7,
+  const roomMultipliers: Record<string, number> = {
+    '1bhk': 0.5,
+    '2bhk': 0.8,
     '3bhk': 1.0,
-    '4bhk': 1.4,
-    'villa': 2.2,
-  }[bhk] || 1.0;
+    '4bhk': 1.3,
+    '5bhk': 1.6,
+    'villa': 2.5,
+    'independent-home': 2.2,
+    'apartment': 1.0,
+    'commercial': 1.8,
+    'hospitality': 3.0,
+  };
+  
+  const multiplier = roomMultipliers[bhk] || 1.0;
 
   return DEFAULT_ITEMS.map(item => {
-    let q = item.quantity * multiplier;
-    if (item.id === 'ceiling' || item.id === 'flooring') q = carpetArea;
-    if (item.id === 'walls') q = carpetArea * 3.5; // Rough estimate for wall area
-    return { ...item, quantity: Math.round(q) };
+    let q = item.quantity;
+    
+    // Scale quantity based on property type for certain items
+    if (['wardrobe-1', 'vanity', 'bath-vanity'].includes(item.id)) {
+      q = Math.round(item.quantity * multiplier);
+    }
+    
+    // Area-based scaling
+    if (item.id === 'ceiling-global') {
+      q = carpetArea;
+    }
+
+    return { ...item, quantity: q };
   });
 }
 
 // --- Main Calculation Engine ---
 
 export function calculateBudget(inputs: EstimatorInputs): EstimatorResult {
-  const { city, tier, items, includeCivil, designerFeePercent } = inputs;
+  const { city, tier, items, includeCivil, designerFeePercent, scope, projectType } = inputs;
   const cityMultiplier = CITY_MULTIPLIERS[city] || 1.0;
+  const archMultiplier = ARCH_MULTIPLIERS[projectType || 'apartment'] || 1.0;
+  const totalMultiplier = cityMultiplier * archMultiplier;
 
   let baseTotal = 0;
   const categoryTotals: Record<string, number> = {};
+  const roomTotals: Record<string, number> = {};
 
-  items.forEach(item => {
-    // Skip civil if toggled off
-    if (item.category === 'Civil' && !includeCivil) return;
+  if (scope === 'full') {
+    items.forEach(item => {
+      // Skip civil if toggled off
+      if (item.category === 'Civil' && !includeCivil) return;
 
-    const baseRate = item.rates[tier];
-    const cost = (baseRate * cityMultiplier * item.quantity) * (1 + WASTE_MARGIN);
+      const baseRate = item.rates[tier];
+      const cost = (baseRate * totalMultiplier * item.quantity) * (1 + WASTE_MARGIN);
+      
+      baseTotal += cost;
+      categoryTotals[item.category] = (categoryTotals[item.category] || 0) + cost;
+      roomTotals[item.room] = (roomTotals[item.room] || 0) + cost;
+    });
+  } else if (scope === 'kitchen') {
+    // Specialized Kitchen logic
+    const layoutMultipliers: Record<KitchenLayout, number> = {
+      'straight': 1.0, 'l-shape': 1.2, 'parallel': 1.5, 'u-shape': 1.8, 'island': 2.2
+    };
     
-    baseTotal += cost;
-    categoryTotals[item.category] = (categoryTotals[item.category] || 0) + cost;
-  });
+    const materialRates = {
+      countertop: { 'granite': 800, 'quartz': 2200, 'nano-white': 4500 },
+      shutter: { 'laminate': 900, 'acrylic': 1800, 'glass-ceramic': 3500 },
+      hardware: { 'basic': 15000, 'soft-close': 45000, 'premium-blum': 95000 }
+    };
+
+    const multiplier = layoutMultipliers[inputs.kitchenLayout || 'straight'];
+    const hardwareCost = materialRates.hardware[inputs.kitchenHardware || 'basic'];
+    const structureCost = (inputs.kitchenCountertop ? materialRates.countertop[inputs.kitchenCountertop] : 1000) * 45 * multiplier;
+    const shutterCost = (inputs.kitchenShutter ? materialRates.shutter[inputs.kitchenShutter] : 1000) * 60;
+    const applianceExtra = inputs.kitchenAppliances === 'built-in' ? 45000 : 0;
+
+    baseTotal = (structureCost + shutterCost + hardwareCost + applianceExtra) * cityMultiplier;
+    categoryTotals['Kitchen'] = baseTotal;
+    roomTotals['Kitchen'] = baseTotal;
+  } else if (scope === 'bathroom') {
+    // Specialized Bathroom logic
+    const bathRates = {
+      waterproofing: 15000,
+      tiling: inputs.bathTiling === 'full-height' ? 45000 : 25000,
+      fixtures: { 'standard': 25000, 'premium': 55000, 'luxury-kohler': 125000 },
+      vanity: inputs.bathVanity === 'hdhmr-storage' ? 35000 : 12000,
+      partition: { 'none': 0, 'fixed': 18000, 'sliding': 32000 }
+    };
+
+    const fixtureCost = bathRates.fixtures[inputs.bathFixtures || 'standard'];
+    const partitionCost = bathRates.partition[inputs.bathPartition || 'none'];
+    
+    baseTotal = (bathRates.waterproofing + bathRates.tiling + fixtureCost + bathRates.vanity + partitionCost) * cityMultiplier;
+    categoryTotals['Civil'] = baseTotal;
+    roomTotals['Toilets'] = baseTotal;
+  }
 
   const designerFee = baseTotal * (designerFeePercent / 100);
   const gst = (baseTotal + designerFee) * 0.18;
@@ -166,6 +303,7 @@ export function calculateBudget(inputs: EstimatorInputs): EstimatorResult {
   return {
     baseTotal,
     categoryTotals,
+    roomTotals,
     designerFee,
     gst,
     grandTotal,

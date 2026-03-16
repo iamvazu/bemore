@@ -15,6 +15,9 @@ interface EstimatorState {
 
   // Actions
   setCity: (city: EstimatorInputs['city']) => void;
+  setLocality: (locality: string) => void;
+  setProjectType: (type: EstimatorInputs['projectType']) => void;
+  setFloorPlan: (file: File | string | null) => void;
   setPropertyType: (type: PropertyType) => void;
   setTier: (tier: MaterialTier) => void;
   setCarpetArea: (area: number) => void;
@@ -22,6 +25,10 @@ interface EstimatorState {
   setDesignerFee: (percent: number) => void;
   updateItemQuantity: (id: string, quantity: number) => void;
   resetToDefaults: () => void;
+
+  setScope: (scope: EstimatorInputs['scope']) => void;
+  setKitchenConfig: (config: Partial<Pick<EstimatorInputs, 'kitchenLayout' | 'kitchenCountertop' | 'kitchenShutter' | 'kitchenHardware' | 'kitchenAppliances'>>) => void;
+  setBathConfig: (config: Partial<Pick<EstimatorInputs, 'bathTiling' | 'bathFixtures' | 'bathVanity' | 'bathPartition'>>) => void;
 
   // Dynamic Results
   results: EstimatorResult;
@@ -31,13 +38,29 @@ const DEFAULT_CARPET_AREA = 1200;
 const DEFAULT_BHK: PropertyType = '3bhk';
 
 const initialInputs: EstimatorInputs = {
+  scope: 'full',
+  projectType: 'apartment',
   propertyType: DEFAULT_BHK,
+  floorPlan: null,
   city: 'Bangalore',
+  locality: '',
   tier: 'premium',
   carpetArea: DEFAULT_CARPET_AREA,
   items: getAdjustedItems(DEFAULT_BHK, DEFAULT_CARPET_AREA),
   includeCivil: true,
   designerFeePercent: 10,
+  
+  // Defaults for micro-calculators
+  kitchenLayout: 'l-shape',
+  kitchenCountertop: 'granite',
+  kitchenShutter: 'laminate',
+  kitchenHardware: 'soft-close',
+  kitchenAppliances: 'freestanding',
+  
+  bathTiling: 'full-height',
+  bathFixtures: 'standard',
+  bathVanity: 'hdhmr-storage',
+  bathPartition: 'none'
 };
 
 export const useCalculatorStore = create<EstimatorState>((set, get) => ({
@@ -47,6 +70,20 @@ export const useCalculatorStore = create<EstimatorState>((set, get) => ({
   setCity: (city) => {
     const newInputs = { ...get().inputs, city };
     set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+  
+  setLocality: (locality) => {
+    const newInputs = { ...get().inputs, locality };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+
+  setProjectType: (type) => {
+    const newInputs = { ...get().inputs, projectType: type };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+
+  setFloorPlan: (file) => {
+    set({ inputs: { ...get().inputs, floorPlan: file } });
   },
 
   setPropertyType: (type) => {
@@ -88,5 +125,20 @@ export const useCalculatorStore = create<EstimatorState>((set, get) => ({
 
   resetToDefaults: () => {
     set({ inputs: initialInputs, results: calculateBudget(initialInputs) });
+  },
+
+  setScope: (scope) => {
+    const newInputs = { ...get().inputs, scope };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+
+  setKitchenConfig: (config) => {
+    const newInputs = { ...get().inputs, ...config };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
+  },
+
+  setBathConfig: (config) => {
+    const newInputs = { ...get().inputs, ...config };
+    set({ inputs: newInputs, results: calculateBudget(newInputs) });
   }
 }));

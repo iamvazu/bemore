@@ -14,8 +14,8 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--nav-height);
-  background: var(--bg-surface);
+  padding-top: 0; 
+  background: #000;
 }
 
 /* Background elements */
@@ -28,7 +28,7 @@
 .heroGlow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 40% 40%, rgba(196, 146, 42, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 30% 50%, rgba(196, 146, 42, 0.15) 0%, transparent 70%);
   pointer-events: none;
   z-index: 3;
 }
@@ -36,7 +36,8 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.4) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.7) 100%),
+              radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -49,17 +50,21 @@
   pointer-events: none;
   z-index: 1;
   opacity: 0.6;
+  filter: brightness(0.8) contrast(1.1);
+  overflow: hidden;
 }
 
 .heroVideo iframe {
-  width: 100vw;
-  height: 56.25vw;
-  min-height: 100vh;
-  min-width: 177.77vh;
+  width: 130vw; /* Aggressive scale to crop all YouTube UI */
+  height: 73.12vw; 
+  min-height: 130vh;
+  min-width: 231.11vh;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
 }
 
 .heroArch1 {
@@ -86,12 +91,26 @@
 
 .heroInner {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: var(--space-4xl);
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: var(--space-xl);
   align-items: center;
-  padding: var(--space-xl) 0;
+  padding: 220px 0 40px; /* Lowered content to clear nav, reduced bottom gap for trust visibility */
   position: relative;
   z-index: 5;
+}
+@media (max-width: 1280px) {
+  .heroInner {
+    grid-template-columns: 1.2fr 0.8fr;
+    padding: 100px 0 40px;
+  }
+}
+@media (max-width: 1100px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-3xl);
+    padding-top: var(--space-4xl);
+  }
 }
 
 /* Hero text — animate in */
@@ -99,6 +118,7 @@
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  padding-left: 10%; /* Move text to the right a little */
 }
 
 .heroContent.heroVisible {
@@ -108,11 +128,17 @@
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: 5.5rem;
-  line-height: 0.95;
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-sm);
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 6vw, 5rem); /* Reduced slightly to save vertical space */
+  line-height: 1.1;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  max-width: 90%;
+}
+@media (max-width: 1100px) {
+  .heroTitle { margin-left: auto; margin-right: auto; max-width: 100%; }
 }
 
 .heroEmphasis {
@@ -120,11 +146,15 @@
 }
 
 .heroSub {
-  font-size: 1.15rem;
-  line-height: 1.4;
-  color: var(--text-secondary);
-  max-width: 580px;
-  margin-bottom: var(--space-lg);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 540px;
+  margin-bottom: var(--space-lg); /* Reduced margin for vertical efficiency */
+  font-weight: 300;
+}
+@media (max-width: 1100px) {
+  .heroSub { margin-left: auto; margin-right: auto; }
 }
 
 .heroCtas {
@@ -132,40 +162,65 @@
   flex-wrap: wrap;
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 20; 
+  margin-top: var(--space-lg);
+}
+
+.heroCtas :global(.btn) {
+  border-radius: 100px;
+  padding: 16px 36px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.heroCtas :global(.btn-ghost) {
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
+}
+
+.heroCtas :global(.btn-ghost:hover) {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #FFFFFF !important;
 }
 
 .heroTrust {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  gap: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-xl);
 }
 
 .heroTrust strong {
-  color: var(--text-secondary);
-  font-weight: 500;
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 /* --- Hero teaser card --- */
 .heroCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(196, 146, 42, 0.15);
   border-radius: var(--radius-xl);
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   opacity: 0;
-  transform: translateY(20px) scale(0.97);
+  transform: translateY(60px) scale(0.95); /* Start lower */
   transition: opacity 1s 0.3s var(--ease-out), transform 1s 0.3s var(--ease-out);
   z-index: 4;
+  box-shadow: var(--shadow-xl);
 }
 
 .heroCard.heroCardVisible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(-20px) scale(1) translateX(-30px); /* Moved top-left and away from edge */
 }
 
 .heroCardTop {
@@ -203,7 +258,7 @@
 .heroMetricValue {
   display: block;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 300;
   color: var(--gold);
   line-height: 1;
@@ -413,26 +468,28 @@
 
 .solutionCard {
   position: relative;
-  height: 420px;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
   border: 1px solid var(--border);
-  transition: transform 0.5s var(--ease-out), border-color 0.5s;
+  transition: transform 0.6s var(--ease-out), border-color 0.6s, box-shadow 0.6s;
   text-decoration: none;
+  background: var(--bg-card);
+  height: 100%;
 }
 
 .solutionCard:hover {
-  transform: translateY(-8px);
+  transform: translateY(-12px) scale(1.02);
   border-color: var(--gold);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 20px rgba(196, 146, 42, 0.2);
 }
 
 .solutionBg {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  height: 340px;
+  width: 100%;
+  overflow: hidden;
   z-index: 1;
   transition: transform 0.8s var(--ease-out);
 }
@@ -445,9 +502,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
-  filter: grayscale(0.5);
-  transition: opacity 0.5s, filter 0.5s;
+  opacity: 1;
+  filter: none; /* Removed all dimming filters per user request */
+  transition: transform 0.8s var(--ease-out);
 }
 
 .solutionCard:hover .solutionBg img {
@@ -456,15 +513,18 @@
 }
 
 .solutionOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(26, 23, 18, 0.95) 0%, rgba(26, 23, 18, 0.2) 100%);
-  z-index: 2;
+  display: none;
 }
 
 .solutionContent {
   position: relative;
   z-index: 3;
+  padding: var(--space-xl);
+  background: #FFFFFF; /* Pure white background for text area */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
 }
 
 .solutionNumber {
@@ -480,14 +540,15 @@
   font-size: 2.2rem;
   margin-bottom: var(--space-sm);
   color: var(--text-primary);
+  font-weight: 300;
 }
 
 .solutionCard p {
   font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
-  line-height: 1.5;
-  max-width: 90%;
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+  flex-grow: 1;
 }
 
 .solutionCta {
@@ -830,6 +891,7 @@
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 1s, transform 1s;
+  color: #FFFFFF;
 }
 
 .roiTeaserInner.roiTeaserVisible {
@@ -839,6 +901,7 @@
 
 .roiTeaserTitle {
   margin: var(--space-md) 0;
+  color: #FFFFFF;
 }
 
 .roiFeatures {
@@ -849,13 +912,19 @@
   gap: 10px;
 }
 
+.roiTeaserText p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .roiFeatures li {
   display: flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-brand);
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .checkGold {

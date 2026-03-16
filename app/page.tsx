@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -81,13 +82,73 @@ function LocalityPill({ name, mf, delay }: { name: string; mf: number; delay: nu
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  const [locality, setLocality] = useState('Jayanagar, Bangalore');
+  const [bhkIndex, setBhkIndex] = useState(0);
+
+  const bhkTypes = [
+    { type: '1BHK', essential: '12L', premium: '18L', luxury: '28L', progress: '92%' },
+    { type: '2BHK', essential: '18L', premium: '28L', luxury: '45L', progress: '94%' },
+    { type: '3BHK', essential: '28L', premium: '45L', luxury: '75L', progress: '95%' },
+  ];
+
+  const taglines = [
+    "Best Interior Designer Bangalore",
+    "Best Architect, Bangalore"
+  ];
+
   const { ref: statsRef, inView: statsInView } = useInView();
   const { ref: servicesRef, inView: servicesInView } = useInView(0.1);
   const { ref: roiRef, inView: roiInView } = useInView(0.1);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    
+    // Tagline rotation
+    const tagInterval = setInterval(() => {
+      setTaglineIndex((prev) => (prev + 1) % taglines.length);
+    }, 4000);
+
+    // BHK rotation
+    const bhkInterval = setInterval(() => {
+      setBhkIndex((prev) => (prev + 1) % bhkTypes.length);
+    }, 3500);
+
+    // Real Locality Detection
+    const detectLocation = async () => {
+      try {
+        // Step 1: Rapid IP detection (No prompt)
+        const ipRes = await fetch('https://ipapi.co/json/');
+        const ipData = await ipRes.json();
+        if (ipData.city) {
+          setLocality(ipData.city === 'Bengaluru' ? 'Bangalore' : ipData.city);
+        }
+
+        // Step 2: High-precision GPS (Prompted)
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(async (pos) => {
+            const { latitude, longitude } = pos.coords;
+            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=14`);
+            const data = await res.json();
+            if (data.address) {
+              const area = data.address.suburb || data.address.neighbourhood || data.address.residential || data.address.locality;
+              const city = data.address.city || data.address.town || 'Bangalore';
+              setLocality(`${area ? area + ', ' : ''}${city}`);
+            }
+          }, (err) => console.log("GPS denied, using IP location"), { timeout: 5000 });
+        }
+      } catch (err) {
+        console.error("Location fetch failed", err);
+      }
+    };
+
+    detectLocation();
+
+    return () => {
+      clearInterval(tagInterval);
+      clearInterval(bhkInterval);
+    };
+  }, [taglines.length, bhkTypes.length]);
 
   const SERVICES = [
     {
@@ -201,7 +262,9 @@ export default function HomePage() {
 
         <div className={`container ${styles.heroInner}`}>
           <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-            <span className="tag">Bengaluru&apos;s #1 Design Investment Studio</span>
+            <span className="tag" style={{ minWidth: '240px', display: 'inline-flex', justifyContent: 'center' }}>
+              {taglines[taglineIndex]}
+            </span>
 
             <h1 className={styles.heroTitle}>
               Design Without Limits.
@@ -214,12 +277,12 @@ export default function HomePage() {
             </p>
 
             <div className={styles.heroCtas}>
-              <Link href="/portfolio" className="btn btn-primary btn-lg" id="hero-cta-portfolio">
-                Explore Our Portfolio
+              <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
+                Budget Estimator
                 <span>→</span>
               </Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-contact">
-                Start Your Project
+              <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)' }}>
+                Book Free Consultation
               </Link>
             </div>
 
@@ -238,27 +301,44 @@ export default function HomePage() {
               <span className="tag">Budget Baseline</span>
               <span className={styles.heroCardLive}>● 2026 RATES</span>
             </div>
-            <div className={styles.heroCardLocality}>Premium 3BHK, Bangalore</div>
-            <div className={styles.heroCardData}>
-              <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>₹28L</span>
-                <span className={styles.heroMetricLabel}>Essential</span>
-              </div>
-              <div className={styles.heroMetricDivider} />
-              <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>₹45L</span>
-                <span className={styles.heroMetricLabel}>Premium</span>
-              </div>
-              <div className={styles.heroMetricDivider} />
-              <div className={styles.heroMetric}>
-                <span className={styles.heroMetricValue}>₹75L</span>
-                <span className={styles.heroMetricLabel}>Luxury</span>
-              </div>
-            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={bhkIndex}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className={styles.heroCardLocality}>Premium {bhkTypes[bhkIndex].type}, {locality}</div>
+                <div className={styles.heroCardData}>
+                  <div className={styles.heroMetric}>
+                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].essential}</span>
+                    <span className={styles.heroMetricLabel}>Essential</span>
+                  </div>
+                  <div className={styles.heroMetricDivider} />
+                  <div className={styles.heroMetric}>
+                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].premium}</span>
+                    <span className={styles.heroMetricLabel}>Premium</span>
+                  </div>
+                  <div className={styles.heroMetricDivider} />
+                  <div className={styles.heroMetric}>
+                    <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].luxury}</span>
+                    <span className={styles.heroMetricLabel}>Luxury</span>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
             <div className={styles.heroCardBar}>
               <div className={styles.heroCardBarLabel}>Transparency Index</div>
               <div className={styles.heroCardBarTrack}>
-                <div className={styles.heroCardBarFill} style={{ width: '95%' }} />
+                <motion.div 
+                  className={styles.heroCardBarFill} 
+                  initial={{ width: 0 }}
+                  animate={{ width: bhkTypes[bhkIndex].progress }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                />
               </div>
               <div className={styles.heroCardBarLegend}>
                 <span>Market Avg</span>
@@ -319,7 +399,6 @@ export default function HomePage() {
               <div className={styles.solutionBg}>
                 <img src="/portfolio-whitefield.jpg" alt="Architectural Design" />
               </div>
-              <div className={styles.solutionOverlay} />
               <div className={styles.solutionContent}>
                 <span className={styles.solutionNumber}>01.</span>
                 <h3>Architectural Design</h3>
@@ -332,7 +411,6 @@ export default function HomePage() {
               <div className={styles.solutionBg}>
                 <img src="/portfolio-indiranagar.jpg" alt="Interior Design" />
               </div>
-              <div className={styles.solutionOverlay} />
               <div className={styles.solutionContent}>
                 <span className={styles.solutionNumber}>02.</span>
                 <h3>Interior Design & Styling</h3>
@@ -345,7 +423,6 @@ export default function HomePage() {
               <div className={styles.solutionBg}>
                 <img src="/portfolio-koramangala.jpg" alt="Commercial Spaces" />
               </div>
-              <div className={styles.solutionOverlay} />
               <div className={styles.solutionContent}>
                 <span className={styles.solutionNumber}>03.</span>
                 <h3>Commercial & Retail Spaces</h3>
@@ -358,7 +435,6 @@ export default function HomePage() {
               <div className={styles.solutionBg}>
                 <img src="/portfolio-bellandur.jpg" alt="Project Management" />
               </div>
-              <div className={styles.solutionOverlay} />
               <div className={styles.solutionContent}>
                 <span className={styles.solutionNumber}>04.</span>
                 <h3>Project Management</h3>
