@@ -13,12 +13,12 @@
 .heroImg {
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: 50% 0%; /* Focus on top/center */
+  transform: scale(1.1); /* Overscan to hide symbol */
   opacity: 1;
 }
 .heroOverlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(90deg, var(--bg) 0%, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.4) 70%, transparent 100%);
-  z-index: 1;
+  display: none; /* Removed all shade/hue */
 }
 .heroLine1 {
   position: absolute; top: 20%; right: 5%;
