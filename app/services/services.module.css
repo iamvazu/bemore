@@ -28,6 +28,37 @@
   animation: fadeInUp 0.8s var(--ease-out) forwards;
 }
 
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  overflow: hidden;
+}
+
+.heroVideo iframe {
+  width: 300%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+@media (min-width: 1024px) {
+  .heroVideo { opacity: 0.8; }
+  .heroVideo iframe {
+    width: 130vw;
+    height: 73.12vw;
+    min-height: 130vh;
+    min-width: 231.11vh;
+  }
+}
+
 .solutionsGrid {
   display: grid;
   grid-template-columns: 1fr;

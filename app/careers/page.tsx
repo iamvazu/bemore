@@ -12,7 +12,7 @@ export default function CareersPage() {
           <img src="/images/careers-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Office" />
           <div className="hero-scrim" />
         </div>
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '50px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
           <div className={styles.heroContent}>
             <span className="tag" style={{ marginBottom: '1.5rem' }}>Join the Studio</span>
             <h1 className="display-h1">

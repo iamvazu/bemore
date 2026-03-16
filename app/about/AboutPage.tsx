@@ -84,7 +84,7 @@ export default function AboutPage() {
           <div className="hero-scrim" />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '50px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
               <h1 className="display-h1">

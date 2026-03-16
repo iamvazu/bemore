@@ -61,27 +61,37 @@
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 3.5rem;
+  padding-top: 1rem;
 }
 
 .infoBlock h4 {
   font-family: var(--font-brand);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--gold);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .infoBlock p {
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 .infoBlock a {
   color: var(--text-primary);
-  transition: color var(--duration-fast);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.infoBlock a:hover {
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-border);
 }
 
 .infoBlock a:hover {
