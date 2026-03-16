@@ -84,30 +84,28 @@ export default function AboutPage() {
           <div className="hero-scrim" />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '90px' }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
-              <h1 className="display-h1">
+            <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`} style={{ marginTop: '-20px' }}>
+              <div className="tag" style={{ margin: '0 0 1rem' }}>The Studio</div>
+              
+              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1.1' }}>
                 Architecture is 
                 <br />
                 <em>Technical Soul.</em>
               </h1>
-              
-              <div className="tag" style={{ margin: '1rem 0 2rem' }}>The Studio</div>
 
-              <p className="hero-subtext">
+              <p className="hero-subtext" style={{ marginBottom: '1.5rem', fontSize: '1rem', lineHeight: '1.5' }}>
                 beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
-                We engineer high-performance environments that appreciate over time.
-                <br /><br />
-                Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge to solve the complex challenges of modern Indian urbanism.
+                Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge.
               </p>
               <div>
-                 <Link href="/contact" className="btn btn-primary">Partner With Us →</Link>
+                 <Link href="/contact" className="btn btn-primary" style={{ padding: '12px 28px' }}>Partner With Us →</Link>
               </div>
             </div>
 
-            {/* Floating stat card */}
-            <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`}>
+            {/* Floating stat card - Slightly Slimmed */}
+            <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`} style={{ transform: 'scale(0.9)', transformOrigin: 'top right' }}>
               <div className={styles.heroStatNumber}>10+</div>
               <div className={styles.heroStatLabel}>Years designing Bengaluru</div>
               <div className={styles.heroStatDivider} />
