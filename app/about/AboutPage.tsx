@@ -80,23 +80,26 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <div className={styles.heroGlow} />
-          <div className={styles.heroLine1} />
-          <div className={styles.heroLine2} />
+          <img src="/images/about-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Team" />
+          <div className={styles.heroOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
           <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
-            <span className="tag">Our Story</span>
+            <span className="tag">The Collective</span>
             <h1 className={styles.heroTitle}>
-              Purposeful Design.
+              Architecture is 
               <br />
-              <em className="text-gold">Technical Precision.</em>
+              <em className="text-gold">Technical Soul.</em>
             </h1>
             <p className={styles.heroSub}>
-              Established in 2024, beMore Design Studio was founded on the belief that great design is a balance of art and utility. We specialize in architecture and interior design that transcends simple aesthetics.
+              beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
+              We don't just design buildings; we engineer high-performance environments that appreciate over time.
               <br /><br />
-              Our practice is grounded in a thoughtful, tailored approach. Whether we are designing a private residence or a commercial hub, we dive deep into our clients' lifestyles to deliver spaces that are as functional as they are beautiful.
+              Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge to solve the complex challenges of modern Indian urbanism.
             </p>
+            <div style={{ marginTop: '2rem' }}>
+               <Link href="/contact" className="btn btn-primary">Partner With Us →</Link>
+            </div>
           </div>
           {/* Floating stat card */}
           <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`}>

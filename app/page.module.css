@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding: var(--space-4xl) 0 var(--space-2xl);
-  background: #000;
+  background: var(--bg-surface);
 }
 
 @media (min-width: 1024px) {
@@ -41,15 +41,15 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 40%, rgba(0,0,0,0.8) 100%);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
 @media (min-width: 1024px) {
   .heroVignette {
-    background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%),
-                linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 30%);
+    background: linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.8) 100%),
+                linear-gradient(to top, rgba(255,255,255,0.5) 0%, transparent 30%);
   }
 }
 
@@ -122,16 +122,16 @@
 }
 
 .heroTitle {
-  color: #FFFFFF;
+  color: var(--text-primary);
   margin-top: var(--space-md);
   margin-bottom: var(--space-md);
-  text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  text-shadow: 0 4px 30px rgba(255,255,255,0.4);
 }
 
 .heroSub {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
   max-width: 540px;
   margin: 0 auto var(--space-xl);
 }
@@ -173,7 +173,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-muted);
 }
 
 @media (min-width: 1100px) {
@@ -181,7 +181,7 @@
 }
 
 .heroTrust strong {
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 /* --- Hero Teaser Card --- */
@@ -348,7 +348,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #FFF;
+  color: var(--text-muted);
 }
 
 /* ============================================================
@@ -613,9 +613,10 @@
 .specializedSection {
   padding: var(--space-4xl) 0;
   position: relative;
-  background: #0d0a09; /* Dark themed specialized section for contrast */
-  color: #FFF;
+  background: var(--bg-surface);
+  color: var(--text-primary);
   overflow: hidden;
+  border-top: 1px solid var(--border);
 }
 
 .specializedBg {
@@ -637,8 +638,8 @@
   background: radial-gradient(circle at center, transparent 0%, #0d0a09 100%);
 }
 
-.specializedSection .sectionTitle { color: #FFF; }
-.specializedSection .sectionSub { color: rgba(255,255,255,0.7); }
+.specializedSection .sectionTitle { color: var(--text-primary); }
+.specializedSection .sectionSub { color: var(--text-secondary); }
 
 .specializedGrid {
   display: grid;
@@ -656,28 +657,9 @@
   .specializedGrid { grid-template-columns: repeat(4, 1fr); }
 }
 
-.specializedItem {
-  display: flex;
-  gap: var(--space-md);
-  background: rgba(255, 255, 255, 0.05);
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.specializedIcon {
-  font-size: 2rem;
-}
-
-.specializedText h4 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  margin-bottom: 4px;
-}
-
 .specializedText p {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
+  color: var(--text-muted);
   line-height: 1.4;
 }
 
@@ -764,9 +746,10 @@
 .roiTeaser {
   position: relative;
   padding: var(--space-4xl) 0;
-  background: #0d0a09;
-  color: #FFF;
+  background: var(--bg-surface);
+  color: var(--text-primary);
   overflow: hidden;
+  border-top: 1px solid var(--border);
 }
 
 .roiTeaserBg {

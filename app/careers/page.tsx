@@ -8,7 +8,11 @@ export default function CareersPage() {
       <Nav />
       
       <section className={styles.hero}>
-        <div className="container">
+        <div className={styles.heroBg}>
+          <img src="/images/careers-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Office" />
+          <div className={styles.heroOverlay} />
+        </div>
+        <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroContent}>
             <div className="gold-line" />
             <span className="tag">Join the Studio</span>
