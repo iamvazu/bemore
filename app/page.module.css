@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   padding-top: 0; 
-  background: var(--bg); /* Bright white base */
+  background: #000; /* Back to black base for rich video/image transition */
 }
 
 /* Background elements */
@@ -36,7 +36,8 @@
 .heroVignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, transparent 20%, transparent 70%, rgba(255,255,255,0.8) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%),
+              linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 30%);
   z-index: 2;
   pointer-events: none;
 }
@@ -48,8 +49,8 @@
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.9; /* More visible video */
-  filter: brightness(1.1) contrast(1);
+  opacity: 0.8;
+  filter: brightness(0.9) contrast(1.05); /* Rich and cinematic */
   overflow: hidden;
 }
 
@@ -93,7 +94,7 @@
   grid-template-columns: 1.4fr 0.6fr;
   gap: var(--space-xl);
   align-items: center;
-  padding: 160px 0 20px; /* Reduced to pull content back up while clearing 140px logo */
+  padding: 200px 0 20px; /* Optimized gap from nav */
   position: relative;
   z-index: 5;
 }
@@ -138,8 +139,8 @@
   margin-top: var(--space-xs);
   margin-bottom: var(--space-sm);
   letter-spacing: -0.01em;
-  color: var(--text-primary); /* Dark text for light mode */
-  text-shadow: 0 2px 20px rgba(255,255,255,0.8);
+  color: #FFFFFF; /* High-end white text */
+  text-shadow: 0 4px 40px rgba(0,0,0,0.3);
   max-width: 90%;
 }
 @media (max-width: 1100px) {
@@ -153,7 +154,7 @@
 .heroSub {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 500px;
   margin-bottom: var(--space-md);
   font-weight: 300;
@@ -180,8 +181,8 @@
 }
 
 .heroCtas :global(.btn-ghost) {
-  color: var(--text-primary) !important;
-  border: 1.5px solid var(--border) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
   backdrop-filter: blur(10px);
 }
 
@@ -196,12 +197,12 @@
   align-items: center;
   gap: 12px;
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-top: var(--space-xs);
 }
 
 .heroTrust strong {
-  color: var(--text-primary);
+  color: #FFFFFF;
   font-weight: 600;
 }
 
