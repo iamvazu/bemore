@@ -63,7 +63,7 @@ export default function Nav() {
               className={`${styles.link} ${pathname === link.href ? styles.active : ''} ${link.href === '/calculator' ? styles.cta : ''}`}
             >
               {link.label}
-              {link.href === '/calculator' && <span className={styles.ctaBadge}>NEW</span>}
+              {link.href === '/calculator' && <span className={styles.ctaBadge}>BETA</span>}
             </Link>
           ))}
         </nav>

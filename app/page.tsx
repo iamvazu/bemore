@@ -97,6 +97,11 @@ export default function HomePage() {
     "Interior Designer"
   ];
 
+  const headlineWords = [
+    "Architecture",
+    "Interior Design"
+  ];
+
   const { ref: statsRef, inView: statsInView } = useInView();
   const { ref: servicesRef, inView: servicesInView } = useInView(0.1);
   const { ref: roiRef, inView: roiInView } = useInView(0.1);
@@ -291,14 +296,26 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1', fontSize: 'clamp(2.5rem, 7vw, 4.5rem)' }}>
-                Design Without 
-                <br />
-                <em>Limits.</em>
+              <h1 className="display-h1" style={{ marginBottom: '1rem', lineHeight: '1', fontSize: 'clamp(3.5rem, 9vw, 5.5rem)', minHeight: '2.2em' }}>
+                <div style={{ position: 'relative', height: '1.2em', overflow: 'hidden' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={taglineIndex}
+                      initial={{ y: 40, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -40, opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "circOut" }}
+                      style={{ display: 'block' }}
+                    >
+                      {headlineWords[taglineIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+                Without <em>Limits.</em>
               </h1>
 
-              <div className={styles.heroTrust} style={{ marginBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', letterSpacing: '0.01em', opacity: 0.7 }}>
+              <div className={styles.heroTrust} style={{ marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.01em', opacity: 0.75 }}>
                   <span>Trusted by</span>
                   <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
                   <span style={{ opacity: 0.2 }}>|</span>
@@ -307,8 +324,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <p className="hero-subtext" style={{ marginBottom: '1.25rem', fontSize: '1rem', lineHeight: '1.5' }}>
-                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+              <p className="hero-subtext" style={{ marginBottom: '1.5rem', fontSize: '1.15rem', lineHeight: '1.6' }}>
+                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: '1.35rem' }}>
                   Innovative Architecture and Interior Design for Modern Living.
                 </strong>
                 Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
