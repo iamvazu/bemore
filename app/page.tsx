@@ -257,10 +257,10 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ marginBottom: '1rem' }}>
                 <motion.div 
                   layout
                   className="tag" 
@@ -292,21 +292,21 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              <div className={styles.heroTrust} style={{ marginBottom: '1.25rem', opacity: 0.9 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.02em' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
-                  <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
-                  <span style={{ opacity: 0.3 }}>|</span>
-                  <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
-                  <span style={{ color: 'var(--text-muted)' }}>in real estate assets</span>
-                </div>
-              </div>
-
-              <h1 className="display-h1">
+              <h1 className="display-h1" style={{ marginBottom: '1.5rem' }}>
                 Design Without 
                 <br />
                 <em>Limits.</em>
               </h1>
+
+              <div className={styles.heroTrust} style={{ marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.02em', opacity: 0.85 }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
+                  <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
+                  <span style={{ opacity: 0.2 }}>|</span>
+                  <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
+                  <span style={{ color: 'var(--text-muted)' }}>in real estate assets</span>
+                </div>
+              </div>
 
               <p className="hero-subtext">
                 <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
