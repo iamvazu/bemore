@@ -251,53 +251,17 @@ export default function BudgetEstimatorPage() {
                           <h2 className={styles.itemizedTitle}>Step 2: Kitchen Shape</h2>
                           <div className={styles.kitchenShapeGrid}>
                             {[
-                              { 
-                                id: 'l-shape', name: 'L-Shape', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M20 20 V80 H80" strokeLinecap="round" strokeLinejoin="round" />
-                                    <rect x="15" y="15" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                    <rect x="75" y="75" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                  </svg>
-                                )
-                              },
-                              { 
-                                id: 'u-shape', name: 'U-Shape', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M20 20 V80 H80 V20" strokeLinecap="round" strokeLinejoin="round" />
-                                    <rect x="15" y="15" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                    <rect x="75" y="15" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                  </svg>
-                                )
-                              },
-                              { 
-                                id: 'parallel', name: 'Parallel', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M20 20 V80 M80 20 V80" strokeLinecap="round" strokeLinejoin="round" />
-                                    <rect x="15" y="15" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                    <rect x="75" y="15" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                  </svg>
-                                )
-                              },
-                              { 
-                                id: 'straight', name: 'Straight', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M20 50 H80" strokeLinecap="round" strokeLinejoin="round" />
-                                    <rect x="15" y="45" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                    <rect x="75" y="45" width="10" height="10" fill="currentColor" fillOpacity="0.1" />
-                                  </svg>
-                                )
-                              }
+                              { id: 'l-shape', name: 'L-Shape', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_l_1773694457475.png' },
+                              { id: 'u-shape', name: 'U-Shape', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_u_1773694492683.png' },
+                              { id: 'parallel', name: 'Parallel', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_parallel_1773694521837.png' },
+                              { id: 'straight', name: 'Straight', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_straight_1773694553480.png' }
                             ].map(layout => (
                               <div 
                                 key={layout.id} 
                                 className={`${styles.shapeCard} ${inputs.kitchenLayout === layout.id ? styles.shapeSelected : ''}`}
                                 onClick={() => setKitchenConfig({ kitchenLayout: layout.id as any })}
                               >
-                                <div className={styles.shapeIcon}>{layout.svg}</div>
+                                <img src={layout.img} alt={layout.name} />
                                 <div className={styles.shapeRadio}>
                                   <div className={styles.radioDot} />
                                   <span>{layout.name}</span>
@@ -367,7 +331,13 @@ export default function BudgetEstimatorPage() {
 
                       {step === 4 && (
                         <div className={styles.stepContent}>
-                          <h2 className={styles.itemizedTitle}>Step 5: Accessories</h2>
+                          <div className={styles.accHeader}>
+                            <h2 className={styles.itemizedTitle} style={{ marginBottom: 0 }}>Step 6 : Accessories</h2>
+                            <div className={styles.accNav}>
+                               <span>&lt;</span>
+                               <span style={{ color: 'var(--gold)' }}>&gt;</span>
+                            </div>
+                          </div>
                           <div className={styles.accessoryGrid}>
                             {[
                               { id: 'detergent_holder', name: 'Detergent holder & bin holder designs', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_accessories_detergent_1773694189592.png' },

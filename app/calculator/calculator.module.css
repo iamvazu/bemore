@@ -506,24 +506,18 @@
   gap: 12px;
 }
 
-.shapeIcon {
+.shapeCard img {
   width: 100%;
-  max-width: 100px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  transition: color 0.3s;
+  max-width: 140px;
+  height: 100px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: all 0.3s;
 }
 
-.shapeSelected .shapeIcon {
-  color: var(--gold);
-}
-
-.shapeIcon svg {
-  width: 100%;
-  height: 100%;
+.shapeSelected img {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .shapeSelected {
@@ -616,18 +610,24 @@
 .accCounter {
   display: flex;
   align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
   overflow: hidden;
+  margin-top: 5px;
 }
 
 .accCounter button {
-  padding: 6px 12px;
+  width: 32px;
+  height: 32px;
   border: none;
-  background: transparent;
+  background: #FFF;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 1.2rem;
   color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s;
 }
 
@@ -636,10 +636,31 @@
 }
 
 .accCounter span {
-  padding: 6px 12px;
+  width: 40px;
+  height: 32px;
   background: var(--gold);
   color: #FFF;
-  min-width: 32px;
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
   font-weight: 700;
+  border-left: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+
+/* Accessory Section Layout Polish */
+.accHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.accNav {
+  display: flex;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
 }
