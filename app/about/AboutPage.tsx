@@ -84,15 +84,17 @@ export default function AboutPage() {
           <div className="hero-scrim" />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '50px' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`}>
-              <span className="tag" style={{ marginBottom: '1.5rem' }}>The Collective</span>
               <h1 className="display-h1">
                 Architecture is 
                 <br />
                 <em>Technical Soul.</em>
               </h1>
+              
+              <div className="tag" style={{ margin: '1rem 0 2rem' }}>The Studio</div>
+
               <p className="hero-subtext">
                 beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
                 We engineer high-performance environments that appreciate over time.

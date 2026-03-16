@@ -69,26 +69,28 @@ export default function ServicesPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className={styles.hero}>
-        <div className={styles.heroVideo}>
-          <iframe
-            src="https://www.youtube.com/embed/W0hRBUrH9KI?autoplay=1&mute=1&loop=1&playlist=W0hRBUrH9KI&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
+      <section className="hero-layout">
+        <div className="hero-media-wrapper">
+          <div className={styles.heroVideo}>
+            <iframe
+              src="https://www.youtube.com/embed/W0hRBUrH9KI?autoplay=1&mute=1&loop=1&playlist=W0hRBUrH9KI&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="hero-scrim" />
         </div>
-        <div className={styles.heroVignette} />
-        <div className="container">
-          <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
-            <div className="gold-line" />
-            <span className="tag">Strategic Packages</span>
-            <h1 className={styles.title}>
+
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className={styles.heroContent}>
+            <span className="tag" style={{ marginBottom: '1.5rem' }}>Strategic Packages</span>
+            <h1 className="display-h1">
               Comprehensive
               <br />
-              <em className="text-gold">Design Solutions.</em>
+              <em>Design Solutions.</em>
             </h1>
-            <p className={styles.subtitle}>
+            <p className="hero-subtext">
               We don&apos;t just sell furniture. We offer strategic design interventions 
               calibrated for the Bengaluru real estate market.
             </p>

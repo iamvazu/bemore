@@ -257,13 +257,9 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '40px' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <span className="tag" style={{ marginBottom: '1.5rem' }}>
-                {taglines[taglineIndex]}
-              </span>
-
               <h1 className="display-h1">
                 Design Without 
                 <br />
@@ -286,16 +282,19 @@ export default function HomePage() {
               </div>
 
               <div className={styles.heroTrust}>
-                <span>Trusted by</span>
-                <strong>240+ homeowners</strong>
-                <span>·</span>
-                <strong>₹180Cr+</strong>
-                <span>in real estate</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <span>Trusted by</span>
+                  <strong>240+ homeowners</strong>
+                  <span>·</span>
+                  <strong>₹180Cr+</strong>
+                  <span>in real estate</span>
+                </div>
+                <div className="tag">Best Architect, Bangalore</div>
               </div>
             </div>
 
             {/* Estimator Teaser Card */}
-            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`}>
+            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`} style={{ marginTop: '20px' }}>
               <div className={styles.heroCardTop}>
                 <span className="tag">Budget Baseline</span>
                 <span className={styles.heroCardLive}>● 2026 RATES</span>
@@ -344,7 +343,7 @@ export default function HomePage() {
                   <span className={styles.goldText}>beMore Precision +100%</span>
                 </div>
               </div>
-              <Link href="/calculator" className={styles.heroCardLink}>
+              <Link href="/calculator" className="cta-link-animate" style={{ fontSize: '0.9rem', marginTop: '12px' }}>
                 Get your precise quote →
               </Link>
             </div>

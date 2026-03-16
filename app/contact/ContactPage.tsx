@@ -49,16 +49,17 @@ export default function ContactPage() {
           <div className="hero-scrim" />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '50px' }}>
           <div className={styles.heroContent}>
-            <span className="tag" style={{ marginBottom: '1.5rem' }}>Get in Touch</span>
+            <span className="tag" style={{ marginBottom: '1.5rem' }}>Secure Your Consultation</span>
             <h1 className="display-h1">
-              Let&apos;s Build
+              Invest in Your
               <br />
-              Something <em>Extraordinary.</em>
+              <em>Strategic Space.</em>
             </h1>
             <p className="hero-subtext">
-              Ready to push the limits of your next space? Whether you have a clear vision or need a creative spark, our Bangalore studio is ready to collaborate.
+              Book a session with Bengaluru&apos;s most transparent design studio. 
+              We calibrate every project for maximum architectural ROI and technical precision.
             </p>
           </div>
         </div>
