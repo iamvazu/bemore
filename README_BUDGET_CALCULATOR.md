@@ -58,21 +58,40 @@ The **beMore Budget Estimator** is a high-precision, data-driven financial model
 - **`EstimatorInputs`**: Tracks 10+ variables including scope, carpet area, tier, and city.
 - **`EstimatorResult`**: Reactive object updated every time an input changes, calculating `BaseTotal`, `GST`, `DesignerFee`, and `GrandTotal`.
 
-### The Calculation Engine (`lib/budget-engine.ts`)
-- **Formula**: `ItemCost = (BaseRate * CityMultiplier * ArchitectureMultiplier * Quantity) * (1 + WasteMargin)`
-- **Auto-Population**: Changing property type (e.g., 2BHK → 3BHK) triggers a re-baselining of quantities (Wardrobes, Toilets, Electrical points) to match architectural standards.
+### 5.2 The Calculation Logic
+**Core Budgeting Formula:**
+$$Total Cost = \sum (Room Scope \times Material Coefficient \times City Index) + Civil Work + 18\% GST$$
+
+**Current 2026 Market Benchmarks:**
+*   **Essential**: ₹1,200 – ₹1,800 / sq ft
+*   **Premium**: ₹1,800 – ₹3,000 / sq ft
+*   **Luxe**: ₹3,000 – ₹5,500+ / sq ft
+
+**Auto-Population**: Changing property type (e.g., 2BHK → 3BHK) triggers a re-baselining of quantities (Wardrobes, Toilets, Electrical points) to match architectural standards.
 
 ---
 
-## 6. Success Metrics (KPIs)
+## 6. Internal Summary: "How It Works" (Simplified)
+*To be shared with the Studio Owner:*
+
+Imagine a master spreadsheet that knows the exact price of every screw and plywood sheet in 2026. 
+1. **The Core**: Instead of guessing a "lump sum," the tool calculates the budget **item-by-item** (TV unit, Wardrobe, Kitchen handles).
+2. **The Smart Adjuster**: It automatically increases prices if you are in Mumbai (+20%) or if you're building a standalone Villa (+15%) versus an Apartment.
+3. **The Multi-Tier Reality**: It gives the client 3 options instantly. **Essential** for functionality, **Premium** for brand-name quality, and **Luxe** for high-end Italian/Veneer bespoke work.
+4. **The Goal**: It moves the conversation from "How much does it cost?" to "Which material tier would you like?"—instantly establishing trust and transparency.
+
+---
+
+## 7. Success Metrics (KPIs)
 - **Lead Quality**: Conversion rate of "Estimate Starts" to "BOQ Reveals."
 - **Accuracy**: Variance between the calculator output and the final signed contract (Target: <5%).
 - **Time-to-Value**: Percentage of users who reach an estimated grand total in under 45 seconds.
 
 ---
 
-## 7. Future Roadmap (The "Expert" Backlog)
+## 8. Future Roadmap (The "Expert" Backlog)
 - **3D Viewer Integration**: Real-time material swapping in a pre-rendered 3D room.
+- **Vastu Compliance**: Auto-checking vastu
 - **Regional Compliance**: Auto-calculating local building permits for Independent Homes.
 - **Live Vendor Feed**: Integrated pricing from premium hardware partners (Hettich/Hafele).
 
