@@ -94,20 +94,20 @@
   grid-template-columns: 1.4fr 0.6fr;
   gap: var(--space-xl);
   align-items: center;
-  padding: 460px 0 20px; /* Super-low position to guarantee no nav overlap */
+  padding: 160px 0 20px; /* Reduced to pull content back up while clearing 140px logo */
   position: relative;
   z-index: 5;
 }
 @media (max-width: 1400px) {
   .heroInner {
-    padding-top: 360px;
+    padding-top: 140px;
   }
 }
 
 @media (max-width: 1280px) {
   .heroInner {
     grid-template-columns: 1.2fr 0.8fr;
-    padding: 320px 0 40px;
+    padding: 130px 0 40px;
   }
 }
 @media (max-width: 1100px) {
@@ -226,7 +226,7 @@
 
 .heroCard.heroCardVisible {
   opacity: 1;
-  transform: translateY(-160px) scale(1) translateX(-30px); /* Lifted to sync with low hero content */
+  transform: translateY(-40px) scale(1) translateX(-30px); /* Moderate lift */
 }
 
 .heroCardTop {
