@@ -38,6 +38,16 @@ export default function Footer() {
             <Link href="/blog">Blogs</Link>
           </div>
           <div className={styles.col}>
+            <h4>Customer Support</h4>
+            <Link href="/contact">Raise issue</Link>
+            <Link href="/contact">My issues</Link>
+            <Link href="/contact">Contact us</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Use</Link>
+            <Link href="/terms">Terms & Conditions</Link>
+            <Link href="/faq">FAQs</Link>
+          </div>
+          <div className={styles.col}>
             <h4>Locations Served</h4>
             <span className={styles.locItem}>Indiranagar</span>
             <span className={styles.locItem}>Koramangala</span>
@@ -54,7 +64,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <p>© 2026 beMore Design Studio. Design Without Limits.</p>
+        <p>Copyright © beMore Design Studio Private Limited. All rights reserved.</p>
         <p className={styles.legal}>
           <Link href="/privacy">Privacy Policy</Link>
           <span>·</span>

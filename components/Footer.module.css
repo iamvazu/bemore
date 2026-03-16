@@ -72,6 +72,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .links {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .col h4 {
   font-family: var(--font-brand);
   font-size: 0.7rem;
