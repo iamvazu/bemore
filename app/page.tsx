@@ -92,9 +92,9 @@ export default function HomePage() {
     { type: '3BHK', essential: '28L', premium: '45L', luxury: '75L', progress: '95%' },
   ];
 
-  const taglines = [
-    "Best Interior Designer Bangalore",
-    "Best Architect, Bangalore"
+  const professions = [
+    "Architect",
+    "Interior Designer"
   ];
 
   const { ref: statsRef, inView: statsInView } = useInView();
@@ -104,10 +104,10 @@ export default function HomePage() {
   useEffect(() => {
     setMounted(true);
     
-    // Tagline rotation
+    // Profession rotation
     const tagInterval = setInterval(() => {
-      setTaglineIndex((prev) => (prev + 1) % taglines.length);
-    }, 4000);
+      setTaglineIndex((prev) => (prev + 1) % professions.length);
+    }, 3000);
 
     // BHK rotation
     const bhkInterval = setInterval(() => {
@@ -148,7 +148,7 @@ export default function HomePage() {
       clearInterval(tagInterval);
       clearInterval(bhkInterval);
     };
-  }, [taglines.length, bhkTypes.length]);
+  }, [professions.length, bhkTypes.length]);
 
   const SERVICES = [
     {
@@ -260,9 +260,35 @@ export default function HomePage() {
         <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <div style={{ display: 'flex', gap: '8px', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                <div className="tag">Best Architect, Bangalore</div>
-                <div className="tag">Best Interior Designer, Bangalore</div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <div className="tag" style={{ border: '1px solid var(--gold)', background: 'var(--bg-surface)', padding: '8px 20px' }}>
+                  Best 
+                  <span style={{ display: 'inline-block', minWidth: '150px', textAlign: 'center', margin: '0 4px', overflow: 'hidden', verticalAlign: 'bottom' }}>
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={taglineIndex}
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "circOut" }}
+                        style={{ display: 'block', color: 'var(--gold)' }}
+                      >
+                        {professions[taglineIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
+                  , Bangalore
+                </div>
+              </div>
+
+              <div className={styles.heroTrust} style={{ marginBottom: '1.25rem', opacity: 0.9 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', letterSpacing: '0.02em' }}>
+                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
+                  <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
+                  <span style={{ opacity: 0.3 }}>|</span>
+                  <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
+                  <span style={{ color: 'var(--text-muted)' }}>in real estate assets</span>
+                </div>
               </div>
 
               <h1 className="display-h1">
@@ -286,16 +312,6 @@ export default function HomePage() {
                 <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation">
                   Book Free Consultation
                 </Link>
-              </div>
-
-              <div className={styles.heroTrust}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span>Trusted by</span>
-                  <strong>240+ homeowners</strong>
-                  <span>·</span>
-                  <strong>₹180Cr+</strong>
-                  <span>in real estate</span>
-                </div>
               </div>
             </div>
 
