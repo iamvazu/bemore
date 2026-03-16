@@ -262,9 +262,9 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '110px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '90px' }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '850px' }}>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '850px', marginTop: '-20px' }}>
               <div style={{ marginBottom: '0.5rem' }}>
                 <motion.div 
                   layout
