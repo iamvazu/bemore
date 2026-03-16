@@ -261,9 +261,20 @@ export default function HomePage() {
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
               <div style={{ marginBottom: '1.5rem' }}>
-                <div className="tag" style={{ border: '1px solid var(--gold)', background: 'var(--bg-surface)', padding: '8px 20px' }}>
-                  Best 
-                  <span style={{ display: 'inline-block', minWidth: '150px', textAlign: 'center', margin: '0 4px', overflow: 'hidden', verticalAlign: 'bottom' }}>
+                <motion.div 
+                  layout
+                  className="tag" 
+                  style={{ 
+                    border: '1px solid var(--gold)', 
+                    background: 'var(--bg-surface)', 
+                    padding: '8px 24px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}
+                >
+                  <span style={{ whiteSpace: 'nowrap' }}>Best</span>
+                  <div style={{ position: 'relative', height: '1.2em', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={taglineIndex}
@@ -271,14 +282,14 @@ export default function HomePage() {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.4, ease: "circOut" }}
-                        style={{ display: 'block', color: 'var(--gold)' }}
+                        style={{ color: 'var(--gold)', whiteSpace: 'nowrap', display: 'inline-block' }}
                       >
                         {professions[taglineIndex]}
                       </motion.span>
                     </AnimatePresence>
-                  </span>
-                  , Bangalore
-                </div>
+                  </div>
+                  <span style={{ whiteSpace: 'nowrap' }}>, Bangalore</span>
+                </motion.div>
               </div>
 
               <div className={styles.heroTrust} style={{ marginBottom: '1.25rem', opacity: 0.9 }}>

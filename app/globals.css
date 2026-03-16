@@ -213,9 +213,10 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to prevent bottom cut-off */
   overflow: hidden;
   background: #FFFFFF;
+  padding-bottom: 80px; /* Safety space for CTAs */
 }
 
 .hero-media-wrapper {
