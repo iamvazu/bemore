@@ -257,7 +257,7 @@ export default function HomePage() {
           <div className="hero-scrim" />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '140px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '700px' }}>
               <div style={{ marginBottom: '0.75rem' }}>
@@ -314,19 +314,19 @@ export default function HomePage() {
                 Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
               </p>
 
-              <div className={styles.heroCtas} style={{ marginBottom: '0' }}>
-                <Link href="/calculator" className="btn btn-primary btn-lg" id="hero-cta-calculator">
+              <div className={styles.heroCtas} style={{ marginBottom: '0', marginTop: '0.75rem' }}>
+                <Link href="/calculator" className="btn btn-primary" id="hero-cta-calculator" style={{ padding: '12px 28px' }}>
                   Budget Estimator
                   <span>→</span>
                 </Link>
-                <Link href="/contact" className="btn btn-ghost btn-lg" id="hero-cta-consultation">
+                <Link href="/contact" className="btn btn-ghost" id="hero-cta-consultation" style={{ padding: '12px 28px' }}>
                   Book Free Consultation
                 </Link>
               </div>
             </div>
 
-            {/* Estimator Teaser Card */}
-            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`} style={{ marginTop: '20px' }}>
+            {/* Estimator Teaser Card - Slightly Slimmed */}
+            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`} style={{ marginTop: '0', transform: 'scale(0.95)', transformOrigin: 'top right' }}>
               <div className={styles.heroCardTop}>
                 <span className="tag">Budget Baseline</span>
                 <span className={styles.heroCardLive}>● 2026 RATES</span>

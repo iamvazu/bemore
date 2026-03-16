@@ -213,10 +213,10 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center; /* Balanced vertical centering */
+  align-items: center;
   overflow: hidden;
   background: #FFFFFF;
-  padding: 100px 0; /* Ensures internal content doesn't hit nav/bottom */
+  padding-top: 80px; /* Clear nav only */
 }
 
 .hero-media-wrapper {
