@@ -254,55 +254,43 @@ export default function BudgetEstimatorPage() {
                               { 
                                 id: 'l-shape', name: 'L-Shape', 
                                 svg: (
-                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" stroke="#C4922A" strokeWidth="2">
                                     <path d="M20 20 V80 H100" strokeLinecap="square" />
-                                    <path d="M20 20 H35 V65 H100 V80 H20 Z" fill="currentColor" fillOpacity="0.05" />
-                                    <line x1="20" y1="40" x2="35" y2="40" />
-                                    <line x1="20" y1="60" x2="35" y2="60" />
-                                    <line x1="55" y1="65" x2="55" y2="80" />
-                                    <line x1="80" y1="65" x2="80" y2="80" />
-                                    <text x="50" y="95" fontSize="8" fill="currentColor" opacity="0.5">WALL A + WALL B</text>
+                                    <path d="M20 20 H40 V60 H100 V80 H20 Z" fill="#C4922A" fillOpacity="0.1" />
+                                    <line x1="20" y1="35" x2="40" y2="35" />
+                                    <line x1="20" y1="50" x2="40" y2="50" />
+                                    <line x1="60" y1="60" x2="60" y2="80" />
+                                    <circle cx="30" cy="70" r="3" fill="#C4922A" />
                                   </svg>
                                 )
                               },
                               { 
                                 id: 'u-shape', name: 'U-Shape', 
                                 svg: (
-                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" stroke="#C4922A" strokeWidth="2">
                                     <path d="M20 20 V80 H100 V20" strokeLinecap="square" />
-                                    <path d="M20 20 H35 V65 H85 V20 H100 V80 H20 Z" fill="currentColor" fillOpacity="0.05" />
-                                    <line x1="20" y1="40" x2="35" y2="40" />
-                                    <line x1="85" y1="40" x2="100" y2="40" />
-                                    <line x1="50" y1="65" x2="50" y2="80" />
-                                    <text x="45" y="95" fontSize="8" fill="currentColor" opacity="0.5">TRIPLE WALL</text>
+                                    <path d="M20 20 H35 V65 H85 V20 H100 V80 H20 Z" fill="#C4922A" fillOpacity="0.1" />
+                                    <circle cx="50" cy="72" r="4" fill="#C4922A" />
+                                    <text x="45" y="50" fontSize="10" fill="#C4922A" opacity="0.5">U</text>
                                   </svg>
                                 )
                               },
                               { 
                                 id: 'parallel', name: 'Parallel', 
                                 svg: (
-                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" stroke="#C4922A" strokeWidth="2">
                                     <path d="M20 20 V80 M100 20 V80" strokeLinecap="square" />
-                                    <rect x="20" y="20" width="15" height="60" fill="currentColor" fillOpacity="0.05" />
-                                    <rect x="85" y="20" width="15" height="60" fill="currentColor" fillOpacity="0.05" />
-                                    <line x1="20" y1="40" x2="35" y2="40" />
-                                    <line x1="20" y1="60" x2="35" y2="60" />
-                                    <line x1="85" y1="40" x2="100" y2="40" />
-                                    <line x1="85" y1="60" x2="100" y2="60" />
-                                    <text x="40" y="55" fontSize="8" fill="currentColor" opacity="0.5">PARALLEL</text>
+                                    <rect x="20" y="20" width="15" height="60" fill="#C4922A" fillOpacity="0.1" />
+                                    <rect x="85" y="20" width="15" height="60" fill="#C4922A" fillOpacity="0.1" />
                                   </svg>
                                 )
                               },
                               { 
                                 id: 'straight', name: 'Straight', 
                                 svg: (
-                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" stroke="#C4922A" strokeWidth="2">
                                     <path d="M10 50 H110" strokeLinecap="square" />
-                                    <rect x="10" y="35" width="100" height="15" fill="currentColor" fillOpacity="0.05" />
-                                    <line x1="30" y1="35" x2="30" y2="50" />
-                                    <line x1="60" y1="35" x2="60" y2="50" />
-                                    <line x1="90" y1="35" x2="90" y2="50" />
-                                    <text x="40" y="65" fontSize="8" fill="currentColor" opacity="0.5">SINGLE WALL</text>
+                                    <rect x="10" y="35" width="100" height="15" fill="#C4922A" fillOpacity="0.1" />
                                   </svg>
                                 )
                               }
@@ -394,51 +382,49 @@ export default function BudgetEstimatorPage() {
                               { 
                                 id: 'detergent_holder', name: 'Detergent holder & bin holder designs', 
                                 svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
-                                    <circle cx="50" cy="50" r="30" strokeOpacity="0.2" />
-                                    <rect x="35" y="35" width="30" height="30" rx="2" />
-                                    <line x1="35" y1="45" x2="65" y2="45" />
-                                    <line x1="35" y1="55" x2="65" y2="55" />
-                                    <path d="M45 65 V75 M55 65 V75" strokeWidth="2" strokeLinecap="round" />
+                                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C4922A" strokeWidth="1.5">
+                                    <circle cx="50" cy="50" r="30" strokeOpacity="0.5" />
+                                    <rect x="35" y="35" width="30" height="30" rx="2" strokeWidth="2" />
+                                    <path d="M45 65 V80 M55 65 V80" strokeWidth="2" />
                                   </svg>
                                 )
                               },
                               { 
-                                id: 'detergent_350', name: 'Detergent holder (350mm) designs', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
-                                    <rect x="30" y="20" width="40" height="60" rx="2" />
-                                    <line x1="30" y1="40" x2="70" y2="40" />
-                                    <line x1="30" y1="60" x2="70" y2="60" />
-                                    <circle cx="50" cy="30" r="5" fill="currentColor" fillOpacity="0.1" />
-                                  </svg>
-                                )
-                              },
-                              { 
-                                id: 'cutlery_tray', name: 'Cutlery cup & saucer thali tray designs', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
-                                    <rect x="20" y="30" width="60" height="40" rx="2" />
-                                    <line x1="35" y1="30" x2="35" y2="70" />
-                                    <line x1="50" y1="30" x2="50" y2="70" />
-                                    <line x1="65" y1="30" x2="65" y2="70" />
-                                    <circle cx="27" cy="50" r="3" />
-                                    <circle cx="42" cy="50" r="3" />
-                                  </svg>
-                                )
-                              },
-                              { 
-                                id: 'bottle_pullout', name: 'Bottle pull-out (300mm soft-close)', 
-                                svg: (
-                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
-                                    <rect x="35" y="15" width="30" height="70" rx="1" />
-                                    <line x1="35" y1="35" x2="65" y2="35" />
-                                    <line x1="35" y1="60" x2="65" y2="60" />
-                                    <path d="M40 20 V30 M50 20 V30 M60 20 V30" />
-                                    <rect x="40" y="65" width="20" height="15" opacity="0.2" fill="currentColor" />
-                                  </svg>
-                                )
-                              }
+                                 id: 'detergent_350', name: 'Detergent holder (350mm) designs', 
+                                 svg: (
+                                   <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C4922A" strokeWidth="1.5">
+                                     <rect x="30" y="15" width="40" height="70" rx="2" />
+                                     <line x1="30" y1="40" x2="70" y2="40" />
+                                     <line x1="30" y1="65" x2="70" y2="65" />
+                                     <path d="M40 20 V30 M60 20 V30" />
+                                   </svg>
+                                 )
+                               },
+                               { 
+                                 id: 'cutlery_tray', name: 'Cutlery cup & saucer thali tray designs', 
+                                 svg: (
+                                   <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C4922A" strokeWidth="1.5">
+                                     <rect x="15" y="25" width="70" height="50" rx="2" />
+                                     <line x1="15" y1="50" x2="85" y2="50" />
+                                     <line x1="38" y1="25" x2="38" y2="75" />
+                                     <line x1="62" y1="25" x2="62" y2="75" />
+                                     <circle cx="26" cy="37" r="4" />
+                                     <circle cx="50" cy="37" r="4" />
+                                   </svg>
+                                 )
+                               },
+                               { 
+                                 id: 'bottle_pullout', name: 'Bottle pull-out (300mm soft-close)', 
+                                 svg: (
+                                   <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C4922A" strokeWidth="1.5">
+                                     <rect x="35" y="10" width="30" height="80" rx="1" />
+                                     <line x1="35" y1="35" x2="65" y2="35" />
+                                     <line x1="35" y1="65" x2="65" y2="65" />
+                                     <path d="M40 15 V25 M60 15 V25" />
+                                     <path d="M40 40 V50 M60 40 V50" />
+                                   </svg>
+                                 )
+                               }
                             ].map(acc => (
                               <div key={acc.id} className={styles.accCard}>
                                 <div className={styles.accVisual}>{acc.svg}</div>
