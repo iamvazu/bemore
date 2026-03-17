@@ -251,17 +251,68 @@ export default function BudgetEstimatorPage() {
                           <h2 className={styles.itemizedTitle}>Step 2: Kitchen Shape</h2>
                           <div className={styles.kitchenShapeGrid}>
                             {[
-                              { id: 'l-shape', name: 'L-Shape', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_l_1773694457475.png' },
-                              { id: 'u-shape', name: 'U-Shape', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_u_1773694492683.png' },
-                              { id: 'parallel', name: 'Parallel', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_parallel_1773694521837.png' },
-                              { id: 'straight', name: 'Straight', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_shape_straight_1773694553480.png' }
+                              { 
+                                id: 'l-shape', name: 'L-Shape', 
+                                svg: (
+                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                    <path d="M20 20 V80 H100" strokeLinecap="square" />
+                                    <path d="M20 20 H35 V65 H100 V80 H20 Z" fill="currentColor" fillOpacity="0.05" />
+                                    <line x1="20" y1="40" x2="35" y2="40" />
+                                    <line x1="20" y1="60" x2="35" y2="60" />
+                                    <line x1="55" y1="65" x2="55" y2="80" />
+                                    <line x1="80" y1="65" x2="80" y2="80" />
+                                    <text x="50" y="95" fontSize="8" fill="currentColor" opacity="0.5">WALL A + WALL B</text>
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'u-shape', name: 'U-Shape', 
+                                svg: (
+                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                    <path d="M20 20 V80 H100 V20" strokeLinecap="square" />
+                                    <path d="M20 20 H35 V65 H85 V20 H100 V80 H20 Z" fill="currentColor" fillOpacity="0.05" />
+                                    <line x1="20" y1="40" x2="35" y2="40" />
+                                    <line x1="85" y1="40" x2="100" y2="40" />
+                                    <line x1="50" y1="65" x2="50" y2="80" />
+                                    <text x="45" y="95" fontSize="8" fill="currentColor" opacity="0.5">TRIPLE WALL</text>
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'parallel', name: 'Parallel', 
+                                svg: (
+                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                    <path d="M20 20 V80 M100 20 V80" strokeLinecap="square" />
+                                    <rect x="20" y="20" width="15" height="60" fill="currentColor" fillOpacity="0.05" />
+                                    <rect x="85" y="20" width="15" height="60" fill="currentColor" fillOpacity="0.05" />
+                                    <line x1="20" y1="40" x2="35" y2="40" />
+                                    <line x1="20" y1="60" x2="35" y2="60" />
+                                    <line x1="85" y1="40" x2="100" y2="40" />
+                                    <line x1="85" y1="60" x2="100" y2="60" />
+                                    <text x="40" y="55" fontSize="8" fill="currentColor" opacity="0.5">PARALLEL</text>
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'straight', name: 'Straight', 
+                                svg: (
+                                  <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                    <path d="M10 50 H110" strokeLinecap="square" />
+                                    <rect x="10" y="35" width="100" height="15" fill="currentColor" fillOpacity="0.05" />
+                                    <line x1="30" y1="35" x2="30" y2="50" />
+                                    <line x1="60" y1="35" x2="60" y2="50" />
+                                    <line x1="90" y1="35" x2="90" y2="50" />
+                                    <text x="40" y="65" fontSize="8" fill="currentColor" opacity="0.5">SINGLE WALL</text>
+                                  </svg>
+                                )
+                              }
                             ].map(layout => (
                               <div 
                                 key={layout.id} 
                                 className={`${styles.shapeCard} ${inputs.kitchenLayout === layout.id ? styles.shapeSelected : ''}`}
                                 onClick={() => setKitchenConfig({ kitchenLayout: layout.id as any })}
                               >
-                                <img src={layout.img} alt={layout.name} />
+                                <div className={styles.shapeIcon}>{layout.svg}</div>
                                 <div className={styles.shapeRadio}>
                                   <div className={styles.radioDot} />
                                   <span>{layout.name}</span>
@@ -340,13 +391,57 @@ export default function BudgetEstimatorPage() {
                           </div>
                           <div className={styles.accessoryGrid}>
                             {[
-                              { id: 'detergent_holder', name: 'Detergent holder & bin holder designs', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_accessories_detergent_1773694189592.png' },
-                              { id: 'detergent_350', name: 'Detergent holder (350mm) designs', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_accessories_detergent_1773694189592.png' },
-                              { id: 'cutlery_tray', name: 'Cutlery cup & saucer thali tray designs', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_accessories_cutlery_1773694215458.png' },
-                              { id: 'bottle_pullout', name: 'Bottle pull-out (300mm soft-close)', img: 'file:///C:/Users/union/.gemini/antigravity/brain/cf00ef9c-69f4-4a16-a89d-49eeb0099782/kitchen_accessories_bottle_pullout_1773694242819.png' }
+                              { 
+                                id: 'detergent_holder', name: 'Detergent holder & bin holder designs', 
+                                svg: (
+                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
+                                    <circle cx="50" cy="50" r="30" strokeOpacity="0.2" />
+                                    <rect x="35" y="35" width="30" height="30" rx="2" />
+                                    <line x1="35" y1="45" x2="65" y2="45" />
+                                    <line x1="35" y1="55" x2="65" y2="55" />
+                                    <path d="M45 65 V75 M55 65 V75" strokeWidth="2" strokeLinecap="round" />
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'detergent_350', name: 'Detergent holder (350mm) designs', 
+                                svg: (
+                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
+                                    <rect x="30" y="20" width="40" height="60" rx="2" />
+                                    <line x1="30" y1="40" x2="70" y2="40" />
+                                    <line x1="30" y1="60" x2="70" y2="60" />
+                                    <circle cx="50" cy="30" r="5" fill="currentColor" fillOpacity="0.1" />
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'cutlery_tray', name: 'Cutlery cup & saucer thali tray designs', 
+                                svg: (
+                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
+                                    <rect x="20" y="30" width="60" height="40" rx="2" />
+                                    <line x1="35" y1="30" x2="35" y2="70" />
+                                    <line x1="50" y1="30" x2="50" y2="70" />
+                                    <line x1="65" y1="30" x2="65" y2="70" />
+                                    <circle cx="27" cy="50" r="3" />
+                                    <circle cx="42" cy="50" r="3" />
+                                  </svg>
+                                )
+                              },
+                              { 
+                                id: 'bottle_pullout', name: 'Bottle pull-out (300mm soft-close)', 
+                                svg: (
+                                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
+                                    <rect x="35" y="15" width="30" height="70" rx="1" />
+                                    <line x1="35" y1="35" x2="65" y2="35" />
+                                    <line x1="35" y1="60" x2="65" y2="60" />
+                                    <path d="M40 20 V30 M50 20 V30 M60 20 V30" />
+                                    <rect x="40" y="65" width="20" height="15" opacity="0.2" fill="currentColor" />
+                                  </svg>
+                                )
+                              }
                             ].map(acc => (
                               <div key={acc.id} className={styles.accCard}>
-                                <img src={acc.img} alt={acc.name} />
+                                <div className={styles.accVisual}>{acc.svg}</div>
                                 <p>{acc.name}</p>
                                 <div className={styles.accCounter}>
                                   <button onClick={() => {

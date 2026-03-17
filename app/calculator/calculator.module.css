@@ -590,12 +590,26 @@
   gap: 12px;
 }
 
-.accCard img {
+.accVisual {
   width: 140px;
   height: 140px;
-  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
   border-radius: var(--radius-md);
-  background: #F9FAFB;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.accCard:hover .accVisual {
+  color: var(--gold);
+  background: #FFF;
+}
+
+.accVisual svg {
+  width: 70%;
+  height: 70%;
 }
 
 .accCard p {

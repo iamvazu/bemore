@@ -308,7 +308,12 @@ export function calculateBudget(inputs: EstimatorInputs): EstimatorResult {
       });
     }
 
-    baseTotal = (structureCost + shutterCost + hardwareCost + applianceExtra + accessoriesCost) * cityMultiplier;
+    if (totalRunningFt > 0) {
+      baseTotal = (structureCost + shutterCost + hardwareCost + applianceExtra + accessoriesCost) * cityMultiplier;
+    } else {
+      baseTotal = 0;
+    }
+    
     categoryTotals['Kitchen'] = baseTotal;
     roomTotals['Kitchen'] = baseTotal;
   } else if (scope === 'bathroom') {

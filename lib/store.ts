@@ -58,9 +58,9 @@ const initialInputs: EstimatorInputs = {
   kitchenShutter: 'laminate',
   kitchenHardware: 'soft-close',
   kitchenAppliances: 'freestanding',
-  kitchenWallAFeet: 12,
+  kitchenWallAFeet: 0,
   kitchenWallAInches: 0,
-  kitchenWallBFeet: 5,
+  kitchenWallBFeet: 0,
   kitchenWallBInches: 0,
   kitchenAccessories: {},
   
