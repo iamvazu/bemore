@@ -339,21 +339,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ STATS ============ */}
-      <section className={`${styles.stats} section--sm`} ref={statsRef}>
-        <div className="container">
-          <div className={styles.statsGrid}>
-            {statsInView && (
-              <>
-                <StatCard value={100} suffix="%" label="Transparency in Material Specs" delay={0} />
-                <StatCard value={0} suffix="%" label="Hidden Costs or Variances" delay={100} />
-                <StatCard value={20} suffix="%" label="More Efficient Design ROI" delay={200} />
-                <StatCard value={180} suffix="Cr+" label="Worth of Accurately Quoted Projects" delay={300} />
-              </>
-            )}
-          </div>
-        </div>
-      </section>
+
 
       {/* ============ SOLUTIONS ============ */}
       <section className={styles.solutionsSection}>
