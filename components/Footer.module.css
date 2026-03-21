@@ -7,10 +7,10 @@
 .top {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-3xl) var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
+  gap: var(--space-2xl);
 }
 
 @media (min-width: 900px) {
@@ -28,7 +28,7 @@
 }
 
 .footerLogoImage {
-  height: clamp(80px, 15vw, 140px);
+  height: clamp(110px, 18vw, 160px);
   width: auto;
   display: block;
   object-fit: contain;

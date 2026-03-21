@@ -32,13 +32,7 @@ export default function Footer() {
             <Link href="/careers">Careers</Link>
             <Link href="/contact">Contact</Link>
           </div>
-          <div className={styles.col}>
-            <h4>Tools</h4>
-            <Link href="/calculator">Budget Estimator</Link>
-            <Link href="/guides/design">Design Guides</Link>
-            <Link href="/guides/buying">Buying Guides</Link>
-            <Link href="/blog">Blogs</Link>
-          </div>
+
           <div className={styles.col}>
             <h4>Customer Support</h4>
             <Link href="/contact">Raise issue</Link>
