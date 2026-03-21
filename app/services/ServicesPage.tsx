@@ -57,6 +57,25 @@ const SERVICES_DETAILED = [
   }
 ];
 
+const TURNKEY_SERVICES = [
+  { icon: '📋', title: 'Project Management' },
+  { icon: '✏️', title: 'Design and Execution' },
+  { icon: '🪞', title: 'Material Selection' },
+  { icon: '🛒', title: 'Procurement' },
+  { icon: '🤝', title: 'Vendor Management' },
+  { icon: '⚡', title: 'Electrical Services' },
+  { icon: '🔧', title: 'Plumbing Services' },
+  { icon: '🧱', title: 'Civil Modifications' },
+  { icon: '🏗️', title: 'False Ceiling' },
+  { icon: '🪚', title: 'On-site Carpentry' },
+  { icon: '📐', title: 'Tiling Solutions' },
+  { icon: '🛠️', title: 'Fabrication Services' },
+  { icon: '🖌️', title: 'Painting Solutions' },
+  { icon: '📦', title: 'Modular Fit Outs' },
+  { icon: '✅', title: 'Quality Control' },
+  { icon: '🎁', title: 'Final Product Delivery' }
+];
+
 const PROCESS_STEPS = [
   {
     number: '01',
@@ -189,6 +208,28 @@ export default function ServicesPage() {
                 </div>
                 <h3 className={styles.processItemTitle}>{step.title}</h3>
                 <p className={styles.processItemDesc}>{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TURNKEY SERVICES ============ */}
+      <section className={styles.turnkeySection}>
+        <div className="container">
+          <div className={styles.turnkeyHeader}>
+            <div className="gold-line gold-line--center" />
+            <h2 className={styles.turnkeyTitle}>Turnkey Interior Solutions</h2>
+            <p className={styles.turnkeySubtitle}>
+              <strong>Excellence from ideation to execution.</strong> At the intersection of lifestyles and design, we streamline that journey for you curating a full-service turnkey solution.
+            </p>
+          </div>
+          
+          <div className={styles.turnkeyGrid}>
+            {TURNKEY_SERVICES.map((item, idx) => (
+              <div key={idx} className={styles.turnkeyItem}>
+                <div className={styles.turnkeyIcon}>{item.icon}</div>
+                <h4 className={styles.turnkeyItemTitle}>{item.title}</h4>
               </div>
             ))}
           </div>
