@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/terms',
     '/careers',
+    '/blog',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -28,6 +29,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'retail-studio'
   ];
 
+  const blogSlugs = [
+    'interior-design-cost-bangalore',
+    'choose-interior-designer-bangalore',
+    'modular-kitchen-custom-kitchen',
+    'best-materials-bangalore',
+    '3bhk-interior-design-cost',
+    'small-apartment-interior-design',
+    'contemporary-indian-kitchen',
+    'bemore-designs-bangalore-climate',
+    'office-interior-trends-2026',
+    'cafe-interior-design'
+  ];
+
   const portfolioRoutes = portfolioSlugs.map((slug) => ({
     url: `${baseUrl}/portfolio/${slug}`,
     lastModified: new Date(),
@@ -35,5 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...routes, ...portfolioRoutes];
+  const blogRoutes = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...routes, ...portfolioRoutes, ...blogRoutes];
 }
