@@ -61,7 +61,7 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroMediaWrapper}>
-          <img src="/images/about-hero.jpg" className={styles.heroBgImage} alt="beMore Design Studio Team" />
+          <img src="/aboutus1.png" className={styles.heroBgImage} alt="beMore Design Studio Team" />
           <div className={styles.heroScrim} />
         </div>
         

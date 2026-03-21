@@ -96,6 +96,8 @@ export default function HomePage() {
   }, []);
 
   const heroImages = [
+    '/homepage_hero3.png',
+    '/homepage_hero4.png',
     '/homepage_hero1.png', 
     '/homepage_hero2.png',
     '/home_interior.png',
