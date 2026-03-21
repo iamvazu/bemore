@@ -71,42 +71,29 @@ export default function AboutPage() {
       <Nav />
 
       {/* ── Hero ── */}
-      <section className="hero-layout">
-        <div className="hero-media-wrapper">
-          <img src="/images/about-hero.jpg" className={styles.heroImg} alt="beMore Design Studio Team" />
-          <div className="hero-scrim" />
+      <section className={styles.hero}>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/images/about-hero.jpg" className={styles.heroBgImage} alt="beMore Design Studio Team" />
+          <div className={styles.heroScrim} />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '90px' }}>
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10 }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.visible : ''}`} style={{ marginTop: '-20px' }}>
-              <div className="tag" style={{ margin: '0 0 1rem' }}>The Studio</div>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <span className="tag" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)', background: 'transparent' }}>The Studio</span>
               
-              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1.1' }}>
-                Function First.
+              <h1 className={styles.heroHeadline}>
+                Function first.
                 <br />
-                <em>Form Follows.</em>
+                <em className="text-secondary-cormorant">Form follows.</em>
               </h1>
 
-              <p className="hero-subtext" style={{ marginBottom: '1.5rem', fontSize: '1rem', lineHeight: '1.5' }}>
-                beMore Design Studio is an architectural and interior design practice based in Bengaluru, founded by Kavya Sreenivas and Suraj Divate.
-                Clean, intentional spaces that balance aesthetics with real-life functionality — where materials, light, and layout work together to create a calm, elevated everyday experience.
+              <p className={styles.heroQuietSubtitle}>
+                beMore Design Studio is an architectural and interior design practice based in Bengaluru, founded by Kavya Sreenivas and Suraj Divate detailing calm, elevated environments that appreciate visually and contextually.
               </p>
-              <div>
-                 <Link href="/contact" className="btn btn-primary" style={{ padding: '12px 28px' }}>Partner With Us →</Link>
+              <div className={styles.heroCtas}>
+                 <Link href="/contact" className="btn btn-primary">Partner With Us <span>→</span></Link>
               </div>
-            </div>
-
-            {/* Floating stat card - Slightly Slimmed */}
-            <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`} style={{ transform: 'scale(0.9)', transformOrigin: 'top right' }}>
-              <div className={styles.heroStatNumber}>Est. 2023</div>
-              <div className={styles.heroStatLabel}>Founded in Bengaluru</div>
-              <div className={styles.heroStatDivider} />
-              <div className={styles.heroStatNumber}>60 Days</div>
-              <div className={styles.heroStatLabel}>Typical project timeline*</div>
-              <div className={styles.heroStatDivider} />
-              <div className={styles.heroStatNumber}>COA</div>
-              <div className={styles.heroStatLabel}>Registered Studio</div>
             </div>
           </div>
         </div>
