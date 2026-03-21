@@ -57,7 +57,12 @@
   width: auto;
   display: block;
   object-fit: contain;
-  transition: transform var(--duration-base);
+  transition: transform var(--duration-base), filter 0.3s;
+  filter: invert(1); /* Invert so black logo becomes white for dark hero images */
+}
+
+.scrolled .logoImage {
+  filter: none; /* Restore original black logo on light scroll mode */
 }
 
 @media (min-width: 1024px) {
