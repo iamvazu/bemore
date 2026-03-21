@@ -1,5 +1,7 @@
 .footer {
-  background: var(--bg-surface);
+  background: linear-gradient(rgba(245, 241, 236, 0.94), rgba(245, 241, 236, 0.94)), url('/footer1.png');
+  background-size: cover;
+  background-position: center;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }

@@ -33,16 +33,7 @@ export default function Footer() {
             <Link href="/contact">Contact</Link>
           </div>
 
-          <div className={styles.col}>
-            <h4>Customer Support</h4>
-            <Link href="/contact">Raise issue</Link>
-            <Link href="/contact">My issues</Link>
-            <Link href="/contact">Contact us</Link>
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Use</Link>
-            <Link href="/terms">Terms & Conditions</Link>
-            <Link href="/faq">FAQs</Link>
-          </div>
+
           <div className={styles.col}>
             <h4>Locations Served</h4>
             <span className={styles.locItem}>Indiranagar</span>
