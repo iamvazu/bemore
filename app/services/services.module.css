@@ -481,37 +481,48 @@
 
 .turnkeyItem {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: var(--space-md);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  transition: all 0.3s var(--ease-out);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: var(--space-lg) var(--space-md);
+  background: transparent;
+  border-bottom: 2px solid rgba(196, 146, 42, 0.08);
+  transition: all 0.4s var(--ease-out);
 }
 
 .turnkeyItem:hover {
-  transform: translateY(-3px);
-  border-color: var(--gold);
-  box-shadow: 0 10px 30px rgba(196, 146, 42, 0.08);
+  transform: translateY(-5px);
+  border-bottom-color: var(--gold);
+  background: rgba(196, 146, 42, 0.02);
 }
 
 .turnkeyIcon {
-  font-size: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: #FFFBF2;
+  width: 48px;
+  height: 48px;
+  background: #FEFCF6;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(196, 146, 42, 0.1);
+  border: 1px solid rgba(196, 146, 42, 0.15);
+  color: var(--gold);
+  transition: all 0.4s var(--ease-out);
+}
+
+.turnkeyItem:hover .turnkeyIcon {
+  background: var(--gold);
+}
+
+.turnkeyItem:hover .turnkeyIcon svg {
+  stroke: #FFFFFF !important;
 }
 
 .turnkeyItemTitle {
   font-family: var(--font-brand);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
 }

@@ -5,6 +5,11 @@ import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import styles from './services.module.css';
+import { 
+  Briefcase, Paintbrush, Compass, ShoppingCart, Users, Zap, Wrench, 
+  BrickWall, LayoutPanelLeft, Hammer, Ruler, Component, Pipette, 
+  Package, CheckCircle, Gift 
+} from 'lucide-react';
 
 const SERVICES_DETAILED = [
   {
@@ -64,22 +69,22 @@ const SERVICES_DETAILED = [
 ];
 
 const TURNKEY_SERVICES = [
-  { icon: '📋', title: 'Project Management' },
-  { icon: '✏️', title: 'Design and Execution' },
-  { icon: '🪞', title: 'Material Selection' },
-  { icon: '🛒', title: 'Procurement' },
-  { icon: '🤝', title: 'Vendor Management' },
-  { icon: '⚡', title: 'Electrical Services' },
-  { icon: '🔧', title: 'Plumbing Services' },
-  { icon: '🧱', title: 'Civil Modifications' },
-  { icon: '🏗️', title: 'False Ceiling' },
-  { icon: '🪚', title: 'On-site Carpentry' },
-  { icon: '📐', title: 'Tiling Solutions' },
-  { icon: '🛠️', title: 'Fabrication Services' },
-  { icon: '🖌️', title: 'Painting Solutions' },
-  { icon: '📦', title: 'Modular Fit Outs' },
-  { icon: '✅', title: 'Quality Control' },
-  { icon: '🎁', title: 'Final Product Delivery' }
+  { icon: Briefcase, title: 'Project Management' },
+  { icon: Paintbrush, title: 'Design and Execution' },
+  { icon: Compass, title: 'Material Selection' },
+  { icon: ShoppingCart, title: 'Procurement' },
+  { icon: Users, title: 'Vendor Management' },
+  { icon: Zap, title: 'Electrical Services' },
+  { icon: Wrench, title: 'Plumbing Services' },
+  { icon: BrickWall, title: 'Civil Modifications' },
+  { icon: LayoutPanelLeft, title: 'False Ceiling' },
+  { icon: Hammer, title: 'On-site Carpentry' },
+  { icon: Ruler, title: 'Tiling Solutions' },
+  { icon: Component, title: 'Fabrication Services' },
+  { icon: Pipette, title: 'Painting Solutions' },
+  { icon: Package, title: 'Modular Fit Outs' },
+  { icon: CheckCircle, title: 'Quality Control' },
+  { icon: Gift, title: 'Final Product Delivery' }
 ];
 
 const PROCESS_STEPS = [
@@ -227,12 +232,17 @@ export default function ServicesPage() {
           </div>
           
           <div className={styles.turnkeyGrid}>
-            {TURNKEY_SERVICES.map((item, idx) => (
-              <div key={idx} className={styles.turnkeyItem}>
-                <div className={styles.turnkeyIcon}>{item.icon}</div>
-                <h4 className={styles.turnkeyItemTitle}>{item.title}</h4>
-              </div>
-            ))}
+            {TURNKEY_SERVICES.map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={idx} className={styles.turnkeyItem}>
+                  <div className={styles.turnkeyIcon}>
+                    <IconComponent strokeWidth={1.2} size={28} />
+                  </div>
+                  <h4 className={styles.turnkeyItemTitle}>{item.title}</h4>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
