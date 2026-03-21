@@ -110,34 +110,30 @@ export default function ServicesPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className="hero-layout">
-        <div className="hero-media-wrapper">
-          <div className={styles.heroVideo}>
-            <iframe
-              src="https://www.youtube.com/embed/W0hRBUrH9KI?autoplay=1&mute=1&loop=1&playlist=W0hRBUrH9KI&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="hero-scrim" />
+      <section className={styles.hero}>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/portfolio-indiranagar.jpg" className={styles.heroBgImage} alt="beMore Services Background" />
+          <div className={styles.heroScrim} />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
-          <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
-            <span className="tag" style={{ marginBottom: '1.5rem' }}>Strategic Packages</span>
-            <h1 className="display-h1">
-              Comprehensive
-              <br />
-              <em>Design Solutions.</em>
-            </h1>
-            <p className="hero-subtext">
-              <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-                Tactical architecture and interiors calibrated for market appreciation.
-              </strong>
-              We don&apos;t just sell furniture. We offer strategic design interventions 
-              calibrated for the Bengaluru real estate market.
-            </p>
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10 }}>
+          <div className={styles.heroInner}>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <span className="tag" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)', background: 'transparent' }}>Strategic Packages</span>
+              
+              <h1 className={styles.heroHeadline}>
+                Comprehensive
+                <br />
+                <em className="text-secondary-cormorant">Design Solutions.</em>
+              </h1>
+
+              <p className={styles.heroQuietSubtitle}>
+                <strong style={{ display: 'block', color: 'rgba(255,255,255,0.9)', marginBottom: '0.5rem' }}>
+                  Tactical architecture and interiors calibrated for market appreciation.
+                </strong>
+                We offer strategic design interventions calibrated for the Indian real estate market smoothly.
+              </p>
+            </div>
           </div>
         </div>
       </section>
