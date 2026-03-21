@@ -7,41 +7,79 @@
 
 /* Using global .hero-layout */
 
-.heroBg {
+/* ── Hero ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8vh;
+}
+
+.heroMediaWrapper {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.heroBg img {
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.heroBgImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7; /* Cinematic depth */
-  filter: none;
+  animation: slowZoom 24s ease-in-out infinite;
 }
 
-/* Removed old overlays */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.85) 100%
+  ),
+  linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  z-index: 2;
+}
 
-.heroContainer {
-  position: relative;
-  z-index: 3;
+.heroInner {
   width: 100%;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  position: relative;
+  z-index: 5;
 }
 
 .heroContent {
-  max-width: 800px;
-  opacity: 0;
-  transform: translateY(30px);
+  max-width: 650px;
 }
 
-.heroContent.animate {
-  animation: fadeInUp 0.8s var(--ease-out) forwards;
+.heroHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 6.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 0.95;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.heroQuietSubtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 480px;
 }
 
 /* Using global .display-h1 and .hero-subtext */

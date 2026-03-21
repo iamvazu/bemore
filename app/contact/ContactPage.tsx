@@ -43,27 +43,25 @@ export default function ContactPage() {
     <main className={styles.page}>
       <Nav />
       
-      <section className="hero-layout">
-        <div className="hero-media-wrapper">
-          <img src="/images/contact-hero.jpg" alt="beMore Studio" />
-          <div className="hero-scrim" />
+      <section className={styles.hero}>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/images/contact-hero.jpg" className={styles.heroBgImage} alt="beMore Studio" />
+          <div className={styles.heroScrim} />
         </div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '120px' }}>
-          <div className={`${styles.heroContent} ${visible ? styles.animate : ''}`}>
-            <span className="tag" style={{ marginBottom: '1.5rem' }}>Secure Your Consultation</span>
-            <h1 className="display-h1">
-              Invest in Your
-              <br />
-              <em>Strategic Space.</em>
-            </h1>
-            <p className="hero-subtext">
-              <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
+          <div className={styles.heroInner}>
+            <div className={`${styles.heroContent} ${visible ? styles.animate : ''}`}>
+              <h1 className={styles.heroHeadline}>
+                Invest in Your
+                <br />
+                <em className="text-secondary-cormorant">Strategic Space.</em>
+              </h1>
+              <p className={styles.heroQuietSubtitle}>
                 Engineering high-performance environments with technical precision.
-              </strong>
-              Book a session with Bengaluru&apos;s most transparent design studio. 
-              We calibrate every project for maximum architectural ROI.
-            </p>
+                Book a session with Bengaluru&apos;s most transparent design studio. 
+              </p>
+            </div>
           </div>
         </div>
       </section>

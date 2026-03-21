@@ -83,16 +83,14 @@ export default function PortfolioPage() {
       <Nav />
       
       <section className={styles.hero}>
-        <div className={styles.heroVideo}>
-          <iframe
-            src="https://www.youtube.com/embed/N6JhwwlK2Ls?autoplay=1&mute=1&loop=1&playlist=N6JhwwlK2Ls&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/contactus.png" className={styles.heroBgImage} alt="beMore Portfolio Background" />
+          <div className={styles.heroScrim} />
         </div>
-        <div className="container">
-          <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
+        
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
+          <div className={styles.heroInner}>
+            <div className={`${styles.heroContent} ${mounted ? styles.animate : ''}`}>
             <div className="gold-line" />
             <span className="tag">Selection 2026</span>
             <h1 className={styles.title}>
@@ -103,6 +101,7 @@ export default function PortfolioPage() {
             <p className={styles.subtitle}>
               A showcase of residential and commercial excellence.
             </p>
+            </div>
           </div>
         </div>
       </section>
