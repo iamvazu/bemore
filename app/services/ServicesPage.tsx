@@ -13,7 +13,8 @@ const SERVICES_DETAILED = [
     title: 'Architectural Design',
     subtitle: 'Crafting the structural narrative of your home.',
     description: 'We provide full-scale architectural planning tailored for the Indian climate, focusing on structural integrity and spatial flow. Our approach balances aesthetics with real-world sustainability.',
-    features: ['Spatial Optimization', 'Climate Calibration', 'Structural Engineering', 'BIM Modelling']
+    features: ['Spatial Optimization', 'Climate Calibration', 'Structural Engineering', 'BIM Modelling'],
+    image: '/interiros.png'
   },
   {
     id: 'interiors',
@@ -21,7 +22,8 @@ const SERVICES_DETAILED = [
     title: 'Interior Design & Styling',
     subtitle: 'Tactile environments designed for high-end living.',
     description: 'Elevating interiors into immersive tactile experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle calibrated for comfort.',
-    features: ['Material Resonance', 'Bespoke Joinery', 'Mood Engineering', 'Lighting Calibration']
+    features: ['Material Resonance', 'Bespoke Joinery', 'Mood Engineering', 'Lighting Calibration'],
+    image: '/home_interior.png'
   },
   {
     id: 'commercial',
@@ -29,7 +31,8 @@ const SERVICES_DETAILED = [
     title: 'Commercial & Retail Spaces',
     subtitle: 'High-performance spaces tailored for peak output.',
     description: 'Designing high-performance environments that translate into brand equity. We focus on enhancing productivity, spatial flow, and workflow ergonomics while maintaining aesthetic intent.',
-    features: ['Workflow Ergonomics', 'Experience Mapping', 'Yield Optimization', 'Brand Identity Mesh']
+    features: ['Workflow Ergonomics', 'Experience Mapping', 'Yield Optimization', 'Brand Identity Mesh'],
+    image: '/hospitality2.png'
   },
   {
     id: 'project-management',
@@ -37,7 +40,8 @@ const SERVICES_DETAILED = [
     title: 'Project Management & Consultation',
     subtitle: 'Frictionless execution backed by absolute transparency.',
     description: 'Design without the stress. We oversee every technical precision of the build, guaranteeing that the transition from concept to turnkey reality is seamless, timely, and budget-transparent.',
-    features: ['Timeline Compliance', 'Rate Integrity Audits', 'Quality-Control Checks', 'Procurement Transparency']
+    features: ['Timeline Compliance', 'Rate Integrity Audits', 'Quality-Control Checks', 'Procurement Transparency'],
+    image: '/home_interiror.png'
   },
   {
     id: 'hospitality',
@@ -45,7 +49,8 @@ const SERVICES_DETAILED = [
     title: 'Hospitality — Cafes & Hotels',
     subtitle: 'Atmosphere architecture curated for experience.',
     description: 'Mood architecture calibrated to foster hospitality loyalty. We design intimate café spaces and boutique hotel frameworks that drive customer yield and operational compliance smoothly.',
-    features: ['Spatial Branding', 'Guest Experience Mapping', 'Operational Ergonomics', 'Atmosphere Engineering']
+    features: ['Spatial Branding', 'Guest Experience Mapping', 'Operational Ergonomics', 'Atmosphere Engineering'],
+    image: '/hospitality.png'
   },
   {
     id: 'renovation',
@@ -53,7 +58,8 @@ const SERVICES_DETAILED = [
     title: 'Renovation & Refurbishment',
     subtitle: 'Modernizing assets for command asset premiums.',
     description: 'Breathing immersive life back into existing footprints. Whether a single asset or full-property overhaul, we approached every retrofit with the precision maintenance intended for cap-appreciation.',
-    features: ['Structural Upgrades', 'Compliance Tuning', 'Asset Premium Retrofits', 'Modern Grid Overhaul']
+    features: ['Structural Upgrades', 'Compliance Tuning', 'Asset Premium Retrofits', 'Modern Grid Overhaul'],
+    image: '/home_interior.png'
   }
 ];
 
@@ -157,7 +163,7 @@ export default function ServicesPage() {
                 }}
               >
                 <div className={styles.serviceVisual}>
-                  <div className={styles.serviceNumber}>{service.number}</div>
+                  <img src={service.image} alt={service.title} className={styles.serviceVisualImage} />
                   <div className={styles.serviceVisualGold} />
                 </div>
                 <div className={styles.serviceContent}>

@@ -87,7 +87,15 @@ export default function HomePage() {
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
 
-  const heroImages = ['/homepage_hero1.png', '/homepage_hero2.png'];
+  const heroImages = [
+    '/homepage_hero1.png', 
+    '/homepage_hero2.png',
+    '/home_interior.png',
+    '/home_interiror.png',
+    '/hospitality.png',
+    '/hospitality2.png',
+    '/interiros.png'
+  ];
   const professions = [
     "Architect",
     "Interior Designer"

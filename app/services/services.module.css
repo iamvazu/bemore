@@ -145,8 +145,34 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  min-height: 220px;
   width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+@media (min-width: 1024px) {
+  .serviceVisual {
+    max-width: 440px;
+  }
+}
+
+.serviceVisualImage {
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  transform: translate(-4%, -4%);
+}
+
+.serviceVisualGold {
+  width: 140px;
+  height: 140px;
+  background: var(--gold-light);
+  border-radius: var(--radius-full);
+  opacity: 0.12;
+  position: absolute;
+  z-index: 0;
+  transform: translate(-20%, -20%);
 }
 
 .serviceNumber {
@@ -159,17 +185,6 @@
   z-index: 1;
   user-select: none;
   border-radius: var(--radius-lg);
-}
-
-.serviceVisualGold {
-  width: 140px;
-  height: 140px;
-  background: var(--gold-light);
-  border-radius: var(--radius-full);
-  opacity: 0.12;
-  position: absolute;
-  z-index: 0;
-  transform: translate(-20%, -20%);
 }
 
 .serviceContent {
