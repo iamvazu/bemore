@@ -16,27 +16,27 @@ const SERVICES_DETAILED = [
     id: 'architecture',
     number: '01',
     title: 'Architectural Design',
-    subtitle: 'Crafting the structural narrative of your home.',
-    description: 'We provide full-scale architectural planning tailored for the Indian climate, focusing on structural integrity and spatial flow. Our approach balances aesthetics with real-world sustainability.',
-    features: ['Spatial Optimization', 'Climate Calibration', 'Structural Engineering', 'BIM Modelling'],
+    subtitle: 'Crafting the structural narrative of your space.',
+    description: 'Full-scale architectural planning tailored for environment calibration, focusing on structural harmony and spatial flow. Our approach balances beauty with enduring materials.',
+    features: ['Spatial Optimization', 'Climate Calibration', 'Volume Control', 'BIM Modelling'],
     image: '/interiros.png'
   },
   {
     id: 'interiors',
     number: '02',
     title: 'Interior Design & Styling',
-    subtitle: 'Tactile environments designed for high-end living.',
-    description: 'Elevating interiors into immersive tactile experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle calibrated for comfort.',
-    features: ['Material Resonance', 'Bespoke Joinery', 'Mood Engineering', 'Lighting Calibration'],
+    subtitle: 'Tactile environments designed for considered living.',
+    description: 'Elevating interiors into immersive tactile experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated contemporary lifestyle.',
+    features: ['Material Resonance', 'Bespoke Joinery', 'Mood Calibration', 'Lighting Controls'],
     image: '/home_interior.png'
   },
   {
     id: 'commercial',
     number: '03',
     title: 'Commercial & Retail Spaces',
-    subtitle: 'High-performance spaces tailored for peak output.',
-    description: 'Designing high-performance environments that translate into brand equity. We focus on enhancing productivity, spatial flow, and workflow ergonomics while maintaining aesthetic intent.',
-    features: ['Workflow Ergonomics', 'Experience Mapping', 'Yield Optimization', 'Brand Identity Mesh'],
+    subtitle: 'Ergonomic environments defining brand clarity.',
+    description: 'Designing spaces that translate brand narratives into physical scales. We focus on enhancing productivity, spatial flow, and workflow ergonomics without friction.',
+    features: ['Workflow Ergonomics', 'Experience Mapping', 'Proportion Control', 'Brand Identity Mesh'],
     image: '/hospitality2.png'
   },
   {
@@ -44,26 +44,26 @@ const SERVICES_DETAILED = [
     number: '04',
     title: 'Project Management & Consultation',
     subtitle: 'Frictionless execution backed by absolute transparency.',
-    description: 'Design without the stress. We oversee every technical precision of the build, guaranteeing that the transition from concept to turnkey reality is seamless, timely, and budget-transparent.',
-    features: ['Timeline Compliance', 'Rate Integrity Audits', 'Quality-Control Checks', 'Procurement Transparency'],
+    description: 'Design without the stress. We oversee every technical precision of the build, guaranteeing that the transition from concept to turnkey reality is seamless and timely.',
+    features: ['Timeline Compliance', 'Rate Transparency', 'Quality-Control Checks', 'Procurement Clarity'],
     image: '/home_interiror.png'
   },
   {
     id: 'hospitality',
     number: '05',
     title: 'Hospitality — Cafes & Hotels',
-    subtitle: 'Atmosphere architecture curated for experience.',
-    description: 'Mood architecture calibrated to foster hospitality loyalty. We design intimate café spaces and boutique hotel frameworks that drive customer yield and operational compliance smoothly.',
-    features: ['Spatial Branding', 'Guest Experience Mapping', 'Operational Ergonomics', 'Atmosphere Engineering'],
+    subtitle: 'Designing atmospheres where memory captures experience.',
+    description: 'Mood architecture calibrated to foster hospitality loyalty. We design intimate café spaces and boutique hotel frameworks centered around guest comfort narratives.',
+    features: ['Spatial Branding', 'Guest Experience Mapping', 'Operational Efficiency', 'Atmosphere Engineering'],
     image: '/hospitality.png'
   },
   {
     id: 'renovation',
     number: '06',
     title: 'Renovation & Refurbishment',
-    subtitle: 'Modernizing assets for command asset premiums.',
-    description: 'Breathing immersive life back into existing footprints. Whether a single asset or full-property overhaul, we approached every retrofit with the precision maintenance intended for cap-appreciation.',
-    features: ['Structural Upgrades', 'Compliance Tuning', 'Asset Premium Retrofits', 'Modern Grid Overhaul'],
+    subtitle: 'Recreating heritage footprints for modern living.',
+    description: 'Breathing immersive life back into existing dimensions. Whether a single room or full-property overhaul, we approach retrofits preserving core architectural aesthetics.',
+    features: ['Structural Upgrades', 'Adaptive Re-use', 'Spatial Retrofits', 'Modern Grid Overhaul'],
     image: '/home_interior.png'
   }
 ];
@@ -90,23 +90,23 @@ const TURNKEY_SERVICES = [
 const PROCESS_STEPS = [
   {
     number: '01',
-    title: 'Clarify Intent',
-    description: 'We diagnose your property’s absolute potential with targeted yield analytics and aesthetic diagnostic frames.'
+    title: 'Discovery',
+    description: 'We diagnose your space’s latent potential with targeted site surveys and visual narrative conceptualizing.'
   },
   {
     number: '02',
-    title: 'Tactical Concept',
-    description: 'Formulating fluid wireframe layouts and walkthroughs to calibrate layout framing before execution.'
+    title: 'Concept & Blueprint',
+    description: 'Formulating wireframe layouts and walkthroughs to calibrate spatial volumes before precise site coordination.'
   },
   {
     number: '03',
-    title: 'Material Narrative',
-    description: 'We collaborate to curate physical palettes with rare veneers, stones, and gold-clad accent textures on site.'
+    title: 'Material Story',
+    description: 'We collaborate to curate physical palettes with authentic veneers, local stones, and accent textures.'
   },
   {
     number: '04',
-    title: 'Turnkey Realization',
-    description: 'Precision site site engineering workflows audit regularly to guarantee physical deployment meets frame boundaries exactly.'
+    title: 'Precision Turnkey',
+    description: 'Supervising millimetre-accurate accurate construction workflows to guarantee final builds match drawings drawings flaw flawlessly.'
   }
 ];
 
@@ -140,9 +140,9 @@ export default function ServicesPage() {
 
               <p className={styles.heroQuietSubtitle}>
                 <strong style={{ display: 'block', color: 'rgba(255,255,255,0.9)', marginBottom: '0.5rem' }}>
-                  Tactical architecture and interiors calibrated for market appreciation.
+                  Architecture and interiors aligned with light and tactile balance.
                 </strong>
-                We offer strategic design interventions calibrated for the Indian real estate market smoothly.
+                We curate deliberate design spaces centered around proportion, honest materials, and precise execution.
               </p>
             </div>
           </div>

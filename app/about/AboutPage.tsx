@@ -38,10 +38,10 @@ const TEAM = [
 
 
 const VALUES = [
-  { icon: '◈', title: 'Investment-First Thinking', desc: 'Every design decision is run through an ROI filter. Beauty follows value, not the other way around.' },
-  { icon: '◎', title: 'Hybrid Precision', desc: 'We refuse the false choice between modular efficiency and bespoke soul. Our hybrid method delivers both.' },
-  { icon: '◇', title: 'Hyper-Local Expertise', desc: 'We know the price per sq.ft, rental demand, and buyer psychology of every Bengaluru micro-market we work in.' },
-  { icon: '⬡', title: 'Documentation as Design', desc: 'Our Design Audit Reports and Transferable Warranties are as important as our floor plans.' },
+  { icon: '◈', title: 'Contextual Siting', desc: 'We design around light, wind, and local landscape. Spaces fit naturally with surrounding environments.' },
+  { icon: '◎', title: 'Honest Materials', desc: 'Teak, local stone, brick, and tactile textiles. We respect the inherent beauty of natural material narratives.' },
+  { icon: '◇', title: 'Craftsmanship First', desc: 'Our design blueprints are backed with precise site coordination ensuring accurate execution.' },
+  { icon: '⬡', title: 'Form Follows Function', desc: 'We align beauty alongside utility. Layouts breathe without friction or over-engineered over-complex limits.' },
 ];
 
 export default function AboutPage() {
@@ -139,41 +139,13 @@ export default function AboutPage() {
               <p>
                 Every space is planned with clarity, proportion, and purpose — built to last. We believe a home should feel effortless and personal, where every element has a reason to be there.
               </p>
-              <p style={{ marginTop: '1rem' }}>
-                The Bengaluru interior design market has long been divided into two camps:
-                fast-but-soulless modular, and beautiful-but-expensive bespoke. Our approach sits at the value-maximising sweet spot — function first, form follows, and everything is built to endure.
-              </p>
-              <div className={styles.hybridComparison}>
-                <div className={styles.hybridCol}>
-                  <div className={styles.hybridLabel}>Pure Modular</div>
-                  <div className={styles.hybridBar}>
-                    <div className={styles.hybridFill} style={{ width: '45%', background: 'rgba(255,255,255,0.15)' }} />
-                  </div>
-                  <div className={styles.hybridValue}>0.85× Efficiency</div>
-                </div>
-                <div className={`${styles.hybridCol} ${styles.hybridColActive}`}>
-                  <div className={styles.hybridLabel}>Be More Hybrid™ ✦</div>
-                  <div className={styles.hybridBar}>
-                    <div className={styles.hybridFill} style={{ width: '85%' }} />
-                  </div>
-                  <div className={styles.hybridValue}>1.20× Value/Cost</div>
-                </div>
-                <div className={styles.hybridCol}>
-                  <div className={styles.hybridLabel}>Pure Bespoke</div>
-                  <div className={styles.hybridBar}>
-                    <div className={styles.hybridFill} style={{ width: '62%', background: 'rgba(196,146,42,0.35)' }} />
-                  </div>
-                  <div className={styles.hybridValue}>1.10× Premium</div>
-                </div>
-              </div>
+                The Bengaluru design market is often divided between modular speed and bespoke art. Our philosophy bridges both — using precision modular blueprints for core functionality while investing in custom craft for tactile bespoke detailing.
             </div>
             <div className={styles.philosophyQuote}>
               <blockquote className={styles.quote}>
                 <span className={styles.quoteMark}>&ldquo;</span>
-                The best-designed homes in Bengaluru are not the ones photographed for Instagram.
-                They are the ones that sold fastest, at the highest price, with the fewest
-                negotiations.
-                <cite className={styles.quoteCite}>— Be More Design Studio, 2026 Market Report</cite>
+                The best-designed spaces are not just captured for photography. They are simply felt the moment you walk inside, where every proportion coordinates effortless balance.
+                <cite className={styles.quoteCite}>— Kavya Sreenivas, Design Director</cite>
               </blockquote>
             </div>
           </div>

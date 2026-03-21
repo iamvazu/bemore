@@ -132,19 +132,7 @@ export default function PortfolioPage() {
               >
                 <div className={styles.imageWrapper}>
                   <img src={project.image} alt={project.title} className={styles.image} />
-                  <div className={styles.overlay}>
-                    <div className={styles.roiStats}>
-                      <div className={styles.statItem}>
-                        <span className={styles.statValue}>{project.roi}</span>
-                        <span className={styles.statLabel}>Resale ROI</span>
-                      </div>
-                      <div className={styles.statDivider} />
-                      <div className={styles.statItem}>
-                        <span className={styles.statValue}>{project.rental}</span>
-                        <span className={styles.statLabel}>Yield Premium</span>
-                      </div>
-                    </div>
-                  </div>
+
                   <div className={styles.tagPill}>{project.tag}</div>
                 </div>
                 <div className={styles.content}>
@@ -176,7 +164,7 @@ export default function PortfolioPage() {
       <section className={styles.ctaBanner}>
         <div className="container">
           <div className={styles.ctaContent}>
-            <h2>Ready to see these numbers in <em className="text-gold">your</em> property?</h2>
+            <h2>Ready to start your <em className="text-gold">design</em> story?</h2>
             <div className={styles.ctaActions}>
               <Link href="/contact" className="btn btn-primary btn-lg">Book a Consultation →</Link>
             </div>
