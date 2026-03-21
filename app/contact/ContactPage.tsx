@@ -85,7 +85,7 @@ export default function ContactPage() {
                 <p><a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a></p>
               </div>
               <div className={styles.socialLinks}>
-                <a href="#" className={styles.socialIcon}>Instagram</a>
+                <a href="https://www.instagram.com/bemoredesignstudio" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>Instagram</a>
                 <a href="#" className={styles.socialIcon}>LinkedIn</a>
                 <a href="#" className={styles.socialIcon}>Houzz</a>
               </div>
@@ -121,12 +121,31 @@ export default function ContactPage() {
                       <label>Project Type</label>
                       <select name="projectType" required>
                         <option value="">Select Type</option>
-                        <option value="Residential">Residential</option>
+                        <option value="Residential">Residential (Apartment / Villa)</option>
                         <option value="Architectural Design">Architectural Design</option>
                         <option value="Interior Design & Styling">Interior Design & Styling</option>
                         <option value="Commercial & Retail Spaces">Commercial & Retail Spaces</option>
+                        <option value="Hospitality">Hospitality (Café / Hotel)</option>
+                        <option value="Renovation">Renovation / Refurbishment</option>
+                        <option value="Turnkey">Turnkey (Design + Execution)</option>
+                        <option value="Consultation Only">Consultation Only</option>
                         <option value="Project Management">Project Management</option>
                       </select>
+                    </div>
+                    <div className={styles.inputGroup}>
+                      <label>Budget Range</label>
+                      <select name="budgetRange" required>
+                        <option value="">Select Budget Range</option>
+                        <option value="Under 10L">Under ₹10L</option>
+                        <option value="10L - 25L">₹10L – ₹25L</option>
+                        <option value="25L - 50L">₹25L – ₹50L</option>
+                        <option value="50L - 1Cr">₹50L – ₹1Cr</option>
+                        <option value="1Cr+">₹1Cr+</option>
+                      </select>
+                    </div>
+                    <div className={styles.inputGroup}>
+                      <label>Expected Start Date</label>
+                      <input type="date" name="expectedStartDate" />
                     </div>
                     <div className={styles.inputGroup} style={{ gridColumn: 'span 2' }}>
                       <label>Location</label>

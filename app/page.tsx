@@ -409,8 +409,11 @@ export default function HomePage() {
               The beMore Philosophy
             </h2>
             <blockquote className={styles.philosophyQuote}>
-              &ldquo;We believe a space should do more than just exist—it should inspire. Our approach seamlessly integrates creativity with technical precision to elevate the way you live, work, and be more.&rdquo;
+              &ldquo;Clean, intentional spaces that balance aesthetics with real-life functionality — everything has a purpose. We design homes that feel effortless and personal, where materials, light, and layout work together to create a calm, elevated everyday experience.&rdquo;
             </blockquote>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.5rem', fontStyle: 'italic' }}>
+              Function first, form follows. Every space planned with clarity, proportion, and purpose — built to last.
+            </p>
           </div>
         </div>
       </section>
@@ -564,29 +567,23 @@ export default function HomePage() {
 
           <div className={styles.workflowSteps}>
             {[
-              { 
-                num: '01', 
-                title: 'Discovery & Mapping', 
-                desc: 'We deeply understand your preferences, desires, and tactical requirements to create a personalized design foundation.',
+              {
+                num: '01',
+                title: 'Discover & Design Concept',
+                desc: 'We start with you: your needs, your story, your space. Site visits, budget discussions, and gathering inspiration define the project scope. We deliver a conceptual design presentation and a pre-design estimate.',
                 img: '/portfolio-whitefield.jpg'
               },
-              { 
-                num: '02', 
-                title: 'Design Intent', 
-                desc: 'Our design intent brings your vision to life, creating spaces tailored to your needs with high ROI focus.',
+              {
+                num: '02',
+                title: 'Design Development & Detailed Planning',
+                desc: 'Once the concept is approved, we translate ideas into layouts, mood boards, 3D walkthroughs, and technical drawings. Every aspect of the space is thoughtfully designed, with meticulous material curation.',
                 img: '/portfolio-indiranagar.jpg'
               },
-              { 
-                num: '03', 
-                title: 'Precision Estimation', 
-                desc: 'We offer transparent, data-backed estimates, ensuring clarity and honesty throughout the project journey.',
+              {
+                num: '03',
+                title: 'Production & Delivery',
+                desc: 'BOQ approved, we translate designs into reality with our trusted vendors and service partners — ensuring quality craftsmanship, timely delivery, and transparent communication throughout. Typical timeline: 60 days.*',
                 img: '/portfolio-koramangala.jpg'
-              },
-              { 
-                num: '04', 
-                title: 'Masterful Execution', 
-                desc: 'Design transitions seamlessly into reality as we oversee every technical detail of the transformation.',
-                img: '/portfolio-bellandur.jpg'
               }
             ].map((step, i) => (
               <div key={i} className={styles.workflowStep}>

@@ -8,6 +8,28 @@ import styles from './portfolio.module.css';
 
 const PROJECTS = [
   {
+    id: 'rooted-home-rt-nagar',
+    title: 'Rooted Home',
+    location: 'RT Nagar, Bangalore',
+    type: 'Residential',
+    image: '/portfolio-whitefield.jpg',
+    roi: '+28%',
+    rental: '+9.4%',
+    tag: 'Architecture + Interiors',
+    description: 'An independent house shaped by continuity — where an existing tree was carefully relocated, allowing its life to extend beyond the site. Designed around a central pooja space, the home brings together light, water, and greens to create a calm, inward-focused environment that feels grounded and enduring.',
+  },
+  {
+    id: 'eleve-living-brigade-panorama',
+    title: 'Elevé Living',
+    location: 'Brigade Panorama, Bangalore',
+    type: 'Residential',
+    image: '/portfolio-indiranagar.jpg',
+    roi: '+35%',
+    rental: '+12.6%',
+    tag: 'Interiors',
+    description: 'A residence designed to reflect a refined, modern lifestyle — balancing comfort with high-end finishes. From the bay window seating to the full-height TV unit and a carefully detailed pooja space, every element is tailored for both function and visual clarity, resulting in a home that feels polished, warm, and complete.',
+  },
+  {
     id: 'whitefield-villa',
     title: 'The Minimalist Villa',
     location: 'Whitefield',
@@ -17,17 +39,6 @@ const PROJECTS = [
     rental: '+9.4%',
     tag: 'Architectural',
     description: 'A clean, minimalist intervention focusing on light and spatial flow in Whitefield.',
-  },
-  {
-    id: 'indiranagar-penthouse',
-    title: 'Penthouse Elevation',
-    location: 'Indiranagar',
-    type: 'Residential',
-    image: '/portfolio-indiranagar.jpg',
-    roi: '+35%',
-    rental: '+12.6%',
-    tag: 'Bespoke',
-    description: 'Modern elevation and interior styling for a flagship penthouse in Indiranagar.',
   },
   {
     id: 'collaborative-hub',
@@ -61,7 +72,7 @@ export default function PortfolioPage() {
     setMounted(true);
   }, []);
 
-  const categories = ['All', 'Residential', 'Commercial'];
+  const categories = ['All', 'Residential', 'Commercial', 'Hospitality'];
 
   const filteredProjects = filter === 'All' 
     ? PROJECTS 

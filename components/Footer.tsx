@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
+// Instagram: https://www.instagram.com/bemoredesignstudio
 
 export default function Footer() {
   return (
@@ -17,6 +18,7 @@ export default function Footer() {
           <div className={styles.contact}>
             <a href="tel:+919663424256">+91 96634 24256</a>
             <a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a>
+            <a href="https://www.instagram.com/bemoredesignstudio" target="_blank" rel="noopener noreferrer">@bemoredesignstudio</a>
           </div>
         </div>
 

@@ -22,10 +22,16 @@ function useInView(threshold = 0.15) {
 
 const TEAM = [
   {
-    name: 'Founder & Principal Designer',
-    initials: 'BM',
-    role: 'Architecture & Strategy',
-    quote: '"Every room we design appreciates. Not just in beauty, but in rupees."',
+    name: 'Kavya Sreenivas',
+    initials: 'KS',
+    role: 'Co-Founder & Design Director',
+    quote: '"Design is not about excess — it is about intention. Every proportion, every material, every detail is placed with purpose."',
+  },
+  {
+    name: 'Suraj Divate',
+    initials: 'SD',
+    role: 'Co-Founder & Execution Lead',
+    quote: '"A great design is only as good as its execution. I make sure every idea is translated with precision and discipline on site."',
   },
   {
     name: 'Head of Interiors',
@@ -39,20 +45,14 @@ const TEAM = [
     role: 'KNX / Control4 Certified',
     quote: '"Technology should disappear into the walls. You should only see its value."',
   },
-  {
-    name: 'Acoustic Design Consultant',
-    initials: 'A',
-    role: 'Acoustic & WFH Specialist',
-    quote: '"Silence is the most undervalued square foot in Bengaluru real estate."',
-  },
 ];
 
 const MILESTONES = [
-  { year: '2016', title: 'Studio Founded', desc: 'Started with a single apartment in Indiranagar and a conviction that design must pay back.' },
-  { year: '2018', title: 'Hybrid Method Born', desc: 'Developed our signature Hybrid Design™ approach — combining modular efficiency with bespoke craftsmanship.' },
-  { year: '2020', title: 'Smart Home Division', desc: 'Launched dedicated KNX/Control4 integration team as Bengaluru\'s tech corridor demanded it.' },
-  { year: '2022', title: 'Acoustic Design Offering', desc: 'Responded to ORR noise pollution crisis with India\'s first residential acoustic ROI framework.' },
-  { year: '2024', title: '₹100Cr Portfolio', desc: 'Crossed ₹100Cr in designed real estate across 150+ homes in 8 Bengaluru micro-markets.' },
+  { year: '2023', title: 'Studio Founded', desc: 'beMore Design Studio established in Bengaluru by Kavya Sreenivas and Suraj Divate — built on clarity, designed with purpose, delivered with precision.' },
+  { year: '2023', title: 'First Projects Delivered', desc: 'Delivered Rooted Home (RT Nagar) and Elevé Living (Brigade Panorama) — setting the tone for our function-first philosophy.' },
+  { year: '2024', title: 'Hospitality & Commercial Expansion', desc: 'Expanded practice to include hospitality, café, and corporate office projects across Bengaluru.' },
+  { year: '2024', title: 'Turnkey & 3D Visualisation', desc: 'Introduced full turnkey (Design + Execution) offering alongside immersive 3D walkthrough services for every project.' },
+  { year: '2025', title: 'Growing Portfolio', desc: 'Delivering spaces across residential, hospitality, commercial, and corporate sectors with a 60-day execution benchmark.' },
   { year: '2026', title: 'Budget Estimator™', desc: 'Launched India\'s first data-backed interior budget tool — the engine you\'re on right now.' },
 ];
 
@@ -90,14 +90,14 @@ export default function AboutPage() {
               <div className="tag" style={{ margin: '0 0 1rem' }}>The Studio</div>
               
               <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1.1' }}>
-                Architecture is 
+                Function First.
                 <br />
-                <em>Technical Soul.</em>
+                <em>Form Follows.</em>
               </h1>
 
               <p className="hero-subtext" style={{ marginBottom: '1.5rem', fontSize: '1rem', lineHeight: '1.5' }}>
-                beMore is a multidisciplinary studio founded on the principle that the most beautiful spaces are those that function with surgical precision. 
-                Our practice is a "Nature Lab" where biology, technology, and craftsmanship converge.
+                beMore Design Studio is an architectural and interior design practice based in Bengaluru, founded by Kavya Sreenivas and Suraj Divate.
+                Clean, intentional spaces that balance aesthetics with real-life functionality — where materials, light, and layout work together to create a calm, elevated everyday experience.
               </p>
               <div>
                  <Link href="/contact" className="btn btn-primary" style={{ padding: '12px 28px' }}>Partner With Us →</Link>
@@ -106,14 +106,14 @@ export default function AboutPage() {
 
             {/* Floating stat card - Slightly Slimmed */}
             <div className={`${styles.heroStat} ${mounted ? styles.visible : ''}`} style={{ transform: 'scale(0.9)', transformOrigin: 'top right' }}>
-              <div className={styles.heroStatNumber}>10+</div>
-              <div className={styles.heroStatLabel}>Years designing Bengaluru</div>
+              <div className={styles.heroStatNumber}>Est. 2023</div>
+              <div className={styles.heroStatLabel}>Founded in Bengaluru</div>
               <div className={styles.heroStatDivider} />
-              <div className={styles.heroStatNumber}>240+</div>
-              <div className={styles.heroStatLabel}>Homes designed</div>
+              <div className={styles.heroStatNumber}>60 Days</div>
+              <div className={styles.heroStatLabel}>Typical project timeline*</div>
               <div className={styles.heroStatDivider} />
-              <div className={styles.heroStatNumber}>₹180Cr</div>
-              <div className={styles.heroStatLabel}>In designed real estate</div>
+              <div className={styles.heroStatNumber}>COA</div>
+              <div className={styles.heroStatLabel}>Registered Studio</div>
             </div>
           </div>
         </div>
@@ -129,15 +129,27 @@ export default function AboutPage() {
           <div className={styles.whyGrid}>
             <div className={styles.whyItem}>
               <h4>Multidisciplinary Expertise</h4>
-              <p>From the foundation to the finishing decor.</p>
+              <p>Residential, hospitality, commercial, and corporate — from the foundation to the finishing decor.</p>
             </div>
             <div className={styles.whyItem}>
               <h4>Vision-Centric</h4>
-              <p>Your goals are our blueprint.</p>
+              <p>Your goals are our blueprint. We begin with how the space will be used, who it is for, and what it needs to achieve.</p>
             </div>
             <div className={styles.whyItem}>
-              <h4>The 2024 Edge</h4>
-              <p>We utilize the latest in smart-home integration and sustainable modern materials.</p>
+              <h4>COA Registered</h4>
+              <p>Registered with the Council of Architecture — bringing professional rigour and accountability to every project.</p>
+            </div>
+            <div className={styles.whyItem}>
+              <h4>3D Walkthroughs</h4>
+              <p>Immersive 3D visualisations so you can experience your space before a single wall is built.</p>
+            </div>
+            <div className={styles.whyItem}>
+              <h4>60-Day Delivery</h4>
+              <p>A structured 60-day execution benchmark — because clarity in process means no surprises at handover.*</p>
+            </div>
+            <div className={styles.whyItem}>
+              <h4>Trusted Brands</h4>
+              <p>We work with Hettich, Hafele, Rehau, Asian Paints, Saint Gobain, Merino & Century Laminates, and ebco livsmart.</p>
             </div>
           </div>
         </div>
@@ -156,14 +168,11 @@ export default function AboutPage() {
                 nor pure Bespoke wins
               </h2>
               <p>
-                The Bengaluru interior design market has long been divided into two camps:
-                fast-but-soulless modular, and beautiful-but-expensive bespoke. Both miss the
-                point entirely when it comes to <strong>resale value</strong>.
+                Every space is planned with clarity, proportion, and purpose — built to last. We believe a home should feel effortless and personal, where every element has a reason to be there.
               </p>
               <p style={{ marginTop: '1rem' }}>
-                Pure modular depreciates like a flat-pack product. Pure bespoke has high
-                maintenance costs that actually <em>suppress</em> buyer interest at resale.
-                Our Hybrid Design Method sits precisely at the value-maximising sweet spot.
+                The Bengaluru interior design market has long been divided into two camps:
+                fast-but-soulless modular, and beautiful-but-expensive bespoke. Our approach sits at the value-maximising sweet spot — function first, form follows, and everything is built to endure.
               </p>
               <div className={styles.hybridComparison}>
                 <div className={styles.hybridCol}>

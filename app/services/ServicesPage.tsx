@@ -125,6 +125,16 @@ export default function ServicesPage() {
               <h3>Project Management & Consultation</h3>
               <p>Design without the stress. We oversee the technical precision of every build, ensuring that the transition from concept to reality is seamless and timely.</p>
             </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>05.</span>
+              <h3>Hospitality — Cafes & Hotels</h3>
+              <p>Curating environments that elevate the guest experience. From intimate café interiors to boutique hotel spaces, we design for atmosphere, efficiency, and brand storytelling.</p>
+            </div>
+            <div className={styles.solutionItem}>
+              <span className={styles.solutionNumber}>06.</span>
+              <h3>Renovation & Refurbishment</h3>
+              <p>Breathing new life into existing spaces. Whether it&apos;s a single room or a full property overhaul, we approach every renovation with the same precision and intent as a new build.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -199,6 +209,16 @@ export default function ServicesPage() {
               <div className={styles.moduleIcon}>🧭</div>
               <h4>Vastu Audit Report</h4>
               <p>Property-wide element balancing and optimal placement of all household objects for enhanced harmony.</p>
+            </div>
+            <div className={styles.moduleCard}>
+              <div className={styles.moduleIcon}>🥽</div>
+              <h4>3D Walkthrough</h4>
+              <p>Immersive 3D visualisations so you can walk through your space and approve every detail before execution begins.</p>
+            </div>
+            <div className={styles.moduleCard}>
+              <div className={styles.moduleIcon}>🔑</div>
+              <h4>Turnkey Delivery</h4>
+              <p>Full design and execution under one roof — from concept to keys in hand, with a 60-day benchmark.</p>
             </div>
           </div>
         </div>
