@@ -267,8 +267,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className={styles.ctaBtns}>
-              <Link href="/calculator" className="btn btn-primary btn-lg">Estimate Budget →</Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg">Book a Call</Link>
+              <Link href="/contact" className="btn btn-primary btn-lg">Book a Call →</Link>
             </div>
           </div>
         </div>

@@ -72,11 +72,11 @@ function ServiceCard({
 // Locality pill
 function LocalityPill({ name, mf, delay }: { name: string; mf: number; delay: number }) {
   return (
-    <Link href={`/calculator`} className={styles.localityPill} style={{ animationDelay: `${delay}ms` }}>
+    <div className={styles.localityPill} style={{ animationDelay: `${delay}ms` }}>
       <span className={styles.localityDot} />
       <span className={styles.localityName}>{name}</span>
       <span className={styles.localityLf}>{mf}x Factor</span>
-    </Link>
+    </div>
   );
 }
 
@@ -84,14 +84,6 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [locality, setLocality] = useState('Jayanagar, Bangalore');
-  const [bhkIndex, setBhkIndex] = useState(0);
-
-  const bhkTypes = [
-    { type: '1BHK', essential: '12L', premium: '18L', luxury: '28L', progress: '92%' },
-    { type: '2BHK', essential: '18L', premium: '28L', luxury: '45L', progress: '94%' },
-    { type: '3BHK', essential: '28L', premium: '45L', luxury: '75L', progress: '95%' },
-  ];
-
   const professions = [
     "Architect",
     "Interior Designer"
@@ -104,7 +96,6 @@ export default function HomePage() {
 
   const { ref: statsRef, inView: statsInView } = useInView();
   const { ref: servicesRef, inView: servicesInView } = useInView(0.1);
-  const { ref: roiRef, inView: roiInView } = useInView(0.1);
 
   useEffect(() => {
     setMounted(true);
@@ -114,46 +105,10 @@ export default function HomePage() {
       setTaglineIndex((prev) => (prev + 1) % professions.length);
     }, 3000);
 
-    // BHK rotation
-    const bhkInterval = setInterval(() => {
-      setBhkIndex((prev) => (prev + 1) % bhkTypes.length);
-    }, 3500);
-
-    // Real Locality Detection
-    const detectLocation = async () => {
-      try {
-        // Step 1: Rapid IP detection (No prompt)
-        const ipRes = await fetch('https://ipapi.co/json/');
-        const ipData = await ipRes.json();
-        if (ipData.city) {
-          setLocality(ipData.city === 'Bengaluru' ? 'Bangalore' : ipData.city);
-        }
-
-        // Step 2: High-precision GPS (Prompted)
-        if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition(async (pos) => {
-            const { latitude, longitude } = pos.coords;
-            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=14`);
-            const data = await res.json();
-            if (data.address) {
-              const area = data.address.suburb || data.address.neighbourhood || data.address.residential || data.address.locality;
-              const city = data.address.city || data.address.town || 'Bangalore';
-              setLocality(`${area ? area + ', ' : ''}${city}`);
-            }
-          }, (err) => console.log("GPS denied, using IP location"), { timeout: 5000 });
-        }
-      } catch (err) {
-        console.error("Location fetch failed", err);
-      }
-    };
-
-    detectLocation();
-
     return () => {
       clearInterval(tagInterval);
-      clearInterval(bhkInterval);
     };
-  }, [professions.length, bhkTypes.length]);
+  }, [professions.length]);
 
   const SERVICES = [
     {
@@ -351,70 +306,17 @@ export default function HomePage() {
               </p>
 
               <div className={styles.heroCtas} style={{ marginBottom: '0', marginTop: '0.75rem' }}>
-                <Link href="/calculator" className="btn btn-primary" id="hero-cta-calculator" style={{ padding: '12px 28px' }}>
-                  Budget Estimator
+                <Link href="/contact" className="btn btn-primary" id="hero-cta-calculator" style={{ padding: '12px 28px' }}>
+                  Book Free Consultation
                   <span>→</span>
                 </Link>
-                <Link href="/contact" className="btn btn-ghost" id="hero-cta-consultation" style={{ padding: '12px 28px' }}>
-                  Book Free Consultation
+                <Link href="/portfolio" className="btn btn-ghost" id="hero-cta-consultation" style={{ padding: '12px 28px' }}>
+                  View Portfolio
                 </Link>
               </div>
             </div>
 
-            {/* Estimator Teaser Card - Slightly Slimmed */}
-            <div className={`${styles.heroCard} ${mounted ? styles.heroCardVisible : ''}`} style={{ marginTop: '0', transform: 'scale(0.95)', transformOrigin: 'top right' }}>
-              <div className={styles.heroCardTop}>
-                <span className="tag">Budget Baseline</span>
-                <span className={styles.heroCardLive}>● 2026 RATES</span>
-              </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div 
-                  key={bhkIndex}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className={styles.heroCardLocality}>Premium {bhkTypes[bhkIndex].type}, {locality}</div>
-                  <div className={styles.heroCardData}>
-                    <div className={styles.heroMetric}>
-                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].essential}</span>
-                      <span className={styles.heroMetricLabel}>Essential</span>
-                    </div>
-                    <div className={styles.heroMetricDivider} />
-                    <div className={styles.heroMetric}>
-                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].premium}</span>
-                      <span className={styles.heroMetricLabel}>Premium</span>
-                    </div>
-                    <div className={styles.heroMetricDivider} />
-                    <div className={styles.heroMetric}>
-                      <span className={styles.heroMetricValue}>₹{bhkTypes[bhkIndex].luxury}</span>
-                      <span className={styles.heroMetricLabel}>Luxury</span>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className={styles.heroCardBar}>
-                <div className={styles.heroCardBarLabel}>Transparency Index</div>
-                <div className={styles.heroCardBarTrack}>
-                  <motion.div 
-                    className={styles.heroCardBarFill} 
-                    initial={{ width: 0 }}
-                    animate={{ width: bhkTypes[bhkIndex].progress }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  />
-                </div>
-                <div className={styles.heroCardBarLegend}>
-                  <span>Market Avg</span>
-                  <span className={styles.goldText}>beMore Precision +100%</span>
-                </div>
-              </div>
-              <Link href="/calculator" className="cta-link-animate" style={{ fontSize: '0.9rem', marginTop: '12px' }}>
-                Get your precise quote →
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -683,70 +585,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ BUDGET ESTIMATOR TEASER ============ */}
-      <section className={`${styles.roiTeaser} section`} ref={roiRef}>
-        <div className={styles.roiTeaserBg}>
-          <img src="/portfolio-indiranagar.jpg" alt="Luxury Interior" />
-        </div>
-        <div className={styles.roiTeaserOverlay} />
-        <div className="container">
-          <div className={`${styles.roiTeaserInner} ${roiInView ? styles.roiTeaserVisible : ''}`}>
-            <div className={styles.roiTeaserText}>
-              <div className="gold-line" />
-              <span className="tag">Budget Estimator™</span>
-              <h2 className={styles.roiTeaserTitle}>
-                Surgical
-                <br />
-                <em className="text-gold">Cost Transparency</em>
-                <br />
-                Engine
-              </h2>
-              <p>
-                The only estimator in India built on actual 2026 market benchmarks. 
-                Move beyond guesswork. Calculate precise Bill of Quantities (BOQ) 
-                based on your specific property area, city multipliers, and material tiers.
-              </p>
-              <ul className={styles.roiFeatures}>
-                <li><span className={styles.checkGold}>✓</span> Itemized BOQ (Wardrobes, Kitchen, Electrical)</li>
-                <li><span className={styles.checkGold}>✓</span> City Multipliers (Bangalore, Mumbai, Jaipur)</li>
-                <li><span className={styles.checkGold}>✓</span> Material Tiers: Essential, Premium, Luxury</li>
-                <li><span className={styles.checkGold}>✓</span> Live calculation including GST & Fees</li>
-                <li><span className={styles.checkGold}>✓</span> Detailed Specs for every tier selection</li>
-                <li><span className={styles.checkGold}>✓</span> Comparison views for optimal budgeting</li>
-              </ul>
-              <Link href="/calculator" className="btn btn-primary btn-lg" id="roi-teaser-cta">
-                Estimate Your Project →
-              </Link>
-            </div>
-            <div className={styles.roiTeaserVisual}>
-              {/* Formula display card */}
-              <div className={styles.formulaCard}>
-                <div className={styles.formulaTitle}>The Cost Formula</div>
-                <div className={styles.formulaEq}>
-                  Total = ∑(Rate<sub>city</sub> × Tier<sub>m</sub> × Qty) + Fee + GST
-                </div>
-                <div className={styles.formulaVars}>
-                  {[
-                    { sym: 'Rate', label: 'Base City Benchmark' },
-                    { sym: 'Tier', label: 'Material Quality Multiplier' },
-                    { sym: 'Qty', label: 'Precise Area/Unit Measurements' },
-                    { sym: 'Fee', label: 'Architectural Designer Fee' },
-                    { sym: 'GST', label: 'Standard 18% Statutory Tax' },
-                  ].map((v) => (
-                    <div key={v.sym} className={styles.formulaVar}>
-                      <span className={styles.formulaSym}>{v.sym}</span>
-                      <span className={styles.formulaVarLabel}>{v.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.formulaNote}>
-                  Generated with Surgical Precision by beMore Design Studio
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* ============ LOCALITIES ============ */}
       <section className={`${styles.localities} section--sm`}>
@@ -778,11 +617,8 @@ export default function HomePage() {
               </p>
             </div>
             <div className={styles.ctaBtns}>
-              <Link href="/calculator" className="btn btn-primary btn-lg" id="cta-band-calc">
-                Estimate Your Budget First →
-              </Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg" id="cta-band-contact">
-                Book Discovery Call
+              <Link href="/contact" className="btn btn-primary btn-lg" id="cta-band-calc">
+                Book Discovery Call →
               </Link>
             </div>
           </div>

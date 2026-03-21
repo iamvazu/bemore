@@ -179,8 +179,7 @@ export default function PortfolioPage() {
           <div className={styles.ctaContent}>
             <h2>Ready to see these numbers in <em className="text-gold">your</em> property?</h2>
             <div className={styles.ctaActions}>
-              <Link href="/calculator" className="btn btn-primary btn-lg">Run Calculator →</Link>
-              <Link href="/contact" className="btn btn-ghost btn-lg">Inquire About Services</Link>
+              <Link href="/contact" className="btn btn-primary btn-lg">Book a Consultation →</Link>
             </div>
           </div>
         </div>

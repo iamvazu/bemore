@@ -56,9 +56,9 @@ export default function PortfolioDetail({ project }: Props) {
 
               <div className={styles.ctaCard}>
                 <h3>Ready to replicate these results?</h3>
-                <p>Calculate the specific ROI potential for your property in {project.location}.</p>
-                <Link href={`/calculator?locality=${project.location.toLowerCase()}`} className="btn btn-primary">
-                  Run {project.location} Estimator →
+                <p>Get in touch to replicate spatial yields for your property in {project.location}.</p>
+                <Link href="/contact" className="btn btn-primary">
+                  Book Free Consultation →
                 </Link>
               </div>
             </div>

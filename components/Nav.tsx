@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: '/services', label: 'Services' },
   { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
-  { href: '/calculator', label: 'Budget Estimator' },
 ];
 
 export default function Nav() {
@@ -60,10 +59,9 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.link} ${pathname === link.href ? styles.active : ''} ${link.href === '/calculator' ? styles.cta : ''}`}
+              className={`${styles.link} ${pathname === link.href ? styles.active : ''}`}
             >
               {link.label}
-              {link.href === '/calculator' && <span className={styles.ctaBadge}>BETA</span>}
             </Link>
           ))}
         </nav>
@@ -96,8 +94,8 @@ export default function Nav() {
         </nav>
         
         <div className={styles.mobileCta}>
-          <Link href="/calculator" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-            Budget Estimator →
+          <Link href="/contact" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+            Book Consultation →
           </Link>
         </div>
 
