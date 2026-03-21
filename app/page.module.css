@@ -1124,11 +1124,11 @@
    DARK SERVICES
    ============================================================ */
 .darkServices {
-  color: #FFFFFF;
+  color: var(--text-primary);
   padding: var(--space-4xl) 0;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(rgba(21, 19, 18, 0.92), rgba(21, 19, 18, 0.92)), url('/portfolio-bellandur.jpg');
+  background-image: linear-gradient(rgba(253, 249, 240, 0.92), rgba(253, 249, 240, 0.92)), url('/retail1.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1141,19 +1141,20 @@
   font-weight: 300;
   line-height: 1;
   margin-top: 1rem;
+  color: var(--text-primary);
 }
 
 .darkGrid {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .darkItem {
   display: flex;
   flex-direction: column;
   padding: var(--space-xl) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   cursor: pointer;
   transition: all 0.4s var(--ease-out);
 }
@@ -1190,13 +1191,13 @@
   letter-spacing: -0.01em;
   text-transform: none;
   flex: 1;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 .darkItem p {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--text-secondary);
   line-height: 1.5;
   max-width: 450px;
 }
@@ -1242,7 +1243,7 @@
 }
 
 .darkItemExpanded {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(196, 146, 42, 0.03);
   padding: var(--space-xl) var(--space-md);
   border-left: 2px solid var(--gold);
 }
