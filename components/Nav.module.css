@@ -58,7 +58,7 @@
 }
 
 .logoImage {
-  height: clamp(50px, 8vw, 60px);
+  height: clamp(60px, 12vw, 75px);
   width: auto;
   display: block;
   object-fit: contain;

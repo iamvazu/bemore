@@ -6,55 +6,77 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import styles from './services.module.css';
 
-const PACKAGES = [
+const SERVICES_DETAILED = [
   {
-    id: 'modular-plus',
-    name: 'Modular Plus',
-    tagline: 'Efficiency Redefined',
-    price: '₹12L - ₹25L',
-    roiFactor: '0.85x',
-    features: [
-      'High-Grade Modular Kitchen & Wardrobes',
-      'Basic Smart Lighting',
-      'Standard Painting & False Ceiling',
-      '3-Year Warranty',
-      'Market-Ready Compliance'
-    ],
-    bestFor: 'Rental Properties & Entry-Level Homes'
+    id: 'architecture',
+    number: '01',
+    title: 'Architectural Design',
+    subtitle: 'Crafting the structural narrative of your home.',
+    description: 'We provide full-scale architectural planning tailored for the Indian climate, focusing on structural integrity and spatial flow. Our approach balances aesthetics with real-world sustainability.',
+    features: ['Spatial Optimization', 'Climate Calibration', 'Structural Engineering', 'BIM Modelling']
   },
   {
-    id: 'bespoke-hybrid',
-    name: 'Be More Hybrid™',
-    tagline: 'The Maximum ROI Tier',
-    price: '₹25L - ₹55L',
-    roiFactor: '1.20x',
-    isPopular: true,
-    features: [
-      'Precision Modular + Custom Joinery',
-      'Acoustic Master Suite (UPVC + Paneling)',
-      'Professional WFH Studio Setup',
-      'Intermediate Smart Automation',
-      'Design Audit Report (for Resale)',
-      '10-Year Transferable Warranty'
-    ],
-    bestFor: 'HNWIs & Savvy Homeowners in Primary Micro-markets'
+    id: 'interiors',
+    number: '02',
+    title: 'Interior Design & Styling',
+    subtitle: 'Tactile environments designed for high-end living.',
+    description: 'Elevating interiors into immersive tactile experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle calibrated for comfort.',
+    features: ['Material Resonance', 'Bespoke Joinery', 'Mood Engineering', 'Lighting Calibration']
   },
   {
-    id: 'luxury-bespoke',
-    name: 'Luxury Bespoke',
-    tagline: 'The Ultimate Lifestyle Asset',
-    price: '₹60L+',
-    roiFactor: '1.10x*',
-    note: '*Higher absolute value, medium maintenance',
-    features: [
-      'Fully Custom Architecture & Interiors',
-      'Italian Marble & Rare Veneers',
-      'KNX Full Home Automation',
-      'Advanced Acoustic Engineering',
-      'Concierge Maintenance Program',
-      'Portfolio-Grade Case Study'
-    ],
-    bestFor: 'Luxury Villas & High-End Penthouses'
+    id: 'commercial',
+    number: '03',
+    title: 'Commercial & Retail Spaces',
+    subtitle: 'High-performance spaces tailored for peak output.',
+    description: 'Designing high-performance environments that translate into brand equity. We focus on enhancing productivity, spatial flow, and workflow ergonomics while maintaining aesthetic intent.',
+    features: ['Workflow Ergonomics', 'Experience Mapping', 'Yield Optimization', 'Brand Identity Mesh']
+  },
+  {
+    id: 'project-management',
+    number: '04',
+    title: 'Project Management & Consultation',
+    subtitle: 'Frictionless execution backed by absolute transparency.',
+    description: 'Design without the stress. We oversee every technical precision of the build, guaranteeing that the transition from concept to turnkey reality is seamless, timely, and budget-transparent.',
+    features: ['Timeline Compliance', 'Rate Integrity Audits', 'Quality-Control Checks', 'Procurement Transparency']
+  },
+  {
+    id: 'hospitality',
+    number: '05',
+    title: 'Hospitality — Cafes & Hotels',
+    subtitle: 'Atmosphere architecture curated for experience.',
+    description: 'Mood architecture calibrated to foster hospitality loyalty. We design intimate café spaces and boutique hotel frameworks that drive customer yield and operational compliance smoothly.',
+    features: ['Spatial Branding', 'Guest Experience Mapping', 'Operational Ergonomics', 'Atmosphere Engineering']
+  },
+  {
+    id: 'renovation',
+    number: '06',
+    title: 'Renovation & Refurbishment',
+    subtitle: 'Modernizing assets for command asset premiums.',
+    description: 'Breathing immersive life back into existing footprints. Whether a single asset or full-property overhaul, we approached every retrofit with the precision maintenance intended for cap-appreciation.',
+    features: ['Structural Upgrades', 'Compliance Tuning', 'Asset Premium Retrofits', 'Modern Grid Overhaul']
+  }
+];
+
+const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'Clarify Intent',
+    description: 'We diagnose your property’s absolute potential with targeted yield analytics and aesthetic diagnostic frames.'
+  },
+  {
+    number: '02',
+    title: 'Tactical Concept',
+    description: 'Formulating fluid wireframe layouts and walkthroughs to calibrate layout framing before execution.'
+  },
+  {
+    number: '03',
+    title: 'Material Narrative',
+    description: 'We collaborate to curate physical palettes with rare veneers, stones, and gold-clad accent textures on site.'
+  },
+  {
+    number: '04',
+    title: 'Turnkey Realization',
+    description: 'Precision site site engineering workflows audit regularly to guarantee physical deployment meets frame boundaries exactly.'
   }
 ];
 
@@ -101,81 +123,72 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ============ SOLUTIONS LIST ============ */}
-      <section className={`${styles.solutionsList} section--sm`}>
+      {/* ============ DETAILED SERVICES ============ */}
+      <section className={styles.servicesDetailedSection}>
         <div className="container">
-          <div className={styles.solutionsGrid}>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>01.</span>
-              <h3>Architectural Design</h3>
-              <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity, spatial flow, and &quot;Tropical Modernism&quot; suited for the Indian climate.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>02.</span>
-              <h3>Interior Design & Styling</h3>
-              <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts that reflect a sophisticated, contemporary lifestyle.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>03.</span>
-              <h3>Commercial & Retail Spaces</h3>
-              <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams can truly be more.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>04.</span>
-              <h3>Project Management & Consultation</h3>
-              <p>Design without the stress. We oversee the technical precision of every build, ensuring that the transition from concept to reality is seamless and timely.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>05.</span>
-              <h3>Hospitality — Cafes & Hotels</h3>
-              <p>Curating environments that elevate the guest experience. From intimate café interiors to boutique hotel spaces, we design for atmosphere, efficiency, and brand storytelling.</p>
-            </div>
-            <div className={styles.solutionItem}>
-              <span className={styles.solutionNumber}>06.</span>
-              <h3>Renovation & Refurbishment</h3>
-              <p>Breathing new life into existing spaces. Whether it&apos;s a single room or a full property overhaul, we approach every renovation with the same precision and intent as a new build.</p>
-            </div>
+          <div className={styles.detailedHeader}>
+            <span className="tag" style={{ marginBottom: '1rem' }}>Expertise</span>
+            <h2 className={styles.detailedTitle}>Operational Excellence & <em>Bespoke Craft</em></h2>
+          </div>
+          
+          <div className={styles.servicesStack}>
+            {SERVICES_DETAILED.map((service, idx) => (
+              <div 
+                key={service.id} 
+                className={`${styles.serviceCard} ${idx % 2 !== 0 ? styles.serviceCardReverse : ''}`}
+                style={{ 
+                  opacity: mounted ? 1 : 0, 
+                  transform: mounted ? 'translateY(0)' : 'translateY(40px)', 
+                  transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 120}ms` 
+                }}
+              >
+                <div className={styles.serviceVisual}>
+                  <div className={styles.serviceNumber}>{service.number}</div>
+                  <div className={styles.serviceVisualGold} />
+                </div>
+                <div className={styles.serviceContent}>
+                  <h3 className={styles.serviceTitle}>{service.title}</h3>
+                  <h4 className={styles.serviceSubtitle}>{service.subtitle}</h4>
+                  <p className={styles.serviceDesc}>{service.description}</p>
+                  <ul className={styles.serviceFeatures}>
+                    {service.features.map((feat, i) => (
+                      <li key={i}><span>✦</span> {feat}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.packageSection}>
+      {/* ============ PROCESS / PHILOSOPHY ============ */}
+      <section className={styles.processSection}>
         <div className="container">
-          <div className={styles.packageGrid}>
-            {PACKAGES.map((pkg, idx) => (
+          <div className={styles.processHeader}>
+            <div className="gold-line gold-line--center" />
+            <span className="tag" style={{ marginBottom: '1rem', background: 'transparent', boxShadow: 'none', border: 'none', color: 'var(--text-secondary)' }}>The Framework</span>
+            <h2 className={styles.processTitle}>Philosophy in <em>Motion</em></h2>
+            <p className={styles.processSubtitle}>From strategic framing to turnkey immersive realization.</p>
+          </div>
+          
+          <div className={styles.processGrid}>
+            {PROCESS_STEPS.map((step, idx) => (
               <div 
-                key={pkg.id} 
-                className={`${styles.packageCard} ${pkg.isPopular ? styles.popular : ''}`}
+                key={step.number} 
+                className={styles.processItem}
                 style={{ 
-                  animationDelay: `${idx * 150}ms`,
-                  opacity: mounted ? 1 : 0
+                  opacity: mounted ? 1 : 0, 
+                  transform: mounted ? 'translateY(0)' : 'translateY(30px)', 
+                  transition: `all 0.6s ease-out ${idx * 180}ms` 
                 }}
               >
-                {pkg.isPopular && <div className={styles.popularBadge}>Most Recommended</div>}
-                <div className={styles.cardHeader}>
-                  <h3 className={styles.packageName}>{pkg.name}</h3>
-                  <p className={styles.packageTagline}>{pkg.tagline}</p>
+                <div className={styles.processNumberWrapper}>
+                  <div className={styles.processLine} />
+                  <span className={styles.processNumber}>{step.number}</span>
                 </div>
-                <div className={styles.priceSection}>
-                  <span className={styles.priceLabel}>Investment starts at</span>
-                  <span className={styles.priceValue}>{pkg.price}</span>
-                </div>
-                <div className={styles.roiMetric}>
-                  <div className={styles.roiValue}>{pkg.roiFactor}</div>
-                  <div className={styles.roiLabel}>ROI Factor</div>
-                  {pkg.note && <div className={styles.roiNote}>{pkg.note}</div>}
-                </div>
-                <ul className={styles.featureList}>
-                  {pkg.features.map((feat, i) => (
-                    <li key={i}>{feat}</li>
-                  ))}
-                </ul>
-                <div className={styles.bestFor}>
-                  <strong>Best for:</strong> {pkg.bestFor}
-                </div>
-                <Link href={`/contact?package=${pkg.id}`} className={`btn ${pkg.isPopular ? 'btn-primary' : 'btn-ghost'} ${styles.ctaBtn}`}>
-                  Select Package
-                </Link>
+                <h3 className={styles.processItemTitle}>{step.title}</h3>
+                <p className={styles.processItemDesc}>{step.description}</p>
               </div>
             ))}
           </div>
