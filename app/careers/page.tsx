@@ -52,10 +52,12 @@ export default function CareersPage() {
         <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <div className="gold-line" />
+              <span className="tag">Careers</span>
               <h1 className={styles.heroHeadline}>
                 Build the Future of 
                 <br />
-                <em className="text-secondary-cormorant">Architecture.</em>
+                <em className="text-gold">Architecture.</em>
               </h1>
               <p className={styles.heroQuietSubtitle}>
                 We are looking for bold thinkers who believe design is an asset, not an expense. 

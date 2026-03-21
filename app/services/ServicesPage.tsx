@@ -130,12 +130,13 @@ export default function ServicesPage() {
         <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              
-              <h1 className={styles.heroHeadline}>
-                Comprehensive
-                <br />
-                <em className="text-secondary-cormorant">Design Solutions.</em>
-              </h1>
+               <div className="gold-line" />
+               <span className="tag">Services</span>
+               <h1 className={styles.heroHeadline}>
+                 Comprehensive
+                 <br />
+                 <em className="text-gold">Design Solutions.</em>
+               </h1>
 
               <p className={styles.heroQuietSubtitle}>
                 <strong style={{ display: 'block', color: 'rgba(255,255,255,0.9)', marginBottom: '0.5rem' }}>

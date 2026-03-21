@@ -52,10 +52,12 @@ export default function ContactPage() {
         <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${visible ? styles.animate : ''}`}>
+              <div className="gold-line" />
+              <span className="tag">Contact Us</span>
               <h1 className={styles.heroHeadline}>
                 Invest in Your
                 <br />
-                <em className="text-secondary-cormorant">Strategic Space.</em>
+                <em className="text-gold">Strategic Space.</em>
               </h1>
               <p className={styles.heroQuietSubtitle}>
                 Engineering high-performance environments with technical precision.
