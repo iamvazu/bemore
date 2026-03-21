@@ -17,7 +17,8 @@
   overflow: hidden;
   display: flex;
   align-items: flex-end; /* Push text bottom */
-  padding-bottom: 8vh;
+  padding-bottom: 6vh;
+  padding-top: calc(var(--nav-height) + 40px); /* Absolute buffer from header */
 }
 
 .heroMediaWrapper {
@@ -64,7 +65,7 @@
 
 .heroHeadline {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-size: clamp(3.2rem, 6.5vw, 4.8rem);
   font-weight: 300;
   line-height: 0.95;
   color: #FFFFFF;
