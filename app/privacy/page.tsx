@@ -1,7 +1,11 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Be More Design Studio',
+  description: 'Transparent data privacy policy guiding client specifications and information handling safely.',
+};
 
 export default function PrivacyPage() {
   return (

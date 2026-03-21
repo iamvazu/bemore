@@ -1,7 +1,11 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions | Be More Design Studio',
+  description: 'Standard transparent service-level conditions for design and execution workflows.',
+};
 
 export default function TermsPage() {
   return (
