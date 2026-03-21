@@ -426,8 +426,8 @@ export default function HomePage() {
             </div>
             <div className={styles.materialVisual}>
               <div className={styles.matCollage}>
-                 <img src="/portfolio-bellandur.jpg" alt="Material" className={styles.mat1} />
-                 <img src="/portfolio-whitefield.jpg" alt="Material" className={styles.mat2} />
+                 <img src="/bedroom1.png" alt="Bedroom Interior" className={styles.mat1} />
+                 <img src="/kitchen.png" alt="Kitchen Interior" className={styles.mat2} />
               </div>
             </div>
           </div>
