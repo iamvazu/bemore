@@ -271,9 +271,9 @@ export default function HomePage() {
               <div className="gold-line" />
               <span className="tag">Philosophy</span>
               <h2 className={styles.philosophyHeadline}>
-                Form follows
+                Function first.
                 <br />
-                <em className="text-secondary-cormorant">feeling.</em>
+                <em className="text-secondary-cormorant">Form follows.</em>
               </h2>
             </div>
             <div className={styles.philosophyRight}>

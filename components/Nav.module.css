@@ -82,12 +82,12 @@
 
   .linksLeft {
     justify-content: flex-end;
-    padding-right: var(--space-xl);
+    padding-right: 6rem; /* Wide gap for logo protection */
   }
 
   .linksRight {
     justify-content: flex-start;
-    padding-left: var(--space-xl);
+    padding-left: 6rem; /* Wide gap for logo protection */
   }
 }
 

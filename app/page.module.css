@@ -104,7 +104,7 @@
   right: var(--space-lg);
   display: flex;
   flex-direction: column;
-  items-align: center;
+  align-items: center;
   gap: 12px;
 }
 
@@ -1129,29 +1129,35 @@
 }
 
 .darkGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
   border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: var(--space-2xl);
-}
-
-@media (min-width: 768px) {
-  .darkGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .darkItem {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+@media (min-width: 768px) {
+  .darkItem {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3xl);
+  }
 }
 
 .darkNum {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--gold);
   font-style: italic;
   opacity: 0.8;
+  min-width: 40px;
 }
 
 .darkItem h4 {
@@ -1159,6 +1165,8 @@
   font-size: 1.8rem;
   font-weight: 400;
   letter-spacing: -0.01em;
+  text-transform: none; /* overrides global h4 uppercase */
+  flex: 1; /* stretches to push paragraph to right edge */
 }
 
 .darkItem p {
@@ -1166,6 +1174,7 @@
   font-size: 0.95rem;
   color: rgba(255,255,255,0.7);
   line-height: 1.5;
+  max-width: 450px;
 }
 
 /* ============================================================
