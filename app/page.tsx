@@ -373,7 +373,7 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.darkHeader}>
             <div className="gold-line" />
-            <span className="tag" style={{ color: 'rgba(255,255,255,0.6)' }}>Expertise</span>
+            <span className="tag" style={{ backgroundColor: 'var(--bg-card)', boxShadow: 'var(--shadow-sm)', borderColor: 'rgba(26,23,18,0.1)' }}>Expertise</span>
             <h2 className={styles.darkTitle}>Spaces with <br/><em className="text-secondary-cormorant">Precision.</em></h2>
           </div>
           <div className={styles.darkGrid}>

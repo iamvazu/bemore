@@ -1128,7 +1128,7 @@
   padding: var(--space-4xl) 0;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(rgba(253, 249, 240, 0.92), rgba(253, 249, 240, 0.92)), url('/retail1.png');
+  background-image: linear-gradient(rgba(253, 249, 240, 0.75), rgba(253, 249, 240, 0.8)), url('/retail1.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
