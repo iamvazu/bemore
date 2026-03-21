@@ -231,47 +231,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className={styles.expertModules}>
-        <div className="container">
-          <div className={styles.moduleHeader}>
-            <div className="gold-line gold-line--center" />
-            <h2 className={styles.moduleTitle}>Expert Value-Add Addons</h2>
-            <p className={styles.moduleSubtitle}>Enhance any package with our targeted ROI modules.</p>
-          </div>
-          <div className={styles.moduleGrid}>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🔇</div>
-              <h4>Acoustic Engineering</h4>
-              <p>Command a 15% quiet premium in noisy localities like Indiranagar or Bellandur.</p>
-            </div>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🖥️</div>
-              <h4>Professional WFH</h4>
-              <p>Increase rental yield by 12% with high-CRI lighting and Zoom-ready backgrounds.</p>
-            </div>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🤖</div>
-              <h4>Smart Automation</h4>
-              <p>Certified KNX/Control4 integration to boost capital appreciation in tech corridors.</p>
-            </div>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🧭</div>
-              <h4>Vastu Audit Report</h4>
-              <p>Property-wide element balancing and optimal placement of all household objects for enhanced harmony.</p>
-            </div>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🥽</div>
-              <h4>3D Walkthrough</h4>
-              <p>Immersive 3D visualisations so you can walk through your space and approve every detail before execution begins.</p>
-            </div>
-            <div className={styles.moduleCard}>
-              <div className={styles.moduleIcon}>🔑</div>
-              <h4>Turnkey Delivery</h4>
-              <p>Full design and execution under one roof — from concept to keys in hand, with a 60-day benchmark.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <section className={styles.designerCta}>
         <div className="container">

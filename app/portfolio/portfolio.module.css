@@ -67,11 +67,12 @@
   margin-top: var(--space-md);
   margin-bottom: var(--space-lg);
   line-height: 1.1;
+  color: #FFFFFF;
 }
 
 .subtitle {
   font-size: clamp(1rem, 2.5vw, 1.1rem);
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
   max-width: 600px;
   margin: 0 auto;
