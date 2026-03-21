@@ -99,26 +99,26 @@
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
-  padding-top: 1rem;
+  gap: 3rem;
+  padding-top: 4rem;
 }
 
 .infoBlock h4 {
-  font-family: var(--font-brand);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--gold);
-  margin-bottom: 1rem;
-  font-weight: 700;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
 }
 
 .infoBlock p {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
   color: var(--text-primary);
-  line-height: 1.4;
-  font-weight: 300;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .infoBlock a {
