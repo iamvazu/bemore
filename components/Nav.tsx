@@ -102,7 +102,7 @@ export default function Nav() {
         <div className={styles.mobileContact}>
           <span className={styles.mobileContactTitle}>Get in touch</span>
           <a href="tel:+919663424256" className={styles.mobileContactInfo}>+91 96634 24256</a>
-          <a href="mailto:hello@bemoredeisgnstudio.com" className={styles.mobileContactInfo}>hello@bemoredeisgnstudio.com</a>
+          <a href="mailto:hello@bemoredesignstudio.com" className={styles.mobileContactInfo}>hello@bemoredesignstudio.com</a>
         </div>
       </div>
     </header>

@@ -82,7 +82,7 @@ export default function ContactPage() {
               </div>
               <div className={styles.infoBlock}>
                 <h4>Email Us</h4>
-                <p><a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a></p>
+                <p><a href="mailto:hello@bemoredesignstudio.com">hello@bemoredesignstudio.com</a></p>
               </div>
               <div className={styles.socialLinks}>
                 <a href="https://www.instagram.com/bemoredesignstudio" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>Instagram</a>

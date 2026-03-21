@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
           <div className={styles.contact}>
             <a href="tel:+919663424256">+91 96634 24256</a>
-            <a href="mailto:hello@bemoredeisgnstudio.com">hello@bemoredeisgnstudio.com</a>
+            <a href="mailto:hello@bemoredesignstudio.com">hello@bemoredesignstudio.com</a>
             <a href="https://www.instagram.com/bemoredesignstudio" target="_blank" rel="noopener noreferrer">@bemoredesignstudio</a>
           </div>
         </div>
