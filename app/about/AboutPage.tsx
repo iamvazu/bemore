@@ -33,18 +33,6 @@ const TEAM = [
     role: 'Co-Founder & Execution Lead',
     quote: '"A great design is only as good as its execution. I make sure every idea is translated with precision and discipline on site."',
   },
-  {
-    name: 'Head of Interiors',
-    initials: 'S',
-    role: 'Material & Finish Specialist',
-    quote: '"We source globally and detail locally — that\'s the Be More edge."',
-  },
-  {
-    name: 'Smart Home Lead',
-    initials: 'R',
-    role: 'KNX / Control4 Certified',
-    quote: '"Technology should disappear into the walls. You should only see its value."',
-  },
 ];
 
 
