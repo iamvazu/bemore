@@ -3,27 +3,28 @@
    Primary: Warm Gold #C4922A | Dark: #0D0901 | Ivory: #F5EFE0
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
-  /* Brand Colors — extracted from logo */
-  --gold:           #C4922A;
-  --gold-light:     #D4A845;
-  --gold-muted:     #A37b20;
-  --gold-glow:      rgba(196, 146, 42, 0.25);
-  --gold-border:    rgba(196, 146, 42, 0.35);
+  /* Brand Colors — Muted Material Studio */
+  --gold:           #B59972; /* Aged Brass */
+  --gold-light:     #C9B08F;
+  --gold-muted:     #8C7456;
+  --gold-glow:      rgba(181, 153, 114, 0.15);
+  --gold-border:    rgba(181, 153, 114, 0.25);
 
-  /* Light Surfaces */
-  --bg:             #FFFFFF;
-  --bg-surface:     #FFFFFF;
-  --bg-elevated:    #F8F8F8;
-  --bg-card:        #FFFFFF;
-  --bg-glass:       rgba(255, 255, 255, 0.75);
+  /* Light Surfaces — Parchment #F5F1EC */
+  --bg:             #F5F1EC; 
+  --bg-surface:     #F5F1EC;
+  --bg-elevated:    #EDE8E2;
+  --bg-card:        #FDFBFA;
+  --bg-glass:       rgba(245, 241, 236, 0.75);
 
-  /* Brown/Outline (from logo linework) */
-  --brown:          #2C1A0A;
-  --brown-light:    #5C4B38;
+  /* Charcoal/Clay */
+  --brown:          #1A1816; /* Charcoal */
+  --clay:           #4A443E; 
+  --brown-light:    #7D7368;
 
   /* Text — shifted to high-contrast darks */
   --text-primary:   #1A1712;
@@ -38,7 +39,7 @@
 
   /* Typography Scale */
   --font-display:   'Cormorant Garamond', Georgia, serif;
-  --font-body:      'Inter', system-ui, sans-serif;
+  --font-body:      'DM Sans', system-ui, sans-serif;
   --font-brand:     'Outfit', system-ui, sans-serif;
 
   /* Spacing - Fluid scaling */

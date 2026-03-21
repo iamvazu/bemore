@@ -222,390 +222,196 @@ export default function HomePage() {
       <Nav />
 
       {/* ============ HERO ============ */}
-      <section className="hero-layout">
-        {/* Protected Background */}
-        <div className="hero-media-wrapper">
-          <div className={styles.heroVideo}>
-            <iframe
-              src="https://www.youtube.com/embed/N3j9dDoiJ8I?autoplay=1&mute=1&loop=1&playlist=N3j9dDoiJ8I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="hero-scrim" />
+      <section className={styles.hero}>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/homepage_hero1.png" alt="Be More Studio Spaces" className={styles.heroBgImage} />
+          <div className={styles.heroScrim} />
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '90px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%' }}>
           <div className={styles.heroInner}>
-            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`} style={{ maxWidth: '850px', marginTop: '-20px' }}>
-              <div style={{ marginBottom: '0.5rem' }}>
-                <motion.div 
-                  layout
-                  className="tag" 
-                  style={{ 
-                    border: '1px solid var(--gold)', 
-                    background: 'var(--bg-surface)', 
-                    padding: '6px 20px',
-                    gap: '0',
-                    fontSize: '0.75rem'
-                  }}
-                >
-                  <span style={{ whiteSpace: 'nowrap' }}>Best&nbsp;</span>
-                  <div style={{ position: 'relative', height: '1.2em', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-                    <AnimatePresence mode="wait">
-                      <motion.span
-                        key={taglineIndex}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "circOut" }}
-                        style={{ color: 'var(--gold)', whiteSpace: 'nowrap', display: 'inline-block' }}
-                      >
-                        {professions[taglineIndex]}
-                      </motion.span>
-                    </AnimatePresence>
-                  </div>
-                  <span style={{ whiteSpace: 'nowrap' }}>,&nbsp;Bangalore</span>
-                </motion.div>
-              </div>
-
-              <h1 className="display-h1" style={{ marginBottom: '0.5rem', lineHeight: '1', fontSize: 'clamp(3rem, 8vw, 5rem)', minHeight: '2.1em' }}>
-                <div style={{ position: 'relative', height: '1.2em', overflow: 'hidden' }}>
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={taglineIndex}
-                      initial={{ y: 40, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -40, opacity: 0 }}
-                      transition={{ duration: 0.6, ease: "circOut" }}
-                      style={{ display: 'block' }}
-                    >
-                      {headlineWords[taglineIndex]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-                Without <em>Limits.</em>
+            <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
+              <h1 className={styles.heroHeadline}>
+                Spaces designed with
+                <br />
+                <em className="text-secondary-cormorant">intention.</em>
               </h1>
-
-              <div className={styles.heroTrust} style={{ marginBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', letterSpacing: '0.01em', opacity: 0.75 }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Trusted by</span>
-                  <strong style={{ color: 'var(--text-primary)' }}>240+ homeowners</strong>
-                  <span style={{ opacity: 0.2 }}>|</span>
-                  <strong style={{ color: 'var(--gold)' }}>₹180Cr+</strong>
-                  <span style={{ color: 'var(--text-muted)' }}>in real estate</span>
-                </div>
-              </div>
-
-              <p className="hero-subtext" style={{ marginBottom: '1.25rem', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                <strong style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.4rem', fontSize: '1.25rem', whiteSpace: 'nowrap' }}>
-                  Innovative Architecture and Interior Design for Modern Living.
-                </strong>
-                Based in Bangalore, we engineer high-performance environments that resonate with your vision and appreciate over time.
+              <p className={styles.heroQuietSubtitle}>
+                A boutique architecture and interior design practice detailing calm, elevated environments. Based in Bangalore, operating everywhere.
               </p>
-
-              <div className={styles.heroCtas} style={{ marginBottom: '0', marginTop: '0.75rem' }}>
-                <Link href="/contact" className="btn btn-primary" id="hero-cta-calculator" style={{ padding: '12px 28px' }}>
-                  Book Free Consultation
-                  <span>→</span>
+              <div className={styles.heroCtas}>
+                <Link href="/contact" className="btn btn-primary">
+                  Book discovery call <span>→</span>
                 </Link>
-                <Link href="/portfolio" className="btn btn-ghost" id="hero-cta-consultation" style={{ padding: '12px 28px' }}>
-                  View Portfolio
+                <Link href="/portfolio" className="btn btn-ghost">
+                  Selected work
                 </Link>
               </div>
             </div>
 
-
+            <div className={styles.scrollIndicator}>
+              <span className={styles.scrollText}>Scroll</span>
+              <div className={styles.scrollTrack}>
+                <motion.div 
+                  className={styles.scrollFill} 
+                  animate={{ y: [0, 24, 0] }} 
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} 
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============ PHILOSOPHY ============ */}
-      <section className={`${styles.philosophy} section--sm`}>
+      <section className={`${styles.splitPhilosophy} section`}>
         <div className="container">
-          <div className={styles.philosophyInner}>
-            <div className="gold-line gold-line--center" />
-            <h2 className={styles.philosophyTitle}>
-              The beMore Philosophy
-            </h2>
-            <blockquote className={styles.philosophyQuote}>
-              &ldquo;Clean, intentional spaces that balance aesthetics with real-life functionality — everything has a purpose. We design homes that feel effortless and personal, where materials, light, and layout work together to create a calm, elevated everyday experience.&rdquo;
-            </blockquote>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.5rem', fontStyle: 'italic' }}>
-              Function first, form follows. Every space planned with clarity, proportion, and purpose — built to last.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* ============ SOLUTIONS ============ */}
-      <section className={styles.solutionsSection}>
-        <div className="container">
-          <div className="gold-line gold-line--center" />
-          <h2 className={styles.solutionsTitle}>Core Services</h2>
-          <div className={styles.solutionsGrid}>
-            <Link href="/services#architectural" className={styles.solutionCard}>
-              <div className={styles.solutionBg}>
-                <img src="/portfolio-whitefield.jpg" alt="Architectural Design" />
-              </div>
-              <div className={styles.solutionContent}>
-                <span className={styles.solutionNumber}>01.</span>
-                <h3>Architectural Design</h3>
-                <p>Crafting the bones of modern living. We provide full-scale architectural planning, focusing on structural integrity and spatial flow.</p>
-                <div className={styles.solutionCta}>Explore Service →</div>
-              </div>
-            </Link>
-
-            <Link href="/services#interior" className={styles.solutionCard}>
-              <div className={styles.solutionBg}>
-                <img src="/portfolio-indiranagar.jpg" alt="Interior Design" />
-              </div>
-              <div className={styles.solutionContent}>
-                <span className={styles.solutionNumber}>02.</span>
-                <h3>Interior Design & Styling</h3>
-                <p>Transforming interiors into experiences. We curate palettes, textures, and bespoke furniture layouts for contemporary lifestyles.</p>
-                <div className={styles.solutionCta}>Explore Service →</div>
-              </div>
-            </Link>
-
-            <Link href="/services#commercial" className={styles.solutionCard}>
-              <div className={styles.solutionBg}>
-                <img src="/portfolio-koramangala.jpg" alt="Commercial Spaces" />
-              </div>
-              <div className={styles.solutionContent}>
-                <span className={styles.solutionNumber}>03.</span>
-                <h3>Commercial & Retail Spaces</h3>
-                <p>Designing high-performance environments that foster productivity and brand identity. We create workplaces where teams thrive.</p>
-                <div className={styles.solutionCta}>Explore Service →</div>
-              </div>
-            </Link>
-
-            <Link href="/services#management" className={styles.solutionCard}>
-              <div className={styles.solutionBg}>
-                <img src="/portfolio-bellandur.jpg" alt="Project Management" />
-              </div>
-              <div className={styles.solutionContent}>
-                <span className={styles.solutionNumber}>04.</span>
-                <h3>Project Management</h3>
-                <p>Design without the stress. We oversee every build, ensuring that the transition from concept to reality is seamless and timely.</p>
-                <div className={styles.solutionCta}>Explore Service →</div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ SERVICES ============ */}
-      <section className={`${styles.services} section`} ref={servicesRef}>
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="gold-line" />
-            <span className="tag">What We Build</span>
-            <h2 className={styles.sectionTitle}>
-              Design Interventions That
-              <br />
-              <em className="text-gold">Move the Market</em>
-            </h2>
-            <p className={styles.sectionSub}>
-              Every service we offer is weighted and valued against Bengaluru market data.
-              No guesswork. Only investments.
-            </p>
-          </div>
-
-          <div className={`${styles.servicesGrid} ${servicesInView ? styles.servicesVisible : ''}`}>
-            {SERVICES.map((s) => (
-              <ServiceCard key={s.title} {...s} />
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* ============ SPECIALIZED SERVICES ============ */}
-      <section className={styles.specializedSection}>
-        <div className={styles.specializedBg}>
-          <img src="/portfolio-indiranagar.jpg" alt="Luxury Background" />
-        </div>
-        <div className={styles.specializedOverlay} />
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="gold-line" />
-            <h2 className={styles.sectionTitle}>
-              Expertise In Every <em className="text-gold">Internal Detail</em>
-            </h2>
-            <p className={styles.sectionSub}>
-              We specialize in high-end, custom interventions that elevate standard living into a tailored statement.
-            </p>
-          </div>
-          
-          <div className={styles.specializedGrid}>
-            {[
-              { icon: '🪞', title: 'Foyers', desc: 'Welcoming entryways that make a lasting first impression.' },
-              { icon: '🏗️', title: 'False Ceilings', desc: 'Stylish overhead designs that enhance your spatial volume.' },
-              { icon: '🛁', title: 'Bathroom Designs', desc: 'Spa-like retreats calibrated for your daily rejuvenation.' },
-              { icon: '📦', title: 'Storage Solutions', desc: 'Smart, custom storage to keep your home flawlessly organized.' },
-              { icon: '🪔', title: 'Pooja Units', desc: 'Beautiful sacred spaces meticulously designed for spiritual moments.' },
-              { icon: '🍳', title: 'Modular Kitchens', desc: 'Efficient, elite kitchens for high-performance culinary art.' },
-              { icon: '🪴', title: 'Balcony Designs', desc: 'Outdoor urban retreats perfect for relaxation and air.' },
-              { icon: '🛋️', title: 'Living Rooms', desc: 'Masterfully designed areas for living and hosting.' }
-            ].map((item, i) => (
-              <div key={i} className={styles.specializedItem}>
-                <div className={styles.specializedIcon}>{item.icon}</div>
-                <div className={styles.specializedText}>
-                  <h4>{item.title}</h4>
-                  <p>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ TURNKEY SERVICES ============ */}
-      <section className={styles.turnkeySection}>
-        <div className="container">
-          <div className={styles.turnkeyHeader}>
-            <div className="gold-line gold-line--center" />
-            <h2 className={styles.turnkeyTitle}>Turnkey Interior Solutions</h2>
-            <p className={styles.turnkeySubtitle}>
-              At the intersection of lifestyles and design, we streamline that journey for you. Excellence from ideation to execution using comprehensive Single-point frameworks.
-            </p>
-          </div>
-          
-          <div className={styles.turnkeyGrid}>
-            {TURNKEY_SERVICES.map((item, idx) => (
-              <div key={idx} className={styles.turnkeyItem}>
-                <div className={styles.turnkeyIcon}>{item.icon}</div>
-                <h4 className={styles.turnkeyItemTitle}>{item.title}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HOW IT WORKS ============ */}
-      <section className={styles.workflowSection}>
-        <div className="container">
-          <div className={styles.sectionHead} style={{ textAlign: 'center' }}>
-            <span className="tag">The beMore Process</span>
-            <h2 className={styles.sectionTitle} style={{ margin: '0.5rem 0' }}>
-              Your Journey In <em className="text-gold">4 Simple Steps</em>
-            </h2>
-          </div>
-
-          <div className={styles.workflowSteps}>
-            {[
-              {
-                num: '01',
-                title: 'Discover & Design Concept',
-                desc: 'We start with you: your needs, your story, your space. Site visits, budget discussions, and gathering inspiration define the project scope. We deliver a conceptual design presentation and a pre-design estimate.',
-                img: '/portfolio-whitefield.jpg'
-              },
-              {
-                num: '02',
-                title: 'Design Development & Detailed Planning',
-                desc: 'Once the concept is approved, we translate ideas into layouts, mood boards, 3D walkthroughs, and technical drawings. Every aspect of the space is thoughtfully designed, with meticulous material curation.',
-                img: '/portfolio-indiranagar.jpg'
-              },
-              {
-                num: '03',
-                title: 'Production & Delivery',
-                desc: 'BOQ approved, we translate designs into reality with our trusted vendors and service partners — ensuring quality craftsmanship, timely delivery, and transparent communication throughout. Typical timeline: 60 days.*',
-                img: '/portfolio-koramangala.jpg'
-              }
-            ].map((step, i) => (
-              <div key={i} className={styles.workflowStep}>
-                <div className={styles.stepInfo}>
-                  <div className={styles.stepNumber}>{step.num}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                  <Link href="/contact" className="btn btn-ghost" style={{ marginTop: '1.5rem' }}>Book Free Consultation</Link>
-                </div>
-                <div className={styles.stepVisual}>
-                  <img src={step.img} alt={step.title} />
-                  <div className={styles.stepVisualGlow} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FEATURED PORTFOLIO ============ */}
-      <section className={`${styles.featured} section`}>
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="gold-line" />
-            <span className="tag">Portfolio</span>
-            <h2 className={styles.sectionTitle}>
-              Featured <em className="text-gold">Design Assets</em>
-            </h2>
-          </div>
-          
-          <div className={styles.featuredGrid}>
-            {FEATURED_PROJECTS.map((project, idx) => (
-              <Link 
-                href={`/portfolio/${project.id}`} 
-                key={project.id} 
-                className={styles.featuredCard}
-                style={{ animationDelay: `${idx * 150}ms` }}
-              >
-                <div className={styles.featuredImageWrapper}>
-                  <img src={project.image} alt={project.title} className={styles.featuredImage} />
-                  <div className={styles.featuredOverlay}>
-                    <div className={styles.featuredRoi}>ROI: {project.roi}</div>
-                  </div>
-                </div>
-                <div className={styles.featuredInfo}>
-                  <span className={styles.featuredLoc}>{project.location}</span>
-                  <h3 className={styles.featuredName}>{project.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className={styles.centerAction} style={{ marginTop: '3rem' }}>
-            <Link href="/portfolio" className="btn btn-ghost">View Full Portfolio</Link>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* ============ LOCALITIES ============ */}
-      <section className={`${styles.localities} section--sm`}>
-        <div className="container">
-          <div className={styles.sectionHead} style={{ marginBottom: '2rem' }}>
-            <span className="tag">Coverage</span>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', marginTop: '0.75rem' }}>
-              10 Bengaluru Micro-Markets. <em className="text-gold">One Studio.</em>
-            </h3>
-          </div>
-          <div className={styles.localitiesGrid}>
-            {LOCALITIES.map((l) => (
-              <LocalityPill key={l.name} {...l} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ CTA BAND ============ */}
-      <section className={styles.ctaBand}>
-        <div className="container">
-          <div className={styles.ctaBandInner}>
-            <div>
-              <h2 className={styles.ctaTitle}>
-                Ready to <em className="text-gold">invest</em> in your home?
+          <div className={styles.philosophyGrid}>
+            <div className={styles.philosophyLeft}>
+              <div className="gold-line" />
+              <span className="tag">Philosophy</span>
+              <h2 className={styles.philosophyHeadline}>
+                Form follows
+                <br />
+                <em className="text-secondary-cormorant">feeling.</em>
               </h2>
-              <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-                Book a free 30-minute discovery call with our design consultants.
+            </div>
+            <div className={styles.philosophyRight}>
+              <blockquote className={styles.philosophyQuoteLarge}>
+                &ldquo;Clean, intentional spaces that balance aesthetics with real-life functionality — everything has a purpose. We design homes that feel effortless and personal, where materials, light, and layout work together to create a calm, elevated everyday experience.&rdquo;
+              </blockquote>
+              <p className={styles.philosophyQuietText}>
+                Our approach prioritizes proportions and material truth. We plan layout vectors that appreciate both visually and contextually over modern life cycles.
               </p>
             </div>
-            <div className={styles.ctaBtns}>
-              <Link href="/contact" className="btn btn-primary btn-lg" id="cta-band-calc">
-                Book Discovery Call →
+          </div>
+        </div>
+      </section>
+
+
+      {/* ============ SELECTED WORK ============ */}
+      <section className={styles.selectedWork}>
+        <div className="container">
+          <div className={styles.secHeader}>
+            <div className="gold-line" />
+            <span className="tag">Portfolio</span>
+            <h2 className={styles.secTitleLarge}>Selected <br/><em className="text-secondary-cormorant">Work.</em></h2>
+          </div>
+          <div className={styles.asymmetricGrid}>
+            <Link href="/portfolio/rooted-home-rt-nagar" className={styles.workCardTall}>
+              <div className={styles.workImgWrapper}>
+                <img src="/portfolio-whitefield.jpg" alt="Rooted Home" />
+              </div>
+              <div className={styles.workMeta}>
+                <h3>Rooted Home</h3>
+                <span>Architecture + Interiors // Bangalore</span>
+              </div>
+            </Link>
+            <div className={styles.workRightCol}>
+              <Link href="/portfolio/eleve-living-brigade-panorama" className={styles.workCardWide}>
+                <div className={styles.workImgWrapper}>
+                  <img src="/portfolio-indiranagar.jpg" alt="Elevé Living" />
+                </div>
+                <div className={styles.workMeta}>
+                  <h3>Elevé Living</h3>
+                  <span>Interiors // Bangalore</span>
+                </div>
               </Link>
+              <Link href="/portfolio/collaborative-hub" className={styles.workCardSquare}>
+                <div className={styles.workImgWrapper}>
+                  <img src="/portfolio-koramangala.jpg" alt="The Collaborative Hub" />
+                </div>
+                <div className={styles.workMeta}>
+                  <h3>The Collaborative Hub</h3>
+                  <span>Office Space // Bangalore</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ SERVICES (Dark) ============ */}
+      <section className={styles.darkServices}>
+        <div className="container">
+          <div className={styles.darkHeader}>
+            <div className="gold-line" />
+            <span className="tag" style={{ color: 'rgba(255,255,255,0.6)' }}>Expertise</span>
+            <h2 className={styles.darkTitle}>Spaces with <br/><em className="text-secondary-cormorant">Precision.</em></h2>
+          </div>
+          <div className={styles.darkGrid}>
+            {[
+              { num: '01', title: 'Architectural Design', desc: 'Crafting the bones of modern living. Full-scale architectural planning, structural integrity and spatial flow.' },
+              { num: '02', title: 'Interior Architecture & Styling', desc: 'Transforming volumes into experiences. We curate palettes, material textures and bespoke layouts.' },
+              { num: '03', title: 'Commercial & Retail Spaces', desc: 'High-performance environments designed to foster productivity and modern brand identity.' },
+              { num: '04', title: 'Project Management', desc: 'Stress-free execution. We oversee every build ensuring concepts transition to reality seamlessly.' }
+            ].map((s) => (
+              <div key={s.num} className={styles.darkItem}>
+                <span className={styles.darkNum}>{s.num}</span>
+                <h4>{s.title}</h4>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ MATERIAL LANGUAGE ============ */}
+      <section className={styles.materialSection}>
+        <div className="container">
+          <div className={styles.materialGrid}>
+            <div className={styles.materialText}>
+              <div className="gold-line" />
+              <span className="tag">Sensory</span>
+              <h2 className={styles.materialHeadline}>The Material <br/><em className="text-secondary-cormorant">Language.</em></h2>
+              <ul className={styles.materialList}>
+                <li><strong>Weathered Oak & Plaster:</strong> Honest textures that gain character with absolute age.</li>
+                <li><strong>Aged Brass & Fluted Glass:</strong> Precise details that capture light dynamically.</li>
+                <li><strong>Raw Concrete & Linen:</strong> Pure volumes balanced with soft tactile cushions.</li>
+              </ul>
+            </div>
+            <div className={styles.materialVisual}>
+              <div className={styles.matCollage}>
+                 <img src="/portfolio-bellandur.jpg" alt="Material" className={styles.mat1} />
+                 <img src="/portfolio-whitefield.jpg" alt="Material" className={styles.mat2} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIAL ============ */}
+      <section className={styles.testimonialSection}>
+        <div className="container">
+          <div className={styles.testimonyInner}>
+            <blockquote className={styles.testimonyQuote}>
+              &ldquo;We wanted a space that felt effortless. BeMore didn&apos;t just give us design; they gave us peace of mind with calculated, intentional layouts.&rdquo;
+            </blockquote>
+            <cite className={styles.testimonyCite}>— Rohan K., Koramangala Villa Client</cite>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CONTACT ============ */}
+      <section className={styles.contactSection}>
+        <div className="container">
+          <div className={styles.contactGrid}>
+            <div className={styles.contactText}>
+              <div className="gold-line" />
+              <h2 className={styles.contactHeadline}>Begin your <br/><em className="text-secondary-cormorant">Narrative.</em></h2>
+              <p>Discuss schedules, floor plans and design frameworks to scale your next property benchmarks correctly.</p>
+              <Link href="/contact" className="btn btn-primary btn-lg">Start Conversation →</Link>
+            </div>
+            <div className={styles.contactInfo}>
+              <div className={styles.infoBlock}>
+                <h4>Reach Us</h4>
+                <a href="tel:+919663424256">+91 96634 24256</a>
+                <a href="mailto:hello@bemoredesiginstudio.com">hello@bemoredesignstudio.com</a>
+              </div>
+              <div className={styles.infoBlock}>
+                <h4>Studio</h4>
+                <span>Offset Bangalore, Highgrounds <br/>Karnataka, India</span>
+              </div>
             </div>
           </div>
         </div>
@@ -613,5 +419,6 @@ export default function HomePage() {
 
       <Footer />
     </main>
-  );
-}
+    );
+    }
+    
