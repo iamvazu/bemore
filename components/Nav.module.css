@@ -24,6 +24,7 @@
     border: 1px solid rgba(196, 146, 42, 0.2);
     border-radius: 100px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden; /* Clips rectangular hover effects to the pill shape */
   }
 
   .nav.scrolled {
