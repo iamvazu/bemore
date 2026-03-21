@@ -85,6 +85,7 @@ export default function HomePage() {
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [locality, setLocality] = useState('Jayanagar, Bangalore');
   const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
 
   const heroImages = ['/homepage_hero1.png', '/homepage_hero2.png'];
   const professions = [
@@ -361,17 +362,42 @@ export default function HomePage() {
           </div>
           <div className={styles.darkGrid}>
             {[
-              { num: '01', title: 'Architectural Design', desc: 'Crafting the bones of modern living. Full-scale architectural planning, structural integrity and spatial flow.' },
-              { num: '02', title: 'Interior Architecture & Styling', desc: 'Transforming volumes into experiences. We curate palettes, material textures and bespoke layouts.' },
-              { num: '03', title: 'Commercial & Retail Spaces', desc: 'High-performance environments designed to foster productivity and modern brand identity.' },
-              { num: '04', title: 'Project Management', desc: 'Stress-free execution. We oversee every build ensuring concepts transition to reality seamlessly.' }
-            ].map((s) => (
-              <div key={s.num} className={styles.darkItem}>
-                <span className={styles.darkNum}>{s.num}</span>
-                <h4>{s.title}</h4>
-                <p>{s.desc}</p>
-              </div>
-            ))}
+              { num: '01', title: 'Architectural Design', desc: 'Crafting the bones of modern living. Full-scale architectural planning, structural integrity and spatial flow.', image: '/portfolio-whitefield.jpg' },
+              { num: '02', title: 'Interior Architecture & Styling', desc: 'Transforming volumes into experiences. We curate palettes, material textures and bespoke layouts.', image: '/portfolio-indiranagar.jpg' },
+              { num: '03', title: 'Commercial & Retail Spaces', desc: 'High-performance environments designed to foster productivity and modern brand identity.', image: '/portfolio-koramangala.jpg' },
+              { num: '04', title: 'Project Management', desc: 'Stress-free execution. We oversee every build ensuring concepts transition to reality seamlessly.', image: '/portfolio-bellandur.jpg' }
+            ].map((s) => {
+              const isExpanded = expandedIndex === s.num;
+              return (
+                <div 
+                  key={s.num} 
+                  className={`${styles.darkItem} ${isExpanded ? styles.darkItemExpanded : ''}`}
+                  onClick={() => setExpandedIndex(isExpanded ? null : s.num)}
+                >
+                  <div className={styles.darkItemHeader}>
+                    <span className={styles.darkNum}>{s.num}</span>
+                    <h4>{s.title}</h4>
+                    <p>{s.desc}</p>
+                  </div>
+                  
+                  {isExpanded && (
+                    <div className={styles.darkItemExpandContent}>
+                      <div className={styles.expandGrid}>
+                        <div className={styles.expandVisual}>
+                          <img src={s.image} alt={s.title} className={styles.expandImage} />
+                        </div>
+                        <div className={styles.expandText}>
+                          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.6' }}>We approach every project with calculating precision, engineering environments that maximize your spatial ROI while reflecting absolute design narrative.</p>
+                          <Link href="/services" className="btn btn-primary" style={{ marginTop: '1.5rem', display: 'inline-block' }}>
+                            View Services →
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
