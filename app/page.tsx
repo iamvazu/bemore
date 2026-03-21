@@ -84,6 +84,9 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [locality, setLocality] = useState('Jayanagar, Bangalore');
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+
+  const heroImages = ['/homepage_hero1.png', '/homepage_hero2.png'];
   const professions = [
     "Architect",
     "Interior Designer"
@@ -105,10 +108,16 @@ export default function HomePage() {
       setTaglineIndex((prev) => (prev + 1) % professions.length);
     }, 3000);
 
+    // Hero image rotation
+    const heroInterval = setInterval(() => {
+      setHeroImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 8000);
+
     return () => {
       clearInterval(tagInterval);
+      clearInterval(heroInterval);
     };
-  }, [professions.length]);
+  }, [professions.length, heroImages.length]);
 
   const SERVICES = [
     {
@@ -224,7 +233,18 @@ export default function HomePage() {
       {/* ============ HERO ============ */}
       <section className={styles.hero}>
         <div className={styles.heroMediaWrapper}>
-          <img src="/homepage_hero1.png" alt="Be More Studio Spaces" className={styles.heroBgImage} />
+          <AnimatePresence mode="popLayout">
+            <motion.img
+              key={heroImages[heroImageIndex]}
+              src={heroImages[heroImageIndex]}
+              alt="Be More Studio Spaces"
+              className={styles.heroBgImage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+            />
+          </AnimatePresence>
           <div className={styles.heroScrim} />
         </div>
 

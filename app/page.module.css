@@ -34,6 +34,8 @@
 }
 
 .heroBgImage {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1122,9 +1124,14 @@
    DARK SERVICES
    ============================================================ */
 .darkServices {
-  background: #151312; /* charcoal variant */
   color: #FFFFFF;
   padding: var(--space-4xl) 0;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(rgba(21, 19, 18, 0.92), rgba(21, 19, 18, 0.92)), url('/portfolio-bellandur.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .darkHeader { margin-bottom: var(--space-3xl); }
