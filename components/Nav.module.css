@@ -58,7 +58,7 @@
   display: block;
   object-fit: contain;
   transition: transform var(--duration-base), filter 0.3s;
-  filter: invert(1); /* Invert so black logo becomes white for dark hero images */
+  filter: brightness(0) invert(1); /* Forces logo to turn solid White over transparent headers avoiding inverted Blue shapes */
 }
 
 .scrolled .logoImage {
