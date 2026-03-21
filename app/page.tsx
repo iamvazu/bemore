@@ -86,6 +86,14 @@ export default function HomePage() {
   const [locality, setLocality] = useState('Jayanagar, Bangalore');
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
+  
+  const [matsSlideIndex, setMatsSlideIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMatsSlideIndex((prev) => (prev + 1) % 4);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   const heroImages = [
     '/homepage_hero1.png', 
@@ -425,9 +433,20 @@ export default function HomePage() {
               </ul>
             </div>
             <div className={styles.materialVisual}>
-              <div className={styles.matCollage}>
-                 <img src="/bedroom1.png" alt="Bedroom Interior" className={styles.mat1} />
-                 <img src="/kitchen.png" alt="Kitchen Interior" className={styles.mat2} />
+              <div className={styles.matSlider}>
+                {[
+                  { img: '/bedroom1.png', alt: 'Bedroom 1' },
+                  { img: '/kitchen.png', alt: 'Kitchen 1' },
+                  { img: '/bedroom2.png', alt: 'Bedroom 2' },
+                  { img: '/kitchen2.png', alt: 'Kitchen 2' }
+                ].map((m, i) => (
+                  <img 
+                    key={m.img} 
+                    src={m.img} 
+                    alt={m.alt} 
+                    className={`${styles.matSlideImage} ${matsSlideIndex === i ? styles.matSlideImageActive : ''}`} 
+                  />
+                ))}
               </div>
             </div>
           </div>
