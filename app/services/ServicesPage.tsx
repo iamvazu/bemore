@@ -112,14 +112,13 @@ export default function ServicesPage() {
       
       <section className={styles.hero}>
         <div className={styles.heroMediaWrapper}>
-          <img src="/portfolio-indiranagar.jpg" className={styles.heroBgImage} alt="beMore Services Background" />
+          <img src="/aboutus_page.png" className={styles.heroBgImage} alt="beMore Services Background" />
           <div className={styles.heroScrim} />
         </div>
 
-        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10 }}>
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
           <div className={styles.heroInner}>
             <div className={`${styles.heroContent} ${mounted ? styles.heroVisible : ''}`}>
-              <span className="tag" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)', background: 'transparent' }}>Strategic Packages</span>
               
               <h1 className={styles.heroHeadline}>
                 Comprehensive
