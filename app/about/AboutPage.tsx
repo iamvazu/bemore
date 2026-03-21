@@ -47,14 +47,7 @@ const TEAM = [
   },
 ];
 
-const MILESTONES = [
-  { year: '2023', title: 'Studio Founded', desc: 'beMore Design Studio established in Bengaluru by Kavya Sreenivas and Suraj Divate — built on clarity, designed with purpose, delivered with precision.' },
-  { year: '2023', title: 'First Projects Delivered', desc: 'Delivered Rooted Home (RT Nagar) and Elevé Living (Brigade Panorama) — setting the tone for our function-first philosophy.' },
-  { year: '2024', title: 'Hospitality & Commercial Expansion', desc: 'Expanded practice to include hospitality, café, and corporate office projects across Bengaluru.' },
-  { year: '2024', title: 'Turnkey & 3D Visualisation', desc: 'Introduced full turnkey (Design + Execution) offering alongside immersive 3D walkthrough services for every project.' },
-  { year: '2025', title: 'Growing Portfolio', desc: 'Delivering spaces across residential, hospitality, commercial, and corporate sectors with a 60-day execution benchmark.' },
-  { year: '2026', title: 'Budget Estimator™', desc: 'Launched India\'s first data-backed interior budget tool — the engine you\'re on right now.' },
-];
+
 
 const VALUES = [
   { icon: '◈', title: 'Investment-First Thinking', desc: 'Every design decision is run through an ROI filter. Beauty follows value, not the other way around.' },
@@ -67,7 +60,7 @@ export default function AboutPage() {
   const [mounted, setMounted] = useState(false);
   const { ref: valuesRef, inView: valuesInView } = useInView();
   const { ref: teamRef, inView: teamInView } = useInView();
-  const { ref: timelineRef, inView: timelineInView } = useInView(0.05);
+
 
   useEffect(() => {
     setMounted(true);
@@ -231,36 +224,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Timeline ── */}
-      <section className={`${styles.timeline} section`} ref={timelineRef}>
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div className="gold-line" />
-            <span className="tag">Milestones</span>
-            <h2 className={styles.sectionTitle} style={{ marginTop: '1rem' }}>
-              A Decade of
-              <em className="text-gold"> Designing Assets</em>
-            </h2>
-          </div>
-          <div className={`${styles.timelineTrack} ${timelineInView ? styles.timelineVisible : ''}`}>
-            <div className={styles.timelineLine} />
-            {MILESTONES.map((m, i) => (
-              <div
-                key={m.year}
-                className={`${styles.timelineItem} ${i % 2 === 0 ? styles.timelineLeft : styles.timelineRight}`}
-                style={{ animationDelay: `${i * 120}ms` }}
-              >
-                <div className={styles.timelineDot} />
-                <div className={styles.timelineCard}>
-                  <div className={styles.timelineYear}>{m.year}</div>
-                  <h4 className={styles.timelineTitle}>{m.title}</h4>
-                  <p className={styles.timelineDesc}>{m.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── Team ── */}
       <section className={`${styles.team} section`} ref={teamRef}>
