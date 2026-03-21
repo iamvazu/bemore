@@ -50,7 +50,7 @@ export default function Nav() {
 
         {/* Logo (Centered) */}
         <Link href="/" className={styles.logo} aria-label="beMore Design Studio Home">
-          <img src="/logo-main.png" alt="beMore Design Studio" className={styles.logoImage} />
+          <img src="/bemore_logo.png" alt="beMore Design Studio" className={styles.logoImage} />
         </Link>
 
         {/* Desktop Right Nav */}
