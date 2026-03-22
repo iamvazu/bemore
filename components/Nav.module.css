@@ -53,7 +53,7 @@
 }
 
 .logoImage {
-  height: clamp(70px, 14vw, 85px);
+  height: clamp(40px, 8vw, 50px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -67,8 +67,8 @@
 
 @media (min-width: 1024px) {
   .logoImage {
-    height: 140px;
-    margin-top: -8px;
+    height: 55px; /* Was 140px causing upscaling blur */
+    margin-top: 0;
   }
 }
 
