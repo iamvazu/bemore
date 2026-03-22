@@ -53,7 +53,7 @@
 }
 
 .logoImage {
-  height: clamp(40px, 8vw, 50px);
+  height: clamp(55px, 10vw, 65px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -67,8 +67,8 @@
 
 @media (min-width: 1024px) {
   .logoImage {
-    height: 55px; /* Was 140px causing upscaling blur */
-    margin-top: 0;
+    height: 75px; /* balanced weight flawless */
+    margin-top: -6px; /* center optical alignment Node flaws */
   }
 }
 
