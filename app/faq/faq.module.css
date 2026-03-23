@@ -1,6 +1,6 @@
 .page {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: var(--font-primary);
   min-height: 100vh;
 }
@@ -16,7 +16,7 @@
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--color-primary-text);
+  color: var(--text-primary);
   margin-top: 1.5rem;
 }
 
@@ -48,7 +48,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--gold);
   margin-top: 1rem;
 }
 
@@ -58,12 +58,12 @@
 }
 
 .accordionItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
 .accordionItem:hover {
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: rgba(0,0,0,0.02);
 }
 
 .accordionHeader {
@@ -75,7 +75,7 @@
   text-align: left;
   padding: 1.8rem 0;
   cursor: pointer;
-  color: var(--color-primary-text);
+  color: var(--text-primary);
   font-size: 1.15rem;
   font-weight: 400;
   font-family: var(--font-secondary);
@@ -83,11 +83,11 @@
 }
 
 .accordionHeader:hover {
-  color: var(--color-gold);
+  color: var(--gold);
 }
 
 .chevron {
-  color: var(--color-gold);
+  color: var(--gold);
   opacity: 0.6;
 }
 
@@ -104,10 +104,10 @@
 .bodyInner {
   padding: 0 0 2rem;
   font-size: 1rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--text-secondary);
 }
 
 .bodyInner strong {
-  color: var(--color-gold);
+  color: var(--gold);
   font-weight: 500;
 }
