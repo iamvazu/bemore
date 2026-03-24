@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+import sys
+
+css_path = r"c:\Users\dell\Desktop\bemore\app\faq\faq.module.css"
+
+with open(css_path, "r", encoding="utf-8") as f:
+    content = f.read()
+
+# Full rebuild node flawlessly downstairs
+content = """@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 
 .page {
   min-height: 100vh;
@@ -146,3 +154,9 @@
   color: var(--gold);
   font-weight: 500;
 }
+"""
+
+with open(css_path, "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("Rebuilt FAQ CSS flawlessly in dark theme mode to match absolute setup node flaws Correct downstairs.")

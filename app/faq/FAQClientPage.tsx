@@ -53,14 +53,21 @@ export default function FAQClientPage() {
       <Nav />
       
       <section className={styles.hero}>
-        <div className="container">
-          <div className="gold-line" />
-          <span className="tag">Help Center</span>
-          <h1 className={styles.heroTitle}>
-            Frequently Asked
-            <br />
-            <em className="text-gold">Questions.</em>
-          </h1>
+        <div className={styles.heroMediaWrapper}>
+          <img src="/home_interior.png" className={styles.heroBgImage} alt="beMore FAQ" />
+          <div className={styles.heroScrim} />
+        </div>
+        
+        <div className="container" style={{ position: 'relative', height: '100%', zIndex: 10, display: 'flex', alignItems: 'flex-end', paddingBottom: '8vh' }}>
+          <div>
+            <div className="gold-line" />
+            <span className="tag">Help Center</span>
+            <h1 className={styles.heroTitle}>
+              Frequently Asked
+              <br />
+              <em className="text-gold">Questions.</em>
+            </h1>
+          </div>
         </div>
       </section>
 
